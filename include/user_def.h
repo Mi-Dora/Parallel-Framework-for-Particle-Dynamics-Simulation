@@ -4,16 +4,24 @@
 #include <vector>
 #include <cstdint>
 #include <sstream>
-
+using namespace std;
 
 class Particle{
     public:
-        double force(Particle other);
+        Particle(double l, double w, double h, double charge, double mass);
+        Particle(vector<double> position, vector<double> force,
+                vector<double> speed, double charge, double mass);
+
+        vector<double> force_compute(Particle other);
+        void update_force(vector<double> force);
+        void update_speed(double timestep);
+        void update_position();
     private:
-    
-}
+        vector<double> position;
+        vector<double> force;
+        vector<double> speed;
+        double charge;
+        double mass;
+};
 
-
-
-
-
+#endif
