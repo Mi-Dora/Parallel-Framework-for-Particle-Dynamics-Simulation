@@ -1,0 +1,25 @@
+#!/bin/sh
+
+#PBS -N ParticalSim-Proj               # name of job
+#PBS -l nodes=1:gpus=1:teslav100       # resources allocated, 1 node 2 processors
+#PBS -q coc-ice-gpu
+#PBS -l walltime=15:00
+#PBS -j oe                          # output and error is combined into the same file
+#PBS -o cuda-timming.out          # output file is named gettingStarted.out
+#PBS -M yudu@gatech.edu 
+
+                                    # computation starts here
+
+# The current pbs is for cuda
+
+cd ~/Parallel-Framework-for-Particle-Dynamics-Simulation
+
+module load gcc/8.3.0 openblas/0.3.13 cmake/3.20.3 openmpi/4.1.2 cuda/11.1
+
+python3 -V
+
+pip3 list
+
+pip3 install pygame cupy numba
+
+pip3 list
