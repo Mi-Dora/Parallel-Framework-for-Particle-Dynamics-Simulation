@@ -4,19 +4,20 @@
 #include "base_particle.h"
 using namespace std;
 
-void base_particle::compute_acceleration(base_particle other) {
-
+void base_particle::compute_acceleration(Container particles) {
+    for (auto iter: particles.particles) {
+        this->compute_acceleration(iter);
+    }
 }
 
 void base_particle::update_velocity(double timestep) {
-    speed[0] += force[0] * timestep / mass;
-    speed[1] += force[1] * timestep / mass;
-    speed[2] += force[2] * timestep / mass;
-
-    // coefficient = timestep/mass;
-    // speed += force * coefficient ?????
+    for (int i = 0; i < velocity.size(); i++) {
+        velocity[i] += timestep * acceleration[i];
+    }
 }
 
-void base_particle::update_position() {
-
+void base_particle::update_position(double timestep) {
+    for (int i = 0; i < velocity.size(); i++) {
+        position[i] += timestep * velocity[i];
+    }
 }
