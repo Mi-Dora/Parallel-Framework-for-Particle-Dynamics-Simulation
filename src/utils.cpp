@@ -15,7 +15,7 @@ inline double get_length(vector<double> &vec){
     return sqrt(vec[0]*vec[0] + vec[1]*vec[1] + vec[2]*vec[2]);
 }
 
-void l2_norm(vector<double> &vec, double &vec_length){
+inline void l2_norm(vector<double> &vec, double &vec_length){
     vec[0] /= vec_length;
     vec[1] /= vec_length;
     vec[2] /= vec_length;
