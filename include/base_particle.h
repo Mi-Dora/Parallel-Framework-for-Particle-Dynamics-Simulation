@@ -13,11 +13,13 @@ class Container {
 
 class base_particle {
     public:
-        virtual vector<double> compute_acceleration(base_particle other);
+        base_particle(vector<double>& position, vector<double>& acceleration, vector<double>& velocity):
+        position(position), acceleration(acceleration), velocity(velocity){}
+        vector<double> compute_acceleration(base_particle other);
         void compute_acceleration(Container particles);
         void update_velocity(double timestep);
         void update_position(double timestep);
-    private:
+    protected:
         vector<double> position;
         vector<double> acceleration;
         vector<double> velocity;

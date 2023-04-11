@@ -6,6 +6,8 @@
 #include <sstream>
 using namespace std;
 
+void generator(vector<base_particle> &particles);
+
 class world {
     public:
         world(double L0, double L1, double W0, double W1, double H0, double H1): \

@@ -1,8 +1,16 @@
 #include <vector>
 #include <cstdint>
 #include <sstream>
+#include <iostream>
 #include "base_particle.h"
 using namespace std;
+
+vector<double> base_particle::compute_acceleration(base_particle other) {
+
+    cerr << "The Function is not implemented.";
+    vector<double> a(1, 0);
+    return a;
+}
 
 void base_particle::compute_acceleration(Container particles) {
     for (auto iter: particles.particles) {
