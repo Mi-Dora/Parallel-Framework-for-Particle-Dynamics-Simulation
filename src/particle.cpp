@@ -63,9 +63,38 @@ void load_particles(const std::string filename, particle_t** particles, size_t* 
         for(size_t nn=0; nn<pp->nfeat; nn++)
             lineStream >> *(pp->features+nn);
     }
+    file.close();
     if(n != *nParticles) {
         std::fprintf(stderr, "[%s:%d]: unmatched particle number %d vs %d\n", __FILE__, __LINE__, n, *nParticles);
         exit(EXIT_FAILURE);
     }
+}
+
+void store_particles(const std::string filename, const particle_t* particles, const size_t nParticles) {
+    std::ofstream file(filename, std::ios::out|std::ios::trunc);
+    if(!file.is_open()) {
+        std::fprintf(stderr, "[%s:%d]: can not open the file %s\n", __FILE__, __LINE__, filename);
+        exit(EXIT_FAILURE);
+    }
+    int space_dimension = particles->ndim;
+    file << nParticles << space_dimension << std::endl;
+    particle_t* pp = const_cast<particle_t*>(particles);
+    for(size_t n=0; n<nParticles; n++) {
+        for(size_t nn=0; nn<pp->ndim; pp++)
+            file << *(pp->position+nn) << " ";
+        for(size_t nn=0; nn<pp->ndim; pp++)
+            file << *(pp->velocity+nn) << " ";
+        for(size_t nn=0; nn<pp->ndim; pp++)
+            file << *(pp->acceleration+nn) << " ";
+        file << pp->nfeat << " ";
+        for(size_t nn=0; nn<pp->nfeat; nn++) {
+            file << *(pp->features+nn);
+            if(nn+1 != pp->nfeat)
+                file << " ";
+            else
+                file << std::endl;
+        }
+    }
+    file.close();
 }
 
