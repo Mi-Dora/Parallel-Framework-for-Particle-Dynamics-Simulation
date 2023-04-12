@@ -1,9 +1,8 @@
 #include "user_def/gravity_particle.h"
-#include "particle.h"
 #include "utils.h"
 
 
-void gravityUpdateAcceleration(particle_t* one, particle_t* another) {
+inline void gravityUpdateAcceleration(particle_t* one, particle_t* another) {
     const double G = 6.67e-11;
     double* mass1 = one->features;
     double* mass2 = another->features;
@@ -17,5 +16,7 @@ void gravityUpdateAcceleration(particle_t* one, particle_t* another) {
     double* positionDiff_ = *positionDiff;
     for(size_t n=0; n<one->ndim; n++)
         *(acc++) += *(positionDiff_++) * distant;
+    free(*positionDiff);
 }
+
 

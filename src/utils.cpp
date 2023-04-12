@@ -4,13 +4,6 @@
 # include "utils.h"
 #include "stdlib.h"
 
-// vector<double> get_distance_vec(vector<double> &original, vector<double> &target){
-    // vector<double> dis_vec(3, 0);
-    // dis_vec[0] = target[0] - original[0];
-    // dis_vec[1] = target[1] - original[1];
-    // dis_vec[2] = target[2] - original[2];
-    // return dis_vec;
-// }
 
 inline void get_distance_vec(const double* vecA, const double* vecB, const int ndim, double** vecRet) {
     double* ret;
