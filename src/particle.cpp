@@ -25,6 +25,10 @@ void updateAcceleration(particle_t* one, particle_t* another) {
     (*(one->updateAcceleration))(one, another);
 }
 
+void registerUpdateAccelerationFn(particle_t* one, void (*fn)(particle_t*, particle_t*)) {
+    one->updateAcceleration = fn;
+}
+
 void load_particles(const std::string filename, particle_t** particles, int* nParticles) {
     std::ifstream file(filename, std::ios::in);
     if(!file.is_open()) {
@@ -134,3 +138,68 @@ void store_particles(const std::string filename, particle_t* particles, int nPar
     file.close();
 }
 
+void load_particles(const std::string filename, chunk_particles_t** particleChunk) {
+    if(*particleChunk == nullptr)
+        *particleChunk = static_cast<chunk_particles_t*>(malloc(sizeof(particleChunk)));
+    else
+        assert((*particleChunk)->nParticle == 0);
+    particle_t* particle = (*particleChunk)->particles;
+    load_particles(filename, &particle, &((*particleChunk)->nParticle));
+    (*particleChunk)->particles = particle;
+}
+
+void store_particles(const std::string filename, chunk_particles_t* particleChunk) {
+    store_particles(filename, particleChunk->particles, particleChunk->nParticle);
+}
+
+void free_particles(particle_t* particles) {
+    free(particles->position);
+    free(particles->velocity);
+    free(particles->acceleration);
+    free(particles->features);
+    free(particles);
+}
+
+void free_particles(chunk_particles_t* particles) {
+    free(particles->particles);
+    particles->particles = nullptr;
+    particles->nParticle = 0;
+}
+
+void clearAccelerations(particle_t* particles, int nParticle) {
+    particle_t* pt = particles;
+    for(int n=0; n<nParticle; n++) {
+        double* acceleration = pt->acceleration;
+        for(int dim=0; dim<pt->ndim; dim++)
+            *(acceleration++) = 0;
+        pt++;
+    }
+}
+
+void clearAccelerations(chunk_particles_t* particlesChunk) {
+    clearAccelerations(particlesChunk->particles, particlesChunk->nParticle);
+}
+
+void updates(particle_t* particles, int nParticle, double timeStep) {
+    clearAccelerations(particles, nParticle);
+    particle_t* one = particles;
+    for(int i=0; i<nParticle; i++) {
+        particle_t* another = particles;
+        for(int j=0; j<nParticle; j++) {
+            if (i!=j)
+                updateAcceleration(one, another);
+            another++;
+        }
+        one++;
+    }
+
+    one = particles;
+    for(int i=0; i<nParticle; i++) {
+        updateVelocity(one, timeStep);
+        updatePosition(one, timeStep);
+    }
+}
+
+void updates(chunk_particles_t* particlesChunk, double timeStep) {
+    updates(particlesChunk->particles, particlesChunk->nParticle, timeStep);
+}
