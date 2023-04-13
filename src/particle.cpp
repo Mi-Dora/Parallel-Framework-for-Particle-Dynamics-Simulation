@@ -4,6 +4,8 @@
 #include <sstream>
 #include <vector>
 #include <cassert>
+#include "string.h"
+#include "stdio.h"
 
 void updateVelocity(particle_t* particle, double timeStep) {
     double* accelerationDim = particle->acceleration;
@@ -33,54 +35,65 @@ void load_particles(const std::string filename, particle_t** particles, int* nPa
     std::string line;
     std::getline(file, line);
     std::sscanf(line.c_str(), "%d %d", nParticles, &space_dimension);
-    printf("%d\n", *nParticles);
     particle_t* particles_ = static_cast<particle_t*>(malloc(*nParticles * sizeof(particle_t)));
-    double* pos = static_cast<double*>(malloc(*nParticles * space_dimension * sizeof(double)));
+    double* pos = static_cast<double*>(malloc((*nParticles) * space_dimension * sizeof(double)));
     assert(pos != nullptr);
-    double* vel = static_cast<double*>(malloc(*nParticles * space_dimension * sizeof(double)));
+    double* vel = static_cast<double*>(malloc((*nParticles) * space_dimension * sizeof(double)));
     assert(vel != nullptr);
-    double* acc = static_cast<double*>(malloc(*nParticles * space_dimension * sizeof(double)));
+    double* acc = static_cast<double*>(malloc((*nParticles) * space_dimension * sizeof(double)));
     assert(acc != nullptr);
     double* features = nullptr;
-    for(int n=0; n<*nParticles; n++) {
-        (particles_+n)->position = pos+n*space_dimension;
-        (particles_+n)->velocity = vel+n*space_dimension;
-        (particles_+n)->acceleration = acc+n*space_dimension;
-        (particles_+n)->ndim = space_dimension;
-        (particles_+n)->updateAcceleration = nullptr;
-        (particles_+n)->features = nullptr;
-        (particles_+n)->nfeat = -1;
-    }
     particle_t* pp = particles_;
+    for(int n=0; n<(*nParticles); n++) {
+        pp->position = pos+n*space_dimension;
+        pp->velocity = vel+n*space_dimension;
+        pp->acceleration = acc+n*space_dimension;
+        pp->ndim = space_dimension;
+        pp->updateAcceleration = nullptr;
+        pp->features = nullptr;
+        pp->nfeat = -1;
+        pp++;
+    }
+
+    pp = particles_;
     std::stringstream lineStream;
     double foo;
     int n = 0;
     int nfeat = -1;
-    while(std::getline(file, line) && n<*nParticles) {
-        printf("reading: %d\n", n);
-        lineStream.str(line);
-        lineStream >> foo;
+    while(std::getline(file, line) && n<(*nParticles)) {
+        char* bar;
+        bar = strtok(const_cast<char*>(line.c_str()), " ");
+        foo = atof(bar);
         pp->id = static_cast<uint64_t>(foo);
-        for(int nn=0; nn<pp->ndim; nn++)
-            lineStream >> *(pp->position+nn);
-        for(int nn=0; nn<pp->ndim; nn++)
-            lineStream >> *(pp->velocity+nn);
-        for(int nn=0; nn<pp->ndim; nn++)
-            lineStream >> *(pp->acceleration+nn);
-        lineStream >> foo;
+        for(int nn=0; nn<(pp->ndim); nn++) {
+            bar = strtok(NULL, " ");
+            *(pp->position + nn) = atof(bar);
+        }
+        for(int nn=0; nn<(pp->ndim); nn++) {
+            bar = strtok(NULL, " ");
+            *(pp->velocity + nn) = atof(bar);
+        }
+        for(int nn=0; nn<(pp->ndim); nn++) {
+            bar = strtok(NULL, " ");
+            *(pp->acceleration + nn) = atof(bar);
+        }
+        bar = strtok(NULL, " ");
+        foo = atof(bar);
         pp->nfeat = static_cast<int>(foo);
-        // lineStream >> pp->nfeat;
         if (nfeat == -1) {
             nfeat = pp->nfeat;
             features = static_cast<double*>(malloc(nfeat*(*nParticles)*sizeof(double)));
         }
         else {
-            assert(nfeat==pp->nfeat);
+            assert(nfeat==(pp->nfeat));
         }
         pp->features = features + n*nfeat;
-        for(int nn=0; nn<pp->nfeat; nn++)
-            lineStream >> *(pp->features+nn);
+        for(int nn=0; nn<(pp->nfeat); nn++) {
+            bar = strtok(NULL, " ");
+            *(pp->features + nn) = atof(bar);
+        }
         n++;
+        pp++;
     }
     file.close();
     *particles = particles_;
@@ -90,7 +103,7 @@ void load_particles(const std::string filename, particle_t** particles, int* nPa
     }
 }
 
-void store_particles(const std::string filename, const particle_t* particles, const int nParticles) {
+void store_particles(const std::string filename, particle_t* particles, int nParticles) {
     std::ofstream file(filename, std::ios::out|std::ios::trunc);
     if(!file.is_open()) {
         std::fprintf(stderr, "[%s:%d]: can not open the file %s\n", __FILE__, __LINE__, filename);
@@ -99,25 +112,24 @@ void store_particles(const std::string filename, const particle_t* particles, co
     int space_dimension = particles->ndim;
     file << nParticles << " " << space_dimension << std::endl;
     file.flush();
-    particle_t* pp = const_cast<particle_t*>(particles);
+    particle_t* pp = particles;
     for(int n=0; n<nParticles; n++) {
-        printf("storing: %d\n", n);
-        file << pp->id << " ";
-        for(int nn=0; nn<pp->ndim; pp++)
-            file << *((pp->position)+nn) << " ";
-        for(int nn=0; nn<pp->ndim; pp++)
-            file << *((pp->velocity)+nn) << " ";
-        for(int nn=0; nn<pp->ndim; pp++)
-            file << *((pp->acceleration)+nn) << " ";
+        pp = particles + n;
+        file << std::scientific << pp->id << " ";
+        for(int nn=0; nn<(pp->ndim); nn++)
+            file << std::scientific << *((pp->position)+nn) << " ";
+        for(int nn=0; nn<(pp->ndim); nn++)
+            file << std::scientific << *((pp->velocity)+nn) << " ";
+        for(int nn=0; nn<(pp->ndim); nn++)
+            file << std::scientific << *((pp->acceleration)+nn) << " ";
         file << pp->nfeat << " ";
         for(int nn=0; nn<pp->nfeat; nn++) {
-            file << *(pp->features+nn);
+            file << std::scientific << *(pp->features+nn);
             if(nn+1 != pp->nfeat)
                 file << " ";
             else
                 file << std::endl;
         }
-        pp++;
     }
     file.close();
 }

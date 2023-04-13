@@ -21,6 +21,6 @@ void updatePosition(particle_t* particle, double timeStep);
 void updateAcceleration(particle_t* one, particle_t* another);
 
 void load_particles(const std::string filename, particle_t** particles, int* nParticles);
-void store_particles(const std::string filename, const particle_t* particles, const int nParticles);
+void store_particles(const std::string filename, particle_t* particles, int nParticles);
 
 #endif
