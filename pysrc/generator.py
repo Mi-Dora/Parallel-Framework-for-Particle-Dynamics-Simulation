@@ -30,12 +30,12 @@ if __name__ == "__main__":
     parser.add_argument("--pos_range", type=list, default=[-100, 100, -100, 100])
     parser.add_argument("--mass_range", type=list, default=[0, 0.01])
     parser.add_argument("--output_filename", type=str, required=True)
-    parser.parse_args()
+    args = parser.parse_args()
     
     n_particle = 1000
     n_dim = 3
-    if len(parser.pos_range) == 2:
-        x0, x1 = parser.pos_range[0], parser.pos_range[1]
-        parser.pos_range = [x0, x1, x0, x1]
-    assert len(parser.pos_range) == 4
-    gravity_generator(parser.n_particle, parser.n_dim, parser.pos_range, parser.mass_range, parser.output_filename)
+    if len(args.pos_range) == 2:
+        x0, x1 = args.pos_range[0], args.pos_range[1]
+        args.pos_range = [x0, x1, x0, x1]
+    assert len(args.pos_range) == 4
+    gravity_generator(args.n_particle, args.n_dim, args.pos_range, args.mass_range, args.output_filename)
