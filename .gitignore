@@ -6,3 +6,5 @@
 *.fatbin
 .vscode
 build
+particle_init.txt
+particle_store.txt

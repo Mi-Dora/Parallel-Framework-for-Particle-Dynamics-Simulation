@@ -3,8 +3,10 @@ project(Parallel_Framework_for_Particle_Dynamics_Simulation)
 
 set(CMAKE_CXX_STANDARD 14)
 
+set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -fopenmp -Wall")
+set(CMAKE_CXX_FLAGS_RELEASE "-O2 -fopenmp")
+
 include_directories(include)
 
-add_executable(Parallel_Framework_for_Particle_Dynamics_Simulation
-        src/particle.cpp src/utils.cpp src/world.cpp src/user_def/gravity_particle.cpp
-)
+add_subdirectory(src)
+add_subdirectory(test)

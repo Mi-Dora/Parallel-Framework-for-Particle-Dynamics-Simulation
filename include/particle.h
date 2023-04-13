@@ -6,6 +6,7 @@
 #include <string>
 
 struct particle_t {
+    uint64_t id;
     double* position;
     double* velocity;
     double* acceleration;
@@ -19,7 +20,7 @@ void updateVelocity(particle_t* particle, double timeStep);
 void updatePosition(particle_t* particle, double timeStep);
 void updateAcceleration(particle_t* one, particle_t* another);
 
-void load_particles(const std::string filename, particle_t** particles, size_t* nParticles);
-void store_particles(const std::string filename, const particle_t* particles, const size_t nParticles);
+void load_particles(const std::string filename, particle_t** particles, int* nParticles);
+void store_particles(const std::string filename, const particle_t* particles, const int nParticles);
 
 #endif

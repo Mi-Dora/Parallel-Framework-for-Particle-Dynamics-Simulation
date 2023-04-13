@@ -1,0 +1,2 @@
+add_executable(TEST_load_store test_loads_store.cpp)
+target_link_libraries(TEST_load_store pfpds)
