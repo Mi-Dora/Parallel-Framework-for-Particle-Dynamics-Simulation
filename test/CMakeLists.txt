@@ -3,3 +3,6 @@ target_link_libraries(TEST_load_store pfpds)
 
 add_executable(TEST_register_gravity test_register_gravity.cpp)
 target_link_libraries(TEST_register_gravity pfpds)
+
+add_executable(TEST_updates test_updates.cpp)
+target_link_libraries(TEST_updates pfpds)
