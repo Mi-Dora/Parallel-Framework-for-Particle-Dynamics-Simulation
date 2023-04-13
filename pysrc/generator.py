@@ -30,6 +30,7 @@ if __name__ == "__main__":
     parser.add_argument("--pos_range", type=list, default=[-100, 100, -100, 100])
     parser.add_argument("--mass_range", type=list, default=[0, 0.01])
     parser.add_argument("--output_filename", type=str, required=True)
+    parser.parse_args()
     
     n_particle = 1000
     n_dim = 3
