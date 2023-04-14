@@ -3,12 +3,12 @@
 int main(int argc, char** argv) {
     particle_t* particles;
     int nParticles;
-    std::string fLoad = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/particle_init.txt";
-    std::string fStore = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/particle_1.txt";
-    std::string fStore2 = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/particle_2.txt";
-    std::string fStore3 = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/particle_3.txt";
-    std::string fStore4 = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/particle_4.txt";
-    std::string fStore5 = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/particle_5.txt";
+    std::string fLoad = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/data/data10000.txt";
+    std::string fStore = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/data/test_load_store/1.txt";
+    std::string fStore2 = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/data/test_load_store/2.txt";
+    std::string fStore3 = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/data/test_load_store/3.txt";
+    std::string fStore4 = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/data/test_load_store/4.txt";
+    std::string fStore5 = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/data/test_load_store/5.txt";
 
 
     load_particles(fLoad, &particles, &nParticles);

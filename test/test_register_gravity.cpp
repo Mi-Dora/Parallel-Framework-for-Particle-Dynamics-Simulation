@@ -4,8 +4,8 @@
 int main(int argc, char** argv) {
     particle_t* particles;
     int nParticles;
-    const std::string inputFilename = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/particle_init.txt";
-    const std::string outputFilename = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/particle_iter1.txt";
+    const std::string inputFilename = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/data/data10000.txt";
+    const std::string outputFilename = "/home/cman8/Parallel-Framework-for-Particle-Dynamics-Simulation/data/register10000.txt";
     load_particles(inputFilename, &particles, &nParticles);
     
     for(int n=0; n<nParticles; n++) {
