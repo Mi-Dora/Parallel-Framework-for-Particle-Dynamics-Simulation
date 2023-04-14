@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <cassert>
 
+__inline__ int sizeAfterPadding(int nParticles, int minimalGrid) {
+    return (nParticles+minimalGrid-1)/minimalGrid * minimalGrid;
+}
+
 void setupCommunicators(topology_t* topology, int gridX, int gridY) {
     topology->gridX = gridX;
     topology->gridY = gridY;
@@ -25,16 +29,16 @@ void setupCommunicators(topology_t* topology, int gridX, int gridY) {
         MPI_Comm_split(MPI_COMM_WORLD, MPI_UNDEFINED, topology->rankY, &(topology->scatterYComm));
     MPI_Barrier(MPI_COMM_WORLD);
 
-    MPI_Comm_split(MPI_COMM_WORLD, topology->rankX, topology->rankY, &(topology->gatherXComm));
+    MPI_Comm_split(MPI_COMM_WORLD, topology->rankX, topology->rankY, &(topology->reduceXComm));
     MPI_Barrier(MPI_COMM_WORLD);
 
-    MPI_Comm_split(MPI_COMM_WORLD, topology->rankY, topology->rankX, &(topology->gatherYComm));
+    MPI_Comm_split(MPI_COMM_WORLD, topology->rankY, topology->rankX, &(topology->reduceYComm));
     MPI_Barrier(MPI_COMM_WORLD);
 }
 
 void padding(particle_t** particles, int* nParticles, int minimalGrid) {
     int oriSize = *nParticles;
-    int newSize = (*nParticles + minimalGrid - 1) / minimalGrid * minimalGrid;
+    int newSize = sizeAfterPadding(oriSize, minimalGrid);
     particle_t *oriP, *newP;
     double *oriPos, *oriVel, *oriAcc, *oriFeat;
     double *newPos, *newVel, *newAcc, *newFeat;
@@ -91,90 +95,6 @@ void padding(particle_t** particles, int* nParticles, int minimalGrid) {
     *particles = newP;
     *nParticles = newSize;
 }
-
-
-// void padding(particle_t** particles, int* nParticles, int minimalGrid) {
-//     int newSize = (*nParticles + minimalGrid - 1) / minimalGrid;
-//     newSize = newSize * minimalGrid;
-//     particle_t* oriParticles = *particles;
-//     particle_t* paddedParticles;
-//     paddedParticles = static_cast<particle_t*>(realloc(*particles, newSize*sizeof(particle_t)));
-//     assert(paddedParticles != nullptr);
-//     if(paddedParticles != oriParticles) {
-//         particle_t* nppt = paddedParticles + (*nParticles);
-//         for(int n=(*nParticles); n<newSize; n++) {
-//             nppt->enabled = false;
-//             nppt->ndim = paddedParticles->ndim;
-//             nppt->nfeat = paddedParticles->nfeat;
-//             nppt->id = UINT64_MAX-n;
-//             nppt->updateAcceleration = paddedParticles->updateAcceleration;
-//             nppt++;
-//         }
-//     }
-//     *nParticles = newSize;
-//     *particles = paddedParticles;
-
-//     double* pos = paddedParticles->position;
-//     double* vel = paddedParticles->velocity;
-//     double* acc = paddedParticles->acceleration;
-//     double* feat = paddedParticles->features;
-
-//     double* paddedPos = static_cast<double*>(realloc(paddedParticles->position, newSize*paddedParticles->ndim*sizeof(double)));
-//     double* paddedVel = static_cast<double*>(realloc(paddedParticles->velocity, newSize*paddedParticles->ndim*sizeof(double)));
-//     double* paddedAcc = static_cast<double*>(realloc(paddedParticles->acceleration, newSize*paddedParticles->ndim*sizeof(double)));
-//     double* paddedFeatures = static_cast<double*>(realloc(paddedParticles->features, newSize*paddedParticles->nfeat*sizeof(double)));
-//     assert(paddedPos != nullptr);
-//     assert(paddedVel != nullptr);
-//     assert(paddedAcc != nullptr);
-//     assert(paddedFeatures != nullptr);
-
-//     particle_t* ppt = nullptr;
-//     double* dpt = nullptr;
-//     if(pos != paddedPos) {
-//         ppt = paddedParticles;
-//         dpt = paddedPos;
-//         for(int n=0; n<newSize; n++) {
-//             ppt->position = dpt;
-//             for(int nn=0; nn<ppt->ndim; nn++)
-//                 *(dpt++) = 0.0;
-//             // dpt += ppt->ndim;
-//             ppt++;
-//         }
-//     }
-//     if(vel != paddedVel) {
-//         ppt = paddedParticles;
-//         dpt = paddedVel;
-//         for(int n=0; n<newSize; n++) {
-//             ppt->velocity = dpt;
-//             for(int nn=0; nn<ppt->ndim; nn++)
-//                 *(dpt++) = 0.0;
-//             // dpt += ppt->ndim;
-//             ppt++;
-//         }
-//     }
-//     if(acc != paddedAcc) {
-//         ppt = paddedParticles;
-//         dpt = paddedAcc;
-//         for(int n=0; n<newSize; n++) {
-//             ppt->acceleration = dpt;
-//             for(int nn=0; nn<ppt->ndim; nn++)
-//                 *(dpt++) = 0.0;
-//                 // dpt += ppt->ndim;
-//             ppt++;
-//         }
-//     }
-//     if(feat != paddedFeatures) {
-//         ppt = paddedParticles;
-//         dpt = paddedFeatures;
-//         for(int n=0; n<newSize; n++) {
-//             ppt->features = dpt;
-//             for(int nn=0; nn<ppt->nfeat; nn++)
-//                 *(dpt++) = 0.0;
-//             ppt++;
-//         }
-//     }
-    
-// }
 
 void padding(chunk_particles_t* chunkParticles, int minimalGrid) {
     particle_t* particles = chunkParticles->particles;
@@ -273,3 +193,334 @@ void shrink(chunk_particles_t* chunkParticles) {
     chunkParticles->nParticle = nParticle;
 }
 
+void scatter(particle_t** localParticlesX, int* localNParticlesX,
+            particle_t** localParticlesY, int* localNParticlesY,
+            particle_t* wholeParticles, int wholeNParticles, 
+            topology_t* topology) {
+
+    const int& rankX = topology->rankX;
+    const int& rankY = topology->rankY;
+    const int& gridX = topology->gridX;
+    const int& gridY = topology->gridY;
+    if(rankX==0 && rankY==0) {
+        assert(wholeNParticles%gridX == 0);
+        assert(wholeNParticles%gridY == 0);
+    }
+
+    int* localParticlesMetadata = static_cast<int*>(malloc(4*sizeof(int)));
+    assert(localParticlesMetadata != nullptr);
+
+    if(rankX==0 && rankY==0) {
+        *(localParticlesMetadata+0) = wholeNParticles / gridX;
+        *(localParticlesMetadata+1) = wholeNParticles / gridY;
+        *(localParticlesMetadata+2) = wholeParticles->ndim;
+        *(localParticlesMetadata+3) = wholeParticles->nfeat;
+    }
+
+    MPI_Bcast(localParticlesMetadata, 4, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    int ndim, nfeat;
+    *localNParticlesX = *(localParticlesMetadata+0);
+    *localNParticlesY = *(localParticlesMetadata+1);
+    ndim = *(localParticlesMetadata+2);
+    nfeat = *(localParticlesMetadata+3);
+    alloc_particles(localParticlesX, *localNParticlesX, ndim, nfeat);
+    alloc_particles(localParticlesY, *localNParticlesY, ndim, nfeat);
+
+    double *pos, *vel, *acc, *feat;
+
+    if(rankY==0) {
+        pos = (*localParticlesX)->position;
+        vel = (*localParticlesX)->velocity;
+        acc = (*localParticlesX)->acceleration;
+        feat = (*localParticlesX)->features;
+
+        MPI_Scatter(
+            wholeParticles,
+            wholeNParticles*sizeof(particle_t),
+            MPI_BYTE,
+            (*localParticlesX),
+            (*localNParticlesX)*sizeof(particle_t),
+            MPI_BYTE,
+            0,
+            topology->scatterXComm
+        );
+
+        #pragma omp parallel for
+        for (int n=0; n<*localNParticlesX; n++) {
+            (*localParticlesX+n)->position = pos+n*ndim;
+            (*localParticlesX+n)->velocity = vel+n*ndim;
+            (*localParticlesX+n)->acceleration = acc+n*ndim;
+            (*localParticlesX+n)->features = feat+n*nfeat;
+        }
+
+        MPI_Scatter(
+            wholeParticles->position,
+            wholeNParticles*ndim,
+            MPI_DOUBLE,
+            (*localParticlesX)->position, 
+            (*localNParticlesX)*ndim,
+            MPI_DOUBLE,
+            0,
+            topology->scatterXComm
+        );
+        MPI_Scatter(
+            wholeParticles->velocity,
+            wholeNParticles*ndim,
+            MPI_DOUBLE,
+            (*localParticlesX)->velocity, 
+            (*localNParticlesX)*ndim,
+            MPI_DOUBLE,
+            0,
+            topology->scatterXComm
+        );
+        MPI_Scatter(
+            wholeParticles->acceleration,
+            wholeNParticles*ndim,
+            MPI_DOUBLE,
+            (*localParticlesX)->acceleration, 
+            (*localNParticlesX)*ndim,
+            MPI_DOUBLE,
+            0,
+            topology->scatterXComm
+        );
+        MPI_Scatter(
+            wholeParticles->features,
+            wholeNParticles*nfeat,
+            MPI_DOUBLE,
+            (*localParticlesX)->features, 
+            (*localNParticlesX)*nfeat,
+            MPI_DOUBLE,
+            0,
+            topology->scatterXComm
+        );
+    }
+
+    pos = (*localParticlesX)->position;
+    vel = (*localParticlesX)->velocity;
+    acc = (*localParticlesX)->acceleration;
+    feat = (*localParticlesX)->features;
+
+    MPI_Bcast(
+        (*localParticlesX),
+        (*localNParticlesX)*sizeof(particle_t),
+        MPI_BYTE,
+        0,
+        topology->reduceYComm
+    );
+
+    #pragma omp parallel for
+    for (int n=0; n<*localNParticlesX; n++) {
+        (*localParticlesX+n)->position = pos+n*ndim;
+        (*localParticlesX+n)->velocity = vel+n*ndim;
+        (*localParticlesX+n)->acceleration = acc+n*ndim;
+        (*localParticlesX+n)->features = feat+n*nfeat;
+    }
+    MPI_Bcast(
+        (*localParticlesX)->position,
+        (*localNParticlesX)*ndim,
+        MPI_DOUBLE,
+        0,
+        topology->reduceYComm
+    );
+    MPI_Bcast(
+        (*localParticlesX)->velocity,
+        (*localNParticlesX)*ndim,
+        MPI_DOUBLE,
+        0,
+        topology->reduceYComm
+    );
+    MPI_Bcast(
+        (*localParticlesX)->acceleration,
+        (*localNParticlesX)*ndim,
+        MPI_DOUBLE,
+        0,
+        topology->reduceYComm
+    );
+    MPI_Bcast(
+        (*localParticlesX)->features,
+        (*localNParticlesX)*nfeat,
+        MPI_DOUBLE,
+        0,
+        topology->reduceYComm
+    );
+
+
+    if(rankX==0) {
+        pos = (*localParticlesY)->position;
+        vel = (*localParticlesY)->velocity;
+        acc = (*localParticlesY)->acceleration;
+        feat = (*localParticlesY)->features;
+
+        MPI_Scatter(
+            wholeParticles,
+            wholeNParticles*sizeof(particle_t),
+            MPI_BYTE,
+            (*localParticlesY),
+            (*localNParticlesY)*sizeof(particle_t),
+            MPI_BYTE,
+            0,
+            topology->scatterYComm
+        );
+
+        #pragma omp parallel for
+        for (int n=0; n<*localNParticlesY; n++) {
+            (*localParticlesY+n)->position = pos+n*ndim;
+            (*localParticlesY+n)->velocity = vel+n*ndim;
+            (*localParticlesY+n)->acceleration = acc+n*ndim;
+            (*localParticlesY+n)->features = feat+n*nfeat;
+        }
+
+        MPI_Scatter(
+            wholeParticles->position,
+            wholeNParticles*ndim,
+            MPI_DOUBLE,
+            (*localParticlesY)->position, 
+            (*localNParticlesY)*ndim,
+            MPI_DOUBLE,
+            0,
+            topology->scatterYComm
+        );
+        MPI_Scatter(
+            wholeParticles->velocity,
+            wholeNParticles*ndim,
+            MPI_DOUBLE,
+            (*localParticlesY)->velocity, 
+            (*localNParticlesY)*ndim,
+            MPI_DOUBLE,
+            0,
+            topology->scatterYComm
+        );
+        MPI_Scatter(
+            wholeParticles->acceleration,
+            wholeNParticles*ndim,
+            MPI_DOUBLE,
+            (*localParticlesY)->acceleration, 
+            (*localNParticlesY)*ndim,
+            MPI_DOUBLE,
+            0,
+            topology->scatterYComm
+        );
+        MPI_Scatter(
+            wholeParticles->features,
+            wholeNParticles*nfeat,
+            MPI_DOUBLE,
+            (*localParticlesY)->features, 
+            (*localNParticlesY)*nfeat,
+            MPI_DOUBLE,
+            0,
+            topology->scatterYComm
+        );
+    }
+
+    pos = (*localParticlesY)->position;
+    vel = (*localParticlesY)->velocity;
+    acc = (*localParticlesY)->acceleration;
+    feat = (*localParticlesY)->features;
+
+    MPI_Bcast(
+        (*localParticlesY),
+        (*localNParticlesY)*sizeof(particle_t),
+        MPI_BYTE,
+        0,
+        topology->reduceXComm
+    );
+
+    #pragma omp parallel for
+    for (int n=0; n<*localNParticlesY; n++) {
+        (*localParticlesY+n)->position = pos+n*ndim;
+        (*localParticlesY+n)->velocity = vel+n*ndim;
+        (*localParticlesY+n)->acceleration = acc+n*ndim;
+        (*localParticlesY+n)->features = feat+n*nfeat;
+    }
+    MPI_Bcast(
+        (*localParticlesY)->position,
+        (*localNParticlesY)*ndim,
+        MPI_DOUBLE,
+        0,
+        topology->reduceXComm
+    );
+    MPI_Bcast(
+        (*localParticlesY)->velocity,
+        (*localNParticlesY)*ndim,
+        MPI_DOUBLE,
+        0,
+        topology->reduceXComm
+    );
+    MPI_Bcast(
+        (*localParticlesY)->acceleration,
+        (*localNParticlesY)*ndim,
+        MPI_DOUBLE,
+        0,
+        topology->reduceXComm
+    );
+    MPI_Bcast(
+        (*localParticlesY)->features,
+        (*localNParticlesY)*nfeat,
+        MPI_DOUBLE,
+        0,
+        topology->reduceXComm
+    );
+}
+
+void scatter(chunk_particles_t* localChunkParticlesX, 
+                chunk_particles_t* localChunkParticlesY,
+                chunk_particles_t* wholeChunkParticles,
+                topology_t* topology) {
+    particle_t *localParticlesX, *localParticlesY, *wholeParticles;
+    int localNParticlesX, localNParticlesY, wholeNParticles;
+
+    wholeParticles = wholeChunkParticles->particles;
+    wholeNParticles = wholeChunkParticles->nParticle;
+    scatter(
+        &localParticlesX, &localNParticlesX, &localParticlesY, &localNParticlesY,
+        wholeParticles, wholeNParticles, topology
+    );
+    localChunkParticlesX->particles = localParticlesX;
+    localChunkParticlesX->nParticle = localNParticlesX;
+    localChunkParticlesY->particles = localParticlesY;
+    localChunkParticlesY->nParticle = localNParticlesY;
+}
+
+void reduce(particle_t* localParticlesX, int localNParticlesX, 
+        particle_t* localParticlesY, int localNParticlesY, topology_t* topology) {
+    double* recvBuf1;
+    recvBuf1 = static_cast<double*>(malloc(localNParticlesX*localParticlesX->ndim*sizeof(double)));
+    MPI_Allreduce(
+        localParticlesX->acceleration,
+        recvBuf1,
+        localNParticlesX*localParticlesX->ndim,
+        MPI_DOUBLE,
+        MPI_SUM,
+        topology->reduceYComm
+    );
+    #pragma omp parallel for collapse(2)
+    for(int n=0; n<localNParticlesX; n++)
+        for(int nn=0; nn<localParticlesX->ndim; nn++)
+            *((localParticlesX->acceleration) + n*localParticlesX->ndim + nn) = 
+                    *(recvBuf1 + n*localParticlesX->ndim + nn);
+    
+    double* recvBuf2;
+    recvBuf2 = static_cast<double*>(malloc(localNParticlesY*(localParticlesY->ndim)*sizeof(double)));
+    MPI_Allreduce(
+        localParticlesY->acceleration,
+        recvBuf2,
+        localNParticlesY*localParticlesY->ndim,
+        MPI_DOUBLE,
+        MPI_SUM,
+        topology->reduceXComm
+    );
+    #pragma omp parallel for collapse(2)
+    for(int n=0; n<localNParticlesY; n++)
+        for(int nn=0; nn<localParticlesY->ndim; nn++)
+            *((localParticlesY->acceleration)+n*localParticlesY->ndim+nn) = 
+                    *(recvBuf2+n*localParticlesY->ndim+nn);
+    free(recvBuf1);
+    free(recvBuf2);
+}
+
+void reduce(chunk_particles_t* localChunkParticlesX, chunk_particles_t* localChunkParticlesY, topology_t* topology) {
+    reduce(localChunkParticlesX->particles, localChunkParticlesX->nParticle, 
+            localChunkParticlesY->particles, localChunkParticlesY->nParticle, topology);
+}

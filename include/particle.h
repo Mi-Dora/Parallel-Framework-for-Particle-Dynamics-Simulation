@@ -42,4 +42,7 @@ void free_particles(chunk_particles_t* particles);
 void update_particles(particle_t* particles, int nParticle, double timeStep);
 void update_particles(chunk_particles_t* particlesChunk, double timeStep);
 
+void alloc_particles(particle_t** particles, int nParticle, int ndim, int nfeat);
+void alloc_particles(chunk_particles_t* chunkParticles, int nParticle, int ndim, int nfeat);
+
 #endif

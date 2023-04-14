@@ -4,8 +4,10 @@
 #include <sstream>
 #include <vector>
 #include <cassert>
+#include <stdlib.h>
 #include "string.h"
 #include "stdio.h"
+
 
 void updateVelocity(particle_t* particle, double timeStep) {
     if(!particle->enabled)
@@ -236,4 +238,37 @@ void update_particles(particle_t* particles, int nParticle, double timeStep) {
 
 void update_particles(chunk_particles_t* particlesChunk, double timeStep) {
     update_particles(particlesChunk->particles, particlesChunk->nParticle, timeStep);
+}
+
+void alloc_particles(particle_t** particles, int nParticle, int ndim, int nfeat) {
+    assert(*particles == nullptr);
+    *particles = static_cast<particle_t*>(malloc(nParticle*sizeof(particle_t)));
+    double* pos = static_cast<double*>(malloc(nParticle*ndim*sizeof(double)));
+    double* vel = static_cast<double*>(malloc(nParticle*ndim*sizeof(double)));
+    double* acc = static_cast<double*>(malloc(nParticle*ndim*sizeof(double)));
+    double* feat = static_cast<double*>(malloc(nParticle*nfeat*sizeof(double)));
+    assert(*particles != nullptr);
+    assert(pos != nullptr);     assert(vel != nullptr);
+    assert(acc != nullptr);     assert(feat != nullptr);
+
+    #pragma omp parallel for
+    for(int n=0; n<nParticle; n++) {
+        particle_t* ppt = (*particles) + n;
+        ppt->position = pos + n*ndim;
+        ppt->velocity = vel + n*ndim;
+        ppt->acceleration = acc + n*ndim;
+        ppt->features = feat + n*nfeat;
+        ppt->id = reinterpret_cast<uint64_t>(ppt);
+        ppt->enabled = false;
+        ppt->ndim = ndim;
+        ppt->nfeat = nfeat;
+        ppt->updateAcceleration = nullptr;
+    }
+}
+
+void alloc_particles(chunk_particles_t* chunkParticles, int nParticle, int ndim, int nfeat) {
+    particle_t* particles = chunkParticles->particles;
+    alloc_particles(&particles, nParticle, ndim, nfeat);
+    chunkParticles->particles = particles;
+    chunkParticles->nParticle = nParticle;
 }
