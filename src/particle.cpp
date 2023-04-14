@@ -8,17 +8,21 @@
 #include "stdio.h"
 
 void updateVelocity(particle_t* particle, double timeStep) {
+    if(!particle->enabled)
+        return;
     double* accelerationDim = particle->acceleration;
     double* velocityDim = particle->velocity;
-    #pragma UNROLL
+    #pragma unroll
     for(int n=0; n<particle->ndim; n++) 
         *(velocityDim++) += *(accelerationDim++) * timeStep;
 }
 
 void updatePosition(particle_t* particle, double timeStep) {
+    if(!particle->enabled)
+        return;
     double* positionDim = particle->position;
     double* velocityDim = particle->velocity;
-    #pragma UNROLL
+    #pragma unroll
     for(int n=0; n<particle->ndim; n++) 
         *(positionDim++) += *(velocityDim++) * timeStep;
 }
@@ -172,7 +176,7 @@ void store_particles(const std::string filename, particle_t* particles, int nPar
 
 void load_particles(const std::string filename, chunk_particles_t** particleChunk) {
     if(*particleChunk == nullptr)
-        *particleChunk = static_cast<chunk_particles_t*>(malloc(sizeof(particleChunk)));
+        *particleChunk = static_cast<chunk_particles_t*>(malloc(sizeof(chunk_particles_t)));
     else
         assert((*particleChunk)->nParticle == 0);
     particle_t* particles;
@@ -195,7 +199,7 @@ void free_particles(particle_t* particles) {
 }
 
 void free_particles(chunk_particles_t* particles) {
-    free(particles->particles);
+    free_particles(particles->particles);
     particles->particles = nullptr;
     particles->nParticle = 0;
 }

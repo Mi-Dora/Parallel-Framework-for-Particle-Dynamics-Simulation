@@ -6,3 +6,6 @@ target_link_libraries(TEST_register_gravity pfpds)
 
 add_executable(TEST_updates test_updates.cpp)
 target_link_libraries(TEST_updates pfpds)
+
+add_executable(TEST_padding_shrink test_padding_shrink.cpp)
+target_link_libraries(TEST_padding_shrink pfpds)
