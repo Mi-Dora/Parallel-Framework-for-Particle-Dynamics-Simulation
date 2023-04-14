@@ -14,6 +14,7 @@ struct particle_t {
     void (*updateAcceleration)(particle_t*, particle_t*);
     int ndim;
     int nfeat;
+    bool enabled;
 };
 
 struct chunk_particles_t {

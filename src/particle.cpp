@@ -10,6 +10,7 @@
 void updateVelocity(particle_t* particle, double timeStep) {
     double* accelerationDim = particle->acceleration;
     double* velocityDim = particle->velocity;
+    #pragma UNROLL
     for(int n=0; n<particle->ndim; n++) 
         *(velocityDim++) += *(accelerationDim++) * timeStep;
 }
@@ -17,11 +18,23 @@ void updateVelocity(particle_t* particle, double timeStep) {
 void updatePosition(particle_t* particle, double timeStep) {
     double* positionDim = particle->position;
     double* velocityDim = particle->velocity;
+    #pragma UNROLL
     for(int n=0; n<particle->ndim; n++) 
         *(positionDim++) += *(velocityDim++) * timeStep;
 }
 
 void updateAcceleration(particle_t* one, particle_t* another) {
+    if (!one->enabled) {
+        for(int n=0; n<one->ndim; n++)
+            *((one->acceleration)+n) = 0.0;
+        return;
+    }
+    if (!another->enabled) {
+        for(int n=0; n<another->ndim; n++)
+            *((another->acceleration)+n) = 0.0;
+        return;
+    }
+    assert(one->updateAcceleration == another->updateAcceleration);
     if (one->updateAcceleration == nullptr) 
         std::cerr << "no updateAcceleration registerd on particle: " << one->id << std::endl;
     else
@@ -70,6 +83,7 @@ void load_particles(const std::string filename, particle_t** particles, int* nPa
         pp->updateAcceleration = nullptr;
         pp->features = nullptr;
         pp->nfeat = -1;
+        pp->enabled=true;
         pp++;
     }
 
@@ -133,6 +147,10 @@ void store_particles(const std::string filename, particle_t* particles, int nPar
     particle_t* pp = particles;
     for(int n=0; n<nParticles; n++) {
         pp = particles + n;
+        if (!pp->enabled) {
+            std::cerr << "Before store, the data should already been shrinked and no disabled particle" << std::endl;
+            assert(pp->enabled);
+        }
         file << std::scientific << pp->id << " ";
         for(int nn=0; nn<(pp->ndim); nn++)
             file << std::scientific << *((pp->position)+nn) << " ";
@@ -184,8 +202,10 @@ void free_particles(chunk_particles_t* particles) {
 
 void clearAccelerations(particle_t* particles, int nParticle) {
     particle_t* pt = particles;
+    #pragma omp parallel for
     for(int n=0; n<nParticle; n++) {
         double* acceleration = pt->acceleration;
+        #pragma UNROLL
         for(int dim=0; dim<pt->ndim; dim++)
             *(acceleration++) = 0;
         pt++;
@@ -198,21 +218,15 @@ void clearAccelerations(chunk_particles_t* particlesChunk) {
 
 void update_particles(particle_t* particles, int nParticle, double timeStep) {
     clearAccelerations(particles, nParticle);
-    particle_t* one = particles;
-    for(int i=0; i<nParticle; i++) {
-        particle_t* another = particles;
-        for(int j=0; j<nParticle; j++) {
-            if (i!=j) 
-                updateAcceleration(one, another);
-            another++;
-        }
-        one++;
-    }
+    #pragma omp parallel for collapse(2)
+    for(int i=0; i<nParticle; i++) 
+        for(int j=0; j<i; j++) 
+            updateAcceleration(particles+i, particles+j);
 
-    one = particles;
+    #pragma omp parallel for
     for(int i=0; i<nParticle; i++) {
-        updateVelocity(one, timeStep);
-        updatePosition(one, timeStep);
+        updateVelocity(particles+i, timeStep);
+        updatePosition(particles+i, timeStep);
     }
 }
 
