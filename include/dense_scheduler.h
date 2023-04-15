@@ -25,13 +25,22 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
             particle_t** localParticlesY, int* localNParticlesY,
             particle_t* wholeParticles, int wholeNParticles, 
             topology_t* topology);
-void scatter(chunk_particles_t* localChunkParticlesX, 
-                chunk_particles_t* localChunkParticlesY,
+void scatter(chunk_particles_t** localChunkParticlesX, 
+                chunk_particles_t** localChunkParticlesY,
                 chunk_particles_t* wholeChunkParticles,
                 topology_t* topology);
 
 void reduce(particle_t* localParticlesX, int localNParticlesX, 
         particle_t* localParticlesY, int localNParticlesY, topology_t* topology);
 void reduce(chunk_particles_t* localChunkParticlesX, chunk_particles_t* localChunkParticlesY, topology_t* topology);
+
+
+void gather(particle_t* localParticlesX, int localNParticlesX, 
+                particle_t* localParticlesY, int localNParticlesY,
+                particle_t** globalParticles, int* globalNParticles, topology_t* topology);
+void gather(chunk_particles_t* localChunkParticlesX, 
+            chunk_particles_t* localChunkParticlesY, 
+            chunk_particles_t* globalChunkParticles, 
+            topology_t* topology);
 
 #endif

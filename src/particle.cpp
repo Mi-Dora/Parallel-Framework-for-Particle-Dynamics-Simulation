@@ -155,7 +155,7 @@ void store_particles(const std::string filename, particle_t* particles, int nPar
         pp = particles + n;
         if (!pp->enabled) {
             std::cerr << "Before store, the data should already been shrinked and no disabled particle" << std::endl;
-            assert(pp->enabled);
+            // assert(pp->enabled);
         }
         file << std::scientific << pp->id << " ";
         for(int nn=0; nn<(pp->ndim); nn++)

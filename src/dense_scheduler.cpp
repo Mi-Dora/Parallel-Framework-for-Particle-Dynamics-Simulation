@@ -197,6 +197,11 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
             particle_t** localParticlesY, int* localNParticlesY,
             particle_t* wholeParticles, int wholeNParticles, 
             topology_t* topology) {
+    bool wholeParticlesInitNull = false;
+    if(wholeParticles==nullptr) {
+        wholeParticlesInitNull = true;
+        alloc_particles(&wholeParticles, 1, 1, 1);
+    }
 
     const int& rankX = topology->rankX;
     const int& rankY = topology->rankY;
@@ -235,10 +240,13 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
         vel = (*localParticlesX)->velocity;
         acc = (*localParticlesX)->acceleration;
         feat = (*localParticlesX)->features;
+        printf("%s:%d, %lx %lx %lx %lx\n", __FILE__, __LINE__, pos, vel, acc, feat);
 
+        MPI_Barrier(topology->scatterXComm);
+        printf("(%d, %d) %s %d %d@%d\n", topology->rankX, topology->rankY, __FILE__, __LINE__, *localNParticlesX, wholeNParticles);
         MPI_Scatter(
             wholeParticles,
-            wholeNParticles*sizeof(particle_t),
+            wholeNParticles*sizeof(particle_t)/gridX,
             MPI_BYTE,
             (*localParticlesX),
             (*localNParticlesX)*sizeof(particle_t),
@@ -249,25 +257,29 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
 
         #pragma omp parallel for
         for (int n=0; n<*localNParticlesX; n++) {
-            (*localParticlesX+n)->position = pos+n*ndim;
-            (*localParticlesX+n)->velocity = vel+n*ndim;
-            (*localParticlesX+n)->acceleration = acc+n*ndim;
-            (*localParticlesX+n)->features = feat+n*nfeat;
+            ((*localParticlesX)+n)->position = pos+n*ndim;
+            ((*localParticlesX)+n)->velocity = vel+n*ndim;
+            ((*localParticlesX)+n)->acceleration = acc+n*ndim;
+            ((*localParticlesX)+n)->features = feat+n*nfeat;
         }
 
+        MPI_Barrier(topology->scatterXComm);
         MPI_Scatter(
             wholeParticles->position,
-            wholeNParticles*ndim,
+            wholeNParticles*ndim/gridX,
             MPI_DOUBLE,
-            (*localParticlesX)->position, 
+            pos, 
             (*localNParticlesX)*ndim,
             MPI_DOUBLE,
             0,
             topology->scatterXComm
         );
+
+        MPI_Barrier(topology->scatterXComm);
+        printf("(%d, %d) %s %d %d@%d\n", topology->rankX, topology->rankY, __FILE__, __LINE__, *localNParticlesX, wholeNParticles);
         MPI_Scatter(
             wholeParticles->velocity,
-            wholeNParticles*ndim,
+            wholeNParticles*ndim/gridX,
             MPI_DOUBLE,
             (*localParticlesX)->velocity, 
             (*localNParticlesX)*ndim,
@@ -275,9 +287,12 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
             0,
             topology->scatterXComm
         );
+        
+        MPI_Barrier(topology->scatterXComm);
+        printf("(%d, %d) %s %d %d@%d\n", topology->rankX, topology->rankY, __FILE__, __LINE__, *localNParticlesX, wholeNParticles);
         MPI_Scatter(
             wholeParticles->acceleration,
-            wholeNParticles*ndim,
+            wholeNParticles*ndim/gridX,
             MPI_DOUBLE,
             (*localParticlesX)->acceleration, 
             (*localNParticlesX)*ndim,
@@ -285,9 +300,12 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
             0,
             topology->scatterXComm
         );
+        
+        MPI_Barrier(topology->scatterXComm);
+        printf("(%d, %d) %s %d %d@%d\n", topology->rankX, topology->rankY, __FILE__, __LINE__, *localNParticlesX, wholeNParticles);
         MPI_Scatter(
             wholeParticles->features,
-            wholeNParticles*nfeat,
+            wholeNParticles*nfeat/gridX,
             MPI_DOUBLE,
             (*localParticlesX)->features, 
             (*localNParticlesX)*nfeat,
@@ -307,7 +325,7 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
         (*localNParticlesX)*sizeof(particle_t),
         MPI_BYTE,
         0,
-        topology->reduceYComm
+        topology->reduceXComm
     );
 
     #pragma omp parallel for
@@ -322,28 +340,28 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
         (*localNParticlesX)*ndim,
         MPI_DOUBLE,
         0,
-        topology->reduceYComm
+        topology->reduceXComm
     );
     MPI_Bcast(
         (*localParticlesX)->velocity,
         (*localNParticlesX)*ndim,
         MPI_DOUBLE,
         0,
-        topology->reduceYComm
+        topology->reduceXComm
     );
     MPI_Bcast(
         (*localParticlesX)->acceleration,
         (*localNParticlesX)*ndim,
         MPI_DOUBLE,
         0,
-        topology->reduceYComm
+        topology->reduceXComm
     );
     MPI_Bcast(
         (*localParticlesX)->features,
         (*localNParticlesX)*nfeat,
         MPI_DOUBLE,
         0,
-        topology->reduceYComm
+        topology->reduceXComm
     );
 
 
@@ -355,7 +373,7 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
 
         MPI_Scatter(
             wholeParticles,
-            wholeNParticles*sizeof(particle_t),
+            wholeNParticles*sizeof(particle_t)/gridY,
             MPI_BYTE,
             (*localParticlesY),
             (*localNParticlesY)*sizeof(particle_t),
@@ -374,7 +392,7 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
 
         MPI_Scatter(
             wholeParticles->position,
-            wholeNParticles*ndim,
+            wholeNParticles*ndim/gridY,
             MPI_DOUBLE,
             (*localParticlesY)->position, 
             (*localNParticlesY)*ndim,
@@ -384,7 +402,7 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
         );
         MPI_Scatter(
             wholeParticles->velocity,
-            wholeNParticles*ndim,
+            wholeNParticles*ndim/gridY,
             MPI_DOUBLE,
             (*localParticlesY)->velocity, 
             (*localNParticlesY)*ndim,
@@ -394,7 +412,7 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
         );
         MPI_Scatter(
             wholeParticles->acceleration,
-            wholeNParticles*ndim,
+            wholeNParticles*ndim/gridY,
             MPI_DOUBLE,
             (*localParticlesY)->acceleration, 
             (*localNParticlesY)*ndim,
@@ -404,7 +422,7 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
         );
         MPI_Scatter(
             wholeParticles->features,
-            wholeNParticles*nfeat,
+            wholeNParticles*nfeat/gridY,
             MPI_DOUBLE,
             (*localParticlesY)->features, 
             (*localNParticlesY)*nfeat,
@@ -424,7 +442,7 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
         (*localNParticlesY)*sizeof(particle_t),
         MPI_BYTE,
         0,
-        topology->reduceXComm
+        topology->reduceYComm
     );
 
     #pragma omp parallel for
@@ -439,48 +457,59 @@ void scatter(particle_t** localParticlesX, int* localNParticlesX,
         (*localNParticlesY)*ndim,
         MPI_DOUBLE,
         0,
-        topology->reduceXComm
+        topology->reduceYComm
     );
     MPI_Bcast(
         (*localParticlesY)->velocity,
         (*localNParticlesY)*ndim,
         MPI_DOUBLE,
         0,
-        topology->reduceXComm
+        topology->reduceYComm
     );
     MPI_Bcast(
         (*localParticlesY)->acceleration,
         (*localNParticlesY)*ndim,
         MPI_DOUBLE,
         0,
-        topology->reduceXComm
+        topology->reduceYComm
     );
     MPI_Bcast(
         (*localParticlesY)->features,
         (*localNParticlesY)*nfeat,
         MPI_DOUBLE,
         0,
-        topology->reduceXComm
+        topology->reduceYComm
     );
+    if(wholeParticlesInitNull) {
+        free_particles(wholeParticles);
+        wholeParticles = nullptr;
+    }
 }
 
-void scatter(chunk_particles_t* localChunkParticlesX, 
-                chunk_particles_t* localChunkParticlesY,
+void scatter(chunk_particles_t** localChunkParticlesX, 
+                chunk_particles_t** localChunkParticlesY,
                 chunk_particles_t* wholeChunkParticles,
                 topology_t* topology) {
-    particle_t *localParticlesX, *localParticlesY, *wholeParticles;
-    int localNParticlesX, localNParticlesY, wholeNParticles;
-
-    wholeParticles = wholeChunkParticles->particles;
-    wholeNParticles = wholeChunkParticles->nParticle;
+    *localChunkParticlesX = static_cast<chunk_particles_t*>(malloc(sizeof(chunk_particles_t)));
+    *localChunkParticlesY = static_cast<chunk_particles_t*>(malloc(sizeof(chunk_particles_t)));
+    particle_t *localParticlesX=nullptr, *localParticlesY=nullptr, *wholeParticles=nullptr;
+    int localNParticlesX=-1, localNParticlesY=-1, wholeNParticles;
+    if(wholeChunkParticles==nullptr){
+        wholeParticles = nullptr;
+        wholeNParticles = -1;
+    }
+    else {
+        wholeParticles = wholeChunkParticles->particles;
+        wholeNParticles = wholeChunkParticles->nParticle;
+    }
     scatter(
         &localParticlesX, &localNParticlesX, &localParticlesY, &localNParticlesY,
         wholeParticles, wholeNParticles, topology
     );
-    localChunkParticlesX->particles = localParticlesX;
-    localChunkParticlesX->nParticle = localNParticlesX;
-    localChunkParticlesY->particles = localParticlesY;
-    localChunkParticlesY->nParticle = localNParticlesY;
+    (*localChunkParticlesX)->particles = localParticlesX;
+    (*localChunkParticlesX)->nParticle = localNParticlesX;
+    (*localChunkParticlesY)->particles = localParticlesY;
+    (*localChunkParticlesY)->nParticle = localNParticlesY;
 }
 
 void reduce(particle_t* localParticlesX, int localNParticlesX, 
@@ -523,4 +552,176 @@ void reduce(particle_t* localParticlesX, int localNParticlesX,
 void reduce(chunk_particles_t* localChunkParticlesX, chunk_particles_t* localChunkParticlesY, topology_t* topology) {
     reduce(localChunkParticlesX->particles, localChunkParticlesX->nParticle, 
             localChunkParticlesY->particles, localChunkParticlesY->nParticle, topology);
+}
+
+
+void gather(particle_t* localParticlesX, int localNParticlesX, 
+                particle_t* localParticlesY, int localNParticlesY,
+                particle_t** globalParticles, int* globalNParticles, topology_t* topology) {
+    // bool wholeParticlesInitNull = false;
+    // if(*globalParticles==nullptr) {
+        // wholeParticlesInitNull = true;
+        // alloc_particles(globalParticles, 1, 1, 1);
+    // }
+    const int& rankX = topology->rankX;
+    const int& rankY = topology->rankY;
+    const int& gridX = topology->gridX;
+    const int& gridY = topology->gridY;
+
+    if(rankX==0 && rankY==0) {
+        assert(*globalNParticles == localNParticlesX * gridX);
+        assert(*globalNParticles == localNParticlesY * gridY);
+    }
+
+    double *pos, *vel, *acc, *feat;
+    if(rankX==0) {
+        if(rankY==0) {
+            pos = (*globalParticles)->position;
+            vel = (*globalParticles)->velocity;
+            acc = (*globalParticles)->acceleration;
+            feat = (*globalParticles)->features;
+
+            MPI_Gather(localParticlesY, 
+                localNParticlesY*sizeof(particle_t),
+                MPI_BYTE,
+                *globalParticles,
+                *globalNParticles*sizeof(particle_t)/gridY,
+                MPI_BYTE,
+                0, 
+                topology->scatterYComm
+            );
+
+            MPI_Gather(localParticlesY->position,
+                localNParticlesY*localParticlesY->ndim,
+                MPI_DOUBLE,
+                pos,
+                (*globalNParticles)*(*globalParticles)->ndim/gridY,
+                MPI_DOUBLE,
+                0,
+                topology->scatterYComm
+            );
+
+            MPI_Gather(localParticlesY->velocity,
+                localNParticlesY*localParticlesY->ndim,
+                MPI_DOUBLE,
+                vel,
+                (*globalNParticles)*(*globalParticles)->ndim/gridY,
+                MPI_DOUBLE,
+                0,
+                topology->scatterYComm
+            );
+
+            MPI_Gather(localParticlesY->acceleration,
+                localNParticlesY*localParticlesY->ndim,
+                MPI_DOUBLE,
+                acc,
+                (*globalNParticles)*(*globalParticles)->ndim/gridY,
+                MPI_DOUBLE,
+                0,
+                topology->scatterYComm
+            );
+
+            MPI_Gather(localParticlesY->features,
+                localNParticlesY*localParticlesY->nfeat,
+                MPI_DOUBLE,
+                feat,
+                (*globalNParticles)*(*globalParticles)->nfeat/gridY,
+                MPI_DOUBLE,
+                0,
+                topology->scatterYComm
+            );
+        }
+        else {
+            MPI_Gather(localParticlesY, 
+                localNParticlesY*sizeof(particle_t),
+                MPI_BYTE,
+                nullptr,
+                -1,
+                MPI_BYTE,
+                0, 
+                topology->scatterYComm
+            );
+
+            MPI_Gather(localParticlesY->position,
+                localNParticlesY*localParticlesY->ndim,
+                MPI_DOUBLE,
+                nullptr,
+                -1,
+                MPI_DOUBLE,
+                0,
+                topology->scatterYComm
+            );
+
+            MPI_Gather(localParticlesY->velocity,
+                localNParticlesY*localParticlesY->ndim,
+                MPI_DOUBLE,
+                nullptr,
+                -1,
+                MPI_DOUBLE,
+                0,
+                topology->scatterYComm
+            );
+
+            MPI_Gather(localParticlesY->acceleration,
+                localNParticlesY*localParticlesY->ndim,
+                MPI_DOUBLE,
+                nullptr,
+                -1,
+                MPI_DOUBLE,
+                0,
+                topology->scatterYComm
+            );
+
+            MPI_Gather(localParticlesY->features,
+                localNParticlesY*localParticlesY->nfeat,
+                MPI_DOUBLE,
+                nullptr,
+                -1,
+                MPI_DOUBLE,
+                0,
+                topology->scatterYComm
+            );
+        }
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    if(rankX==0 && rankY==0) {
+        #pragma omp parallel for
+        for(int n=0; n<(*globalNParticles); n++) {
+            ((*globalParticles)+n)->position = pos+n*((*globalParticles)->ndim);
+            ((*globalParticles)+n)->velocity = vel+n*((*globalParticles)->ndim);
+            ((*globalParticles)+n)->acceleration = acc+n*((*globalParticles)->ndim);
+            ((*globalParticles)+n)->features = feat+n*((*globalParticles)->nfeat);
+        }
+    }
+    return;
+}
+
+void gather(chunk_particles_t* localChunkParticlesX, 
+            chunk_particles_t* localChunkParticlesY, 
+            chunk_particles_t* globalChunkParticles, 
+            topology_t* topology) {
+    particle_t* localParticlesX = localChunkParticlesX->particles;
+    int localNParticlesX = localChunkParticlesX->nParticle;
+    particle_t* localParticlesY = localChunkParticlesY->particles;
+    int localNParticlesY = localChunkParticlesY->nParticle;
+    particle_t* globalParticles;
+    int globalNParticles;
+    if(globalChunkParticles==nullptr) {
+        globalParticles = nullptr;
+        globalNParticles = -1;
+    }
+    else {
+        globalParticles = globalChunkParticles->particles;
+        globalNParticles = globalChunkParticles->nParticle;
+        printf("%s:%d %lx %d\n", __FILE__, __LINE__, globalParticles, globalNParticles);
+    }
+
+    gather(localParticlesX, localNParticlesX, localParticlesY, 
+            localNParticlesY, &globalParticles, &globalNParticles, topology);
+    if(globalChunkParticles!=nullptr) {
+        printf("%s:%d %lx %d\n", __FILE__, __LINE__, globalParticles, globalNParticles);
+        globalChunkParticles->particles = globalParticles;
+        globalChunkParticles->nParticle = globalNParticles;
+    }
 }
