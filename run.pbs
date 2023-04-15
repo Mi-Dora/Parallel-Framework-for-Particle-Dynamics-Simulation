@@ -12,8 +12,8 @@
 
 # The current pbs is for cuda
 
-cd ~/Parallel-Framework-for-Particle-Dynamics-Simulation
+cd ~/Particle-new
 
 module load gcc/8.3.0 openblas/0.3.13 cmake/3.20.3 openmpi/4.1.2 cuda/11.1
 
-make TEST_cuda
+./build.sh
