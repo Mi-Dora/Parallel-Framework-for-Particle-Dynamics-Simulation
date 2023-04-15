@@ -6,9 +6,9 @@
 #include "particle.h"
 
 void device_allocate_init(double** d_pos, double** d_vel, double** d_acc, double** d_feats,
-                            uint64_t** d_n_particle, uint64_t** d_n_dim, uint64_t** d_n_feat, double** d_world_size, 
+                            uint64_t** d_n_particle, uint64_t** d_n_dim, uint64_t** d_n_feat, double** d_timestep, 
                             double* pos, double* vel, double* acc, double* feats, 
-                            std::uint64_t n_particle, std::uint64_t n_dim, std::uint64_t n_feat, double world_size) {
+                            std::uint64_t n_particle, std::uint64_t n_dim, std::uint64_t n_feat, double timestep) {
 
     cuErrChk(cudaMalloc((void**)d_pos, n_particle* n_dim * sizeof(double)));
     cuErrChk(cudaMemcpy(*d_pos, pos, n_particle * n_dim * sizeof(double), cudaMemcpyHostToDevice));
@@ -25,8 +25,8 @@ void device_allocate_init(double** d_pos, double** d_vel, double** d_acc, double
     cuErrChk(cudaMemcpy(*d_n_dim, &n_dim, sizeof(std::uint64_t), cudaMemcpyHostToDevice));
     cuErrChk(cudaMalloc((void**)d_n_feat, sizeof(std::uint64_t)));
     cuErrChk(cudaMemcpy(*d_n_feat, &n_feat, sizeof(std::uint64_t), cudaMemcpyHostToDevice));
-    cuErrChk(cudaMalloc((void**)d_world_size, sizeof(double)));
-    cuErrChk(cudaMemcpy(*d_world_size, &world_size, sizeof(double), cudaMemcpyHostToDevice));
+    cuErrChk(cudaMalloc((void**)d_timestep, sizeof(double)));
+    cuErrChk(cudaMemcpy(*d_timestep, &timestep, sizeof(double), cudaMemcpyHostToDevice));
 }
 
 void kernel_params_init(dim3 &grid_size, dim3 &block_size, size_t &shmem_size, int cell_size) {
@@ -34,15 +34,15 @@ void kernel_params_init(dim3 &grid_size, dim3 &block_size, size_t &shmem_size, i
     block_size.x = 1024;
     // block_size.y = 32;
 
-    grid_size.x = grid_shape;
-    grid_size.y = grid_shape;
-    grid_size.z = grid_shape;
+    grid_size.x = cell_size;
+    grid_size.y = cell_size;
+    grid_size.z = cell_size;
 
     shmem_size = 0;
 }
 
 void device_free(double** d_pos, double** d_vel, double** d_acc, double** d_feats,
-                            uint64_t** d_n_particle, uint64_t** d_n_dim, uint64_t** d_n_feat, double** d_world_size) {
+                            uint64_t** d_n_particle, uint64_t** d_n_dim, uint64_t** d_n_feat, double** d_timestep) {
     
     cuErrChk(cudaFree(*d_pos));
     cuErrChk(cudaFree(*d_vel));
@@ -51,5 +51,5 @@ void device_free(double** d_pos, double** d_vel, double** d_acc, double** d_feat
     cuErrChk(cudaFree(*d_n_particle));
     cuErrChk(cudaFree(*d_n_dim));
     cuErrChk(cudaFree(*d_n_feat));
-    cuErrChk(cudaFree(*d_world_size));
+    cuErrChk(cudaFree(*d_timestep));
 }

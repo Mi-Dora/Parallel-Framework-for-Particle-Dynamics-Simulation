@@ -16,10 +16,4 @@ cd ~/Parallel-Framework-for-Particle-Dynamics-Simulation
 
 module load gcc/8.3.0 openblas/0.3.13 cmake/3.20.3 openmpi/4.1.2 cuda/11.1
 
-python3 -V
-
-pip3 list
-
-pip3 install pygame cupy numba
-
-pip3 list
+make TEST_cuda
