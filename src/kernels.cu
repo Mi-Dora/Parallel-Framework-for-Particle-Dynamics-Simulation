@@ -1,10 +1,10 @@
 #include "kernels.h"
 
 
-__device__
-inline uint64_t 3dto1d(uint64_t x_idx, uint64_t y_idx, uint64_t z_idx){
-    return z_idx * gridDim.x * gridDim.y + y_idx * gridDim.x + x_idx;
-}
+// __device__
+// inline uint64_t 3dto1d(uint64_t x_idx, uint64_t y_idx, uint64_t z_idx){
+//     return z_idx * gridDim.x * gridDim.y + y_idx * gridDim.x + x_idx;
+// }
 
 __device__
 void get_distance_vec(const double* vecA, const double* vecB, const int ndim, double** vecRet) {
@@ -48,47 +48,56 @@ void d_gravityUpdateAcceleration(particle_t* one, particle_t* another) {
 }
 
 __global__ 
-void compute_kernel(double const *__restrict__ pos, 
-                    double const *__restrict__ vel,
-                    double const *__restrict__ acc,
-                    double const *__restrict__ feats,
-                    uint64_t const *__restrict__ n_particle,
-                    uint64_t const *__restrict__ n_dim,
-                    uint64_t const *__restrict__ n_feat,
-                    double const *__restrict__ timestep)
+void compute_kernel(double *__restrict__ pos, 
+                    double *__restrict__ vel,
+                    double *__restrict__ acc,
+                    double *__restrict__ feats,
+                    uint64_t *__restrict__ n_particle,
+                    uint64_t *__restrict__ n_dim,
+                    uint64_t *__restrict__ n_feat,
+                    double *__restrict__ timestep)
 {
     uint64_t bid = blockIdx.z * gridDim.x * gridDim.y + blockIdx.y * gridDim.x + blockIdx.x;
     uint64_t tid = bid * blockDim.x + threadIdx.x;
     uint64_t n_thread = gridDim.x * gridDim.y * gridDim.z * blockDim.x;
-    particle_t one, another;
-    one.n_dim = n_dim;
-    another.n_dim = n_dim;
+    uint64_t _n_dim = *n_dim;
+    particle_t *one = static_cast<particle_t*>(malloc(sizeof(particle_t)));
+    particle_t *another = static_cast<particle_t*>(malloc(sizeof(particle_t)));
+    one->ndim = _n_dim;
+    another->ndim = _n_dim;
 
-    for (int i = tid; i < n_particle; i += n_thread){
-        one.position = pos+i*n_dim;
-        one.velocity = vel+i*n_dim;
-        one.acceleration = acc+i*n_dim;
-        one.features = feats+i*n_feat;
-        for (int j = 0; j < n_particle; j++){
+    for (uint64_t i = tid; i < (*n_particle); i += n_thread){
+        one->position = pos+i*_n_dim;
+        one->velocity = vel+i*_n_dim;
+        one->acceleration = acc+i*_n_dim;
+        one->features = feats+i*(*n_feat);
+        for (uint64_t j = 0; j < (*n_particle); j++){
             if (i == j) continue;
-            another.position = pos+j*n_dim;
-            another.velocity = vel+j*n_dim;
-            another.acceleration = acc+j*n_dim;
-            another.features = feats+j*n_feat;
+            another->position = pos+j*_n_dim;
+            another->velocity = vel+j*_n_dim;
+            another->acceleration = acc+j*_n_dim;
+            another->features = feats+j*(*n_feat);
             d_gravityUpdateAcceleration(one, another);
         }
     }
-    for (int i = tid; i < n_particle; i += n_thread){
-        one.position = pos+i*n_dim;
-        one.velocity = vel+i*n_dim;
-        one.acceleration = acc+i*n_dim;
-        for(int n = 0; n < n_dim; n++){
-            *(one.velocity+n) += *(one.acceleration+n) * timeStep;
-            *(one.position+n) += *(one.velocity+n) * timeStep;
+    for (uint64_t i = tid; i < (*n_particle); i += n_thread){
+        one->position = pos+i*_n_dim;
+        one->velocity = vel+i*_n_dim;
+        one->acceleration = acc+i*_n_dim;
+        for(int n = 0; n < _n_dim; n++){
+            *(one->velocity+n) += *(one->acceleration+n) * (*timestep);
+            *(one->position+n) += *(one->velocity+n) * (*timestep);
         }
     }
 
 }
+
+// void kernel(dim3& grid_size, dim3& block_size, size_t& shmem_size, 
+//             double* d_pos, double* d_vel, double* d_acc, double* d_feats,
+//             uint64_t* d_n_particle, uint64_t* d_n_dim, uint64_t* d_n_feat, double* d_timestep){
+//     compute_kernel <<< grid_size, block_size, shmem_size >>> (
+//                 d_pos, d_vel, d_acc, d_feats, d_n_particle, d_n_dim, d_n_feat, d_timestep);
+// }
 
 // __global__ 
 // void scatter_kernel(double const *__restrict__ pos, 

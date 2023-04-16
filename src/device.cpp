@@ -1,14 +1,24 @@
 
-#include <device.h>
-#include <errs.h>
+#include "device.h"
+#include "errs.h"
 #include <cuda_runtime.h>
 #include <cstdint>
 #include "particle.h"
 
 void device_allocate_init(double** d_pos, double** d_vel, double** d_acc, double** d_feats,
-                            uint64_t** d_n_particle, uint64_t** d_n_dim, uint64_t** d_n_feat, double** d_timestep, 
-                            double* pos, double* vel, double* acc, double* feats, 
-                            std::uint64_t n_particle, std::uint64_t n_dim, std::uint64_t n_feat, double timestep) {
+                            std::uint64_t** d_n_particle, std::uint64_t** d_n_dim, std::uint64_t** d_n_feat, double** d_timestep, 
+                            chunk_particles_t* chunkParticles, const double timestep) {
+
+    double *pos, *vel, *acc, *feats;
+
+    std::uint64_t n_particle, n_dim, n_feat;
+    pos = chunkParticles->particles->position;
+    vel = chunkParticles->particles->velocity;
+    acc = chunkParticles->particles->acceleration;
+    feats = chunkParticles->particles->features;
+    n_dim = chunkParticles->particles->ndim;
+    n_feat = chunkParticles->particles->nfeat;
+    n_particle = chunkParticles->nParticle;
 
     cuErrChk(cudaMalloc((void**)d_pos, n_particle* n_dim * sizeof(double)));
     cuErrChk(cudaMemcpy(*d_pos, pos, n_particle * n_dim * sizeof(double), cudaMemcpyHostToDevice));

@@ -3,6 +3,7 @@ project(Parallel_Framework_for_Particle_Dynamics_Simulation)
 
 include(CheckLanguage)
 check_language(CUDA)
+enable_language(CUDA)
 
 option(ENABLE_GPU "Enable GPU acceleration for parallel particle simulation" ON)
 
@@ -10,8 +11,8 @@ if(ENABLE_GPU)
     add_definitions(-DENABLE_GPU)
 endif()
 
-set(CMAKE_C_COMPILER gcc)
-set(CMAKE_CXX_STANDARD 14)
+# set(CMAKE_C_COMPILER gcc)
+# set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -fopenmp -Wall")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -fopenmp")

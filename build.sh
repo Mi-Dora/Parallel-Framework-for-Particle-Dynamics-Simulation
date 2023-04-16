@@ -10,7 +10,7 @@ rm -rf build
 mkdir -p build
 cd build
 
-cmake "${CMAKE_FLAGS[@]}" ..
+cmake "${CMAKE_FLAGS[@]}" .. -DCMAKE_VERBOSE_MAKEFILE=OFF
 make -j4
 
 echo "Finished. Check the 'build' directory for results."
