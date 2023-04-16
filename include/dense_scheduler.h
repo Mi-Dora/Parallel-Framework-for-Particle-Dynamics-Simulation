@@ -43,4 +43,16 @@ void gather(chunk_particles_t* localChunkParticlesX,
             chunk_particles_t* globalChunkParticles, 
             topology_t* topology);
 
+void update(particle_t* particlesX, 
+            int nParticlesX, 
+            particle_t* particlesY, 
+            int nParticlesY, 
+            topology_t* topology, 
+            double timeStep);
+
+void update(chunk_particles_t* chunkParticlesX, 
+            chunk_particles_t* chunkParticlesY, 
+            topology_t* topology, 
+            double timeStep);
+
 #endif

@@ -558,11 +558,6 @@ void reduce(chunk_particles_t* localChunkParticlesX, chunk_particles_t* localChu
 void gather(particle_t* localParticlesX, int localNParticlesX, 
                 particle_t* localParticlesY, int localNParticlesY,
                 particle_t** globalParticles, int* globalNParticles, topology_t* topology) {
-    // bool wholeParticlesInitNull = false;
-    // if(*globalParticles==nullptr) {
-        // wholeParticlesInitNull = true;
-        // alloc_particles(globalParticles, 1, 1, 1);
-    // }
     const int& rankX = topology->rankX;
     const int& rankY = topology->rankY;
     const int& gridX = topology->gridX;
@@ -724,4 +719,47 @@ void gather(chunk_particles_t* localChunkParticlesX,
         globalChunkParticles->particles = globalParticles;
         globalChunkParticles->nParticle = globalNParticles;
     }
+}
+
+void update(particle_t* particlesX, int nParticlesX, particle_t* particlesY, int nParticlesY, topology_t* topology, double timeStep) {
+    // clear accelerations
+    #pragma omp parallel for collapse(2)
+    for(int nx=0; nx<nParticlesX; nx++)
+        for(int nn=0; nn<particlesX->ndim; nn++)
+            *((particlesX+nx)->acceleration + nn) = 0.0;
+    #pragma omp parallel for collapse(2)
+    for(int ny=0; ny<nParticlesY; ny++)
+        for(int nn=0; nn<particlesY->ndim; nn++)
+            *((particlesY+ny)->acceleration + nn) = 0.0;
+    
+    // update accelerations local
+    #pragma omp parallel for collapse(2)
+    for(int nx=0; nx<nParticlesX; nx++)
+        for(int ny=0; ny<nParticlesY; ny++) 
+            if((particlesX+nx)->id == (particlesY+nx)->id)
+                updateAcceleration(particlesX+nx, particlesY+ny);
+    
+    // update accelerations global
+    reduce(particlesX, nParticlesX, particlesY, nParticlesY, topology);
+
+    // update velocity and position
+    #pragma omp parallel for collapse(2)
+    for(int nx=0; nx<nParticlesX; nx++)
+        for(int ndim=0; ndim<particlesX->ndim; ndim++) {
+            *(particlesX->velocity+ndim) += timeStep * *(particlesX->acceleration+ndim);
+            *(particlesX->position+ndim) += timeStep * *(particlesX->velocity+ndim);
+        }
+    #pragma omp parallel for collapse(2)
+    for(int ny=0; ny<nParticlesY; ny++)
+        for(int ndim=0; ndim<particlesY->ndim; ndim++) {
+            *(particlesY->velocity+ndim) += timeStep * *(particlesY->acceleration+ndim);
+            *(particlesY->position+ndim) += timeStep * *(particlesY->velocity+ndim);
+        }
+}
+
+void update(chunk_particles_t* chunkParticlesX, 
+            chunk_particles_t* chunkParticlesY, 
+            topology_t* topology, double timeStep) {
+    update(chunkParticlesX->particles, chunkParticlesX->nParticle, 
+            chunkParticlesY->particles, chunkParticlesY->nParticle, topology, timeStep);
 }

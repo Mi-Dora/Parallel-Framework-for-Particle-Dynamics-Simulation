@@ -23,7 +23,7 @@ double get_length(const double* vec, const int ndim) {
         ret += (*_vec) * (*_vec);
         _vec++;
     }
-    return sqrt(ret);
+    return sqrt(ret) + 1e-30;
 }
 
 void l2_norm(const double* vec, const int ndim, double** vecRet) {

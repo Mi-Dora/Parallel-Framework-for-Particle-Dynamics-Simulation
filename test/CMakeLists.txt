@@ -12,3 +12,6 @@ target_link_libraries(TEST_padding_shrink pfpds)
 
 add_executable(TEST_gather_scatter test_scatter_gather.cpp)
 target_link_libraries(TEST_gather_scatter pfpds MPI::MPI_CXX)
+
+add_executable(TEST_dense_mpi test_dense_mpi.cpp)
+target_link_libraries(TEST_dense_mpi pfpds MPI::MPI_CXX)

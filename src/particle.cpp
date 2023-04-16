@@ -42,7 +42,8 @@ void updateAcceleration(particle_t* one, particle_t* another) {
     }
     assert(one->updateAcceleration == another->updateAcceleration);
     if (one->updateAcceleration == nullptr) 
-        std::cerr << "no updateAcceleration registerd on particle: " << one->id << std::endl;
+        ;
+        // std::cerr << "no updateAcceleration registerd on particle: " << one->id << std::endl;
     else
         (*(one->updateAcceleration))(one, another);
 }
@@ -154,7 +155,8 @@ void store_particles(const std::string filename, particle_t* particles, int nPar
     for(int n=0; n<nParticles; n++) {
         pp = particles + n;
         if (!pp->enabled) {
-            std::cerr << "Before store, the data should already been shrinked and no disabled particle" << std::endl;
+            ;
+            // std::cerr << "Before store, the data should already been shrinked and no disabled particle" << std::endl;
             // assert(pp->enabled);
         }
         file << std::scientific << pp->id << " ";
