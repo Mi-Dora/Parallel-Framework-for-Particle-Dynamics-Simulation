@@ -15,5 +15,10 @@
 cd ~/Particle-new
 
 module load gcc/8.3.0 openblas/0.3.13 cmake/3.20.3 openmpi/4.1.2 cuda/11.1
+module load gcc/8.3.0 openblas/0.3.13 cmake/3.20.3 openmpi/4.1.2 cuda/11.1
 
 ./build.sh
+
+./build/test/TEST_cuda
+
+echo "Done"

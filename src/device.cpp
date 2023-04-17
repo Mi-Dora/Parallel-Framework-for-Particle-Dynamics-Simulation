@@ -39,9 +39,28 @@ void device_allocate_init(double** d_pos, double** d_vel, double** d_acc, double
     cuErrChk(cudaMemcpy(*d_timestep, &timestep, sizeof(double), cudaMemcpyHostToDevice));
 }
 
+void copy2host(double* d_pos, double* d_vel, double* d_acc, double* d_feats, chunk_particles_t* chunkParticles) {
+
+    double *pos, *vel, *acc, *feats;
+    std::uint64_t n_particle, n_dim, n_feat;
+    pos = chunkParticles->particles->position;
+    vel = chunkParticles->particles->velocity;
+    acc = chunkParticles->particles->acceleration;
+    feats = chunkParticles->particles->features;
+    n_dim = chunkParticles->particles->ndim;
+    n_feat = chunkParticles->particles->nfeat;
+    n_particle = chunkParticles->nParticle;
+
+    cuErrChk(cudaMemcpy(pos, d_pos, n_particle * n_dim * sizeof(double), cudaMemcpyDeviceToHost));
+    cuErrChk(cudaMemcpy(vel, d_vel, n_particle * n_dim * sizeof(double), cudaMemcpyDeviceToHost));
+    cuErrChk(cudaMemcpy(acc, d_acc, n_particle * n_dim * sizeof(double), cudaMemcpyDeviceToHost));
+    cuErrChk(cudaMemcpy(feats, d_feats, n_particle * n_feat * sizeof(double), cudaMemcpyDeviceToHost));
+
+}
+
 void kernel_params_init(dim3 &grid_size, dim3 &block_size, size_t &shmem_size, int cell_size) {
     
-    block_size.x = 1024;
+    block_size.x = 256;
     // block_size.y = 32;
 
     grid_size.x = cell_size;

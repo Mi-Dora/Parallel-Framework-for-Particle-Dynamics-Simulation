@@ -1,0 +1,1231 @@
+---------------------------------------
+Begin PBS Prologue Sun Apr 16 14:26:12 EDT 2023
+Job ID:     544152.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Sun Apr 16 14:26:12 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, compute time=577.806335
+iter=1, compute time=564.891724
+iter=2, compute time=553.912109
+iter=3, compute time=553.366882
+iter=4, compute time=559.553772
+iter=5, compute time=554.301147
+iter=6, compute time=568.994202
+iter=7, compute time=558.548584
+iter=8, compute time=556.326416
+iter=9, compute time=551.438232
+iter=10, compute time=574.855469
+iter=11, compute time=559.226990
+iter=12, compute time=555.296021
+iter=13, compute time=571.319763
+iter=14, compute time=551.863525
+iter=15, compute time=549.021912
+iter=16, compute time=554.995972
+iter=17, compute time=559.225342
+iter=18, compute time=566.431091
+iter=19, compute time=551.609741
+iter=20, compute time=556.381470
+iter=21, compute time=560.665222
+iter=22, compute time=557.134766
+iter=23, compute time=552.740173
+iter=24, compute time=557.919983
+iter=25, compute time=554.783875
+iter=26, compute time=556.484009
+iter=27, compute time=556.042053
+iter=28, compute time=560.625305
+iter=29, compute time=555.761719
+iter=30, compute time=559.894470
+iter=31, compute time=558.127075
+iter=32, compute time=555.674438
+iter=33, compute time=566.416870
+iter=34, compute time=567.667664
+iter=35, compute time=574.238220
+iter=36, compute time=558.658142
+iter=37, compute time=554.536011
+iter=38, compute time=554.902527
+iter=39, compute time=563.540466
+iter=40, compute time=551.314148
+iter=41, compute time=559.344116
+iter=42, compute time=560.393433
+iter=43, compute time=557.698059
+iter=44, compute time=558.903870
+iter=45, compute time=550.710266
+iter=46, compute time=552.437805
+iter=47, compute time=552.107849
+iter=48, compute time=556.383301
+iter=49, compute time=553.661743
+iter=50, compute time=554.055603
+iter=51, compute time=552.084351
+iter=52, compute time=561.905212
+iter=53, compute time=556.279114
+iter=54, compute time=570.264893
+iter=55, compute time=568.645508
+iter=56, compute time=555.317566
+iter=57, compute time=560.886353
+iter=58, compute time=555.194946
+iter=59, compute time=555.671082
+iter=60, compute time=553.458435
+iter=61, compute time=552.535034
+iter=62, compute time=565.428284
+iter=63, compute time=552.975281
+iter=64, compute time=560.178711
+iter=65, compute time=557.917908
+iter=66, compute time=560.578552
+iter=67, compute time=548.244690
+iter=68, compute time=565.824036
+iter=69, compute time=568.908997
+iter=70, compute time=550.981201
+iter=71, compute time=574.031311
+iter=72, compute time=558.495483
+iter=73, compute time=558.871094
+iter=74, compute time=553.179382
+iter=75, compute time=549.856079
+iter=76, compute time=557.198792
+iter=77, compute time=554.888550
+iter=78, compute time=564.979370
+iter=79, compute time=567.608826
+iter=80, compute time=558.795593
+iter=81, compute time=568.929016
+iter=82, compute time=557.385742
+iter=83, compute time=572.633423
+iter=84, compute time=553.132141
+iter=85, compute time=565.374084
+iter=86, compute time=559.624939
+iter=87, compute time=561.647034
+iter=88, compute time=556.381470
+iter=89, compute time=569.742432
+iter=90, compute time=554.070557
+iter=91, compute time=559.150024
+iter=92, compute time=553.688538
+iter=93, compute time=553.845947
+iter=94, compute time=555.835693
+iter=95, compute time=558.369873
+iter=96, compute time=555.052307
+iter=97, compute time=554.916443
+iter=98, compute time=553.010071
+iter=99, compute time=550.963318
+iter=100, compute time=548.923157
+iter=101, compute time=557.843689
+iter=102, compute time=564.990173
+iter=103, compute time=556.556763
+iter=104, compute time=564.120056
+iter=105, compute time=555.991028
+iter=106, compute time=563.682251
+iter=107, compute time=571.589172
+iter=108, compute time=556.364807
+iter=109, compute time=555.506226
+iter=110, compute time=553.127686
+iter=111, compute time=544.863220
+iter=112, compute time=558.867737
+iter=113, compute time=552.853516
+iter=114, compute time=550.451599
+iter=115, compute time=554.482666
+iter=116, compute time=555.353638
+iter=117, compute time=562.131165
+iter=118, compute time=560.943237
+iter=119, compute time=566.666992
+iter=120, compute time=548.401306
+iter=121, compute time=567.909302
+iter=122, compute time=555.428589
+iter=123, compute time=559.395264
+iter=124, compute time=553.916748
+iter=125, compute time=563.125244
+iter=126, compute time=553.375122
+iter=127, compute time=553.293335
+iter=128, compute time=556.274658
+iter=129, compute time=556.538452
+iter=130, compute time=549.639526
+iter=131, compute time=548.794922
+iter=132, compute time=551.584778
+iter=133, compute time=551.246094
+iter=134, compute time=547.708008
+iter=135, compute time=560.390869
+iter=136, compute time=567.740906
+iter=137, compute time=552.513794
+iter=138, compute time=556.509766
+iter=139, compute time=558.280762
+iter=140, compute time=555.231018
+iter=141, compute time=565.747986
+iter=142, compute time=557.664612
+iter=143, compute time=558.910522
+iter=144, compute time=554.410889
+iter=145, compute time=558.452209
+iter=146, compute time=555.025391
+iter=147, compute time=571.442383
+iter=148, compute time=561.246521
+iter=149, compute time=551.540161
+iter=150, compute time=563.180847
+iter=151, compute time=557.526245
+iter=152, compute time=565.399475
+iter=153, compute time=558.449158
+iter=154, compute time=552.545227
+iter=155, compute time=558.025513
+iter=156, compute time=555.356445
+iter=157, compute time=549.145325
+iter=158, compute time=546.053223
+iter=159, compute time=570.165161
+iter=160, compute time=557.886780
+iter=161, compute time=568.262512
+iter=162, compute time=566.333923
+iter=163, compute time=567.019836
+iter=164, compute time=561.342957
+iter=165, compute time=555.388916
+iter=166, compute time=557.202393
+iter=167, compute time=557.657349
+iter=168, compute time=563.682800
+iter=169, compute time=557.004883
+iter=170, compute time=555.591248
+iter=171, compute time=559.007996
+iter=172, compute time=557.234741
+iter=173, compute time=550.128052
+iter=174, compute time=556.091858
+iter=175, compute time=551.957581
+iter=176, compute time=557.669495
+iter=177, compute time=556.893433
+iter=178, compute time=562.482483
+iter=179, compute time=554.115173
+iter=180, compute time=560.873047
+iter=181, compute time=559.660095
+iter=182, compute time=554.987305
+iter=183, compute time=559.981384
+iter=184, compute time=550.652832
+iter=185, compute time=554.763428
+iter=186, compute time=547.099060
+iter=187, compute time=561.454590
+iter=188, compute time=558.726990
+iter=189, compute time=553.469238
+iter=190, compute time=558.302917
+iter=191, compute time=550.858459
+iter=192, compute time=565.639343
+iter=193, compute time=558.004944
+iter=194, compute time=558.241699
+iter=195, compute time=566.743958
+iter=196, compute time=554.240295
+iter=197, compute time=563.615234
+iter=198, compute time=564.652588
+iter=199, compute time=555.736267
+iter=200, compute time=553.881714
+iter=201, compute time=555.301941
+iter=202, compute time=561.888062
+iter=203, compute time=567.287415
+iter=204, compute time=554.782959
+iter=205, compute time=556.914246
+iter=206, compute time=566.213074
+iter=207, compute time=569.254883
+iter=208, compute time=557.896484
+iter=209, compute time=559.026855
+iter=210, compute time=560.425171
+iter=211, compute time=550.115112
+iter=212, compute time=557.896912
+iter=213, compute time=554.436646
+iter=214, compute time=557.178345
+iter=215, compute time=560.451416
+iter=216, compute time=555.041199
+iter=217, compute time=549.796631
+iter=218, compute time=552.232727
+iter=219, compute time=558.105957
+iter=220, compute time=557.678284
+iter=221, compute time=553.720337
+iter=222, compute time=557.302063
+iter=223, compute time=568.157410
+iter=224, compute time=559.666382
+iter=225, compute time=552.187866
+iter=226, compute time=552.065430
+iter=227, compute time=554.354248
+iter=228, compute time=555.950317
+iter=229, compute time=559.136719
+iter=230, compute time=552.807129
+iter=231, compute time=559.108215
+iter=232, compute time=561.637207
+iter=233, compute time=554.338196
+iter=234, compute time=550.488770
+iter=235, compute time=552.730347
+iter=236, compute time=553.516785
+iter=237, compute time=548.135315
+iter=238, compute time=563.932434
+iter=239, compute time=558.173096
+iter=240, compute time=564.587524
+iter=241, compute time=556.752075
+iter=242, compute time=568.174316
+iter=243, compute time=546.770020
+iter=244, compute time=564.637146
+iter=245, compute time=550.912292
+iter=246, compute time=565.985229
+iter=247, compute time=551.933594
+iter=248, compute time=557.179382
+iter=249, compute time=574.625732
+iter=250, compute time=561.927124
+iter=251, compute time=564.522583
+iter=252, compute time=562.921692
+iter=253, compute time=556.867859
+iter=254, compute time=565.147034
+iter=255, compute time=558.897156
+iter=256, compute time=549.797058
+iter=257, compute time=553.632080
+iter=258, compute time=560.487305
+iter=259, compute time=559.585938
+iter=260, compute time=567.745422
+iter=261, compute time=560.270752
+iter=262, compute time=554.074585
+iter=263, compute time=553.612549
+iter=264, compute time=552.975525
+iter=265, compute time=559.552429
+iter=266, compute time=556.945618
+iter=267, compute time=554.665710
+iter=268, compute time=548.582153
+iter=269, compute time=552.153687
+iter=270, compute time=561.927856
+iter=271, compute time=556.582642
+iter=272, compute time=554.554260
+iter=273, compute time=554.157776
+iter=274, compute time=559.786682
+iter=275, compute time=559.233276
+iter=276, compute time=552.495972
+iter=277, compute time=549.421265
+iter=278, compute time=556.670410
+iter=279, compute time=560.500366
+iter=280, compute time=553.279114
+iter=281, compute time=558.981506
+iter=282, compute time=556.131042
+iter=283, compute time=559.445862
+iter=284, compute time=559.914734
+iter=285, compute time=561.102112
+iter=286, compute time=553.780884
+iter=287, compute time=556.241577
+iter=288, compute time=550.969421
+iter=289, compute time=549.063293
+iter=290, compute time=551.237000
+iter=291, compute time=555.981323
+iter=292, compute time=571.898987
+iter=293, compute time=557.076904
+iter=294, compute time=550.556885
+iter=295, compute time=556.736206
+iter=296, compute time=550.247314
+iter=297, compute time=555.923706
+iter=298, compute time=558.649536
+iter=299, compute time=553.888367
+iter=300, compute time=556.215881
+iter=301, compute time=546.179626
+iter=302, compute time=548.658630
+iter=303, compute time=560.623535
+iter=304, compute time=553.191895
+iter=305, compute time=558.923584
+iter=306, compute time=558.943420
+iter=307, compute time=555.615051
+iter=308, compute time=568.188293
+iter=309, compute time=555.792419
+iter=310, compute time=558.112244
+iter=311, compute time=553.780029
+iter=312, compute time=558.885498
+iter=313, compute time=553.127747
+iter=314, compute time=567.232056
+iter=315, compute time=569.371643
+iter=316, compute time=560.583557
+iter=317, compute time=574.388184
+iter=318, compute time=553.778137
+iter=319, compute time=551.621338
+iter=320, compute time=558.227600
+iter=321, compute time=554.709167
+iter=322, compute time=562.030701
+iter=323, compute time=559.504822
+iter=324, compute time=560.366699
+iter=325, compute time=559.673645
+iter=326, compute time=564.504761
+iter=327, compute time=548.577454
+iter=328, compute time=550.398804
+iter=329, compute time=553.912842
+iter=330, compute time=563.881165
+iter=331, compute time=561.017212
+iter=332, compute time=551.468750
+iter=333, compute time=552.496338
+iter=334, compute time=562.855347
+iter=335, compute time=566.123901
+iter=336, compute time=566.130615
+iter=337, compute time=552.905212
+iter=338, compute time=554.863892
+iter=339, compute time=561.791687
+iter=340, compute time=550.716309
+iter=341, compute time=550.648132
+iter=342, compute time=557.660095
+iter=343, compute time=576.724731
+iter=344, compute time=556.471497
+iter=345, compute time=557.360413
+iter=346, compute time=568.213684
+iter=347, compute time=545.935547
+iter=348, compute time=558.582703
+iter=349, compute time=552.449524
+iter=350, compute time=566.509460
+iter=351, compute time=565.944336
+iter=352, compute time=549.501526
+iter=353, compute time=560.646973
+iter=354, compute time=564.375000
+iter=355, compute time=564.553711
+iter=356, compute time=547.302551
+iter=357, compute time=546.929321
+iter=358, compute time=549.711365
+iter=359, compute time=559.279907
+iter=360, compute time=561.004700
+iter=361, compute time=552.646301
+iter=362, compute time=572.756775
+iter=363, compute time=551.271057
+iter=364, compute time=566.618713
+iter=365, compute time=555.852844
+iter=366, compute time=563.114136
+iter=367, compute time=561.350220
+iter=368, compute time=559.917175
+iter=369, compute time=551.958496
+iter=370, compute time=552.416992
+iter=371, compute time=557.030518
+iter=372, compute time=550.856873
+iter=373, compute time=548.676086
+iter=374, compute time=556.566101
+iter=375, compute time=551.000854
+iter=376, compute time=564.802795
+iter=377, compute time=571.205627
+iter=378, compute time=565.203674
+iter=379, compute time=556.288879
+iter=380, compute time=557.130188
+iter=381, compute time=564.766052
+iter=382, compute time=554.104187
+iter=383, compute time=566.456726
+iter=384, compute time=546.360291
+iter=385, compute time=554.859192
+iter=386, compute time=565.380249
+iter=387, compute time=562.148132
+iter=388, compute time=561.857544
+iter=389, compute time=556.235352
+iter=390, compute time=550.356506
+iter=391, compute time=558.926819
+iter=392, compute time=545.867554
+iter=393, compute time=561.210449
+iter=394, compute time=554.704468
+iter=395, compute time=558.423218
+iter=396, compute time=564.055115
+iter=397, compute time=562.079102
+iter=398, compute time=556.486206
+iter=399, compute time=555.438110
+iter=400, compute time=561.247559
+iter=401, compute time=554.196594
+iter=402, compute time=553.312988
+iter=403, compute time=557.645081
+iter=404, compute time=559.456909
+iter=405, compute time=557.020996
+iter=406, compute time=559.454224
+iter=407, compute time=551.089294
+iter=408, compute time=557.219604
+iter=409, compute time=555.960693
+iter=410, compute time=557.734985
+iter=411, compute time=564.846008
+iter=412, compute time=554.092651
+iter=413, compute time=559.644470
+iter=414, compute time=558.367249
+iter=415, compute time=551.108154
+iter=416, compute time=560.765991
+iter=417, compute time=561.889160
+iter=418, compute time=548.526550
+iter=419, compute time=561.016663
+iter=420, compute time=558.485962
+iter=421, compute time=557.066589
+iter=422, compute time=559.089661
+iter=423, compute time=555.862549
+iter=424, compute time=550.920044
+iter=425, compute time=559.104370
+iter=426, compute time=554.950684
+iter=427, compute time=558.240234
+iter=428, compute time=555.335083
+iter=429, compute time=557.876221
+iter=430, compute time=555.326599
+iter=431, compute time=576.272888
+iter=432, compute time=549.535339
+iter=433, compute time=559.192932
+iter=434, compute time=556.193726
+iter=435, compute time=549.962280
+iter=436, compute time=551.628540
+iter=437, compute time=566.576599
+iter=438, compute time=561.590454
+iter=439, compute time=566.405701
+iter=440, compute time=566.056335
+iter=441, compute time=553.559998
+iter=442, compute time=564.147461
+iter=443, compute time=554.830078
+iter=444, compute time=556.158447
+iter=445, compute time=553.179565
+iter=446, compute time=550.329285
+iter=447, compute time=559.005737
+iter=448, compute time=558.120300
+iter=449, compute time=553.252136
+iter=450, compute time=554.891052
+iter=451, compute time=560.901978
+iter=452, compute time=551.145996
+iter=453, compute time=573.339905
+iter=454, compute time=561.264343
+iter=455, compute time=567.233276
+iter=456, compute time=559.058594
+iter=457, compute time=557.431091
+iter=458, compute time=562.340149
+iter=459, compute time=557.289978
+iter=460, compute time=562.029480
+iter=461, compute time=555.665588
+iter=462, compute time=552.949768
+iter=463, compute time=561.941650
+iter=464, compute time=559.124451
+iter=465, compute time=554.699158
+iter=466, compute time=565.421387
+iter=467, compute time=559.817688
+iter=468, compute time=556.928345
+iter=469, compute time=556.522766
+iter=470, compute time=556.220886
+iter=471, compute time=561.970093
+iter=472, compute time=556.943359
+iter=473, compute time=556.628845
+iter=474, compute time=560.067810
+iter=475, compute time=555.384460
+iter=476, compute time=553.216064
+iter=477, compute time=557.586487
+iter=478, compute time=570.423096
+iter=479, compute time=549.627380
+iter=480, compute time=559.482666
+iter=481, compute time=552.469849
+iter=482, compute time=554.813843
+iter=483, compute time=549.440674
+iter=484, compute time=549.489136
+iter=485, compute time=566.640930
+iter=486, compute time=558.455688
+iter=487, compute time=561.050842
+iter=488, compute time=561.100891
+iter=489, compute time=560.271240
+iter=490, compute time=551.290894
+iter=491, compute time=556.788574
+iter=492, compute time=557.477112
+iter=493, compute time=565.200623
+iter=494, compute time=561.636536
+iter=495, compute time=566.433228
+iter=496, compute time=557.576172
+iter=497, compute time=553.353149
+iter=498, compute time=551.175659
+iter=499, compute time=559.075806
+iter=500, compute time=570.292908
+iter=501, compute time=556.453918
+iter=502, compute time=559.260010
+iter=503, compute time=566.740540
+iter=504, compute time=556.394592
+iter=505, compute time=564.187683
+iter=506, compute time=557.734131
+iter=507, compute time=558.494141
+iter=508, compute time=557.412720
+iter=509, compute time=556.812927
+iter=510, compute time=553.035339
+iter=511, compute time=552.745850
+iter=512, compute time=559.377136
+iter=513, compute time=558.940125
+iter=514, compute time=554.944275
+iter=515, compute time=551.835144
+iter=516, compute time=554.879578
+iter=517, compute time=564.914429
+iter=518, compute time=558.728027
+iter=519, compute time=565.128906
+iter=520, compute time=557.462708
+iter=521, compute time=551.161194
+iter=522, compute time=554.703308
+iter=523, compute time=570.207520
+iter=524, compute time=552.942139
+iter=525, compute time=552.338074
+iter=526, compute time=561.736145
+iter=527, compute time=576.846313
+iter=528, compute time=558.271118
+iter=529, compute time=552.429199
+iter=530, compute time=553.707336
+iter=531, compute time=572.373840
+iter=532, compute time=555.046875
+iter=533, compute time=555.415527
+iter=534, compute time=551.407104
+iter=535, compute time=550.319702
+iter=536, compute time=554.873108
+iter=537, compute time=555.463074
+iter=538, compute time=555.863037
+iter=539, compute time=552.874084
+iter=540, compute time=559.589050
+iter=541, compute time=555.653198
+iter=542, compute time=549.937744
+iter=543, compute time=548.703796
+iter=544, compute time=561.257019
+iter=545, compute time=559.765198
+iter=546, compute time=555.669922
+iter=547, compute time=555.380615
+iter=548, compute time=562.548828
+iter=549, compute time=562.433655
+iter=550, compute time=559.173462
+iter=551, compute time=559.863770
+iter=552, compute time=553.981873
+iter=553, compute time=559.956543
+iter=554, compute time=551.027161
+iter=555, compute time=554.460754
+iter=556, compute time=554.500000
+iter=557, compute time=556.883606
+iter=558, compute time=562.455444
+iter=559, compute time=574.989624
+iter=560, compute time=561.305298
+iter=561, compute time=562.419495
+iter=562, compute time=551.725586
+iter=563, compute time=556.519470
+iter=564, compute time=560.065186
+iter=565, compute time=557.076660
+iter=566, compute time=560.129883
+iter=567, compute time=562.981262
+iter=568, compute time=554.112976
+iter=569, compute time=560.068848
+iter=570, compute time=576.770203
+iter=571, compute time=549.573914
+iter=572, compute time=543.482117
+iter=573, compute time=556.268005
+iter=574, compute time=554.241699
+iter=575, compute time=563.510864
+iter=576, compute time=575.809692
+iter=577, compute time=554.726562
+iter=578, compute time=560.049500
+iter=579, compute time=551.693359
+iter=580, compute time=556.330322
+iter=581, compute time=559.380005
+iter=582, compute time=556.396057
+iter=583, compute time=563.013916
+iter=584, compute time=583.352539
+iter=585, compute time=560.848572
+iter=586, compute time=564.829956
+iter=587, compute time=552.974670
+iter=588, compute time=555.179749
+iter=589, compute time=552.378479
+iter=590, compute time=557.456848
+iter=591, compute time=562.948669
+iter=592, compute time=558.429565
+iter=593, compute time=553.775635
+iter=594, compute time=549.462891
+iter=595, compute time=551.555908
+iter=596, compute time=551.723206
+iter=597, compute time=552.267151
+iter=598, compute time=557.530396
+iter=599, compute time=548.310791
+iter=600, compute time=554.250061
+iter=601, compute time=553.171509
+iter=602, compute time=559.089294
+iter=603, compute time=555.543030
+iter=604, compute time=559.924622
+iter=605, compute time=556.552979
+iter=606, compute time=548.327820
+iter=607, compute time=556.026184
+iter=608, compute time=560.478027
+iter=609, compute time=567.384949
+iter=610, compute time=557.169434
+iter=611, compute time=556.215149
+iter=612, compute time=561.696472
+iter=613, compute time=560.516785
+iter=614, compute time=565.667908
+iter=615, compute time=555.076904
+iter=616, compute time=556.029236
+iter=617, compute time=568.618225
+iter=618, compute time=577.345398
+iter=619, compute time=551.662537
+iter=620, compute time=558.798462
+iter=621, compute time=573.552185
+iter=622, compute time=553.611267
+iter=623, compute time=571.251038
+iter=624, compute time=545.625854
+iter=625, compute time=551.628357
+iter=626, compute time=559.307068
+iter=627, compute time=553.580688
+iter=628, compute time=563.442993
+iter=629, compute time=574.120483
+iter=630, compute time=552.540588
+iter=631, compute time=541.934631
+iter=632, compute time=557.304138
+iter=633, compute time=555.777832
+iter=634, compute time=546.403137
+iter=635, compute time=565.329041
+iter=636, compute time=553.459778
+iter=637, compute time=553.039001
+iter=638, compute time=558.671875
+iter=639, compute time=556.787170
+iter=640, compute time=557.285278
+iter=641, compute time=561.365112
+iter=642, compute time=551.720337
+iter=643, compute time=552.292664
+iter=644, compute time=565.696228
+iter=645, compute time=559.470215
+iter=646, compute time=564.611816
+iter=647, compute time=559.723145
+iter=648, compute time=543.859192
+iter=649, compute time=553.764832
+iter=650, compute time=550.752441
+iter=651, compute time=551.632385
+iter=652, compute time=556.152527
+iter=653, compute time=559.046570
+iter=654, compute time=552.314758
+iter=655, compute time=556.929138
+iter=656, compute time=559.110779
+iter=657, compute time=560.702026
+iter=658, compute time=563.502563
+iter=659, compute time=558.865295
+iter=660, compute time=553.504883
+iter=661, compute time=552.487305
+iter=662, compute time=557.188416
+iter=663, compute time=552.479736
+iter=664, compute time=550.758972
+iter=665, compute time=555.775635
+iter=666, compute time=558.188354
+iter=667, compute time=560.782349
+iter=668, compute time=548.060303
+iter=669, compute time=555.461426
+iter=670, compute time=556.737305
+iter=671, compute time=565.281006
+iter=672, compute time=553.259399
+iter=673, compute time=567.177307
+iter=674, compute time=552.706604
+iter=675, compute time=574.531982
+iter=676, compute time=555.011597
+iter=677, compute time=558.523804
+iter=678, compute time=552.701538
+iter=679, compute time=556.493408
+iter=680, compute time=549.615051
+iter=681, compute time=558.448303
+iter=682, compute time=551.533813
+iter=683, compute time=548.398926
+iter=684, compute time=558.039673
+iter=685, compute time=572.517029
+iter=686, compute time=552.075012
+iter=687, compute time=570.820862
+iter=688, compute time=569.083008
+iter=689, compute time=561.383423
+iter=690, compute time=558.746033
+iter=691, compute time=562.507690
+iter=692, compute time=567.201965
+iter=693, compute time=555.170959
+iter=694, compute time=553.370056
+iter=695, compute time=553.807922
+iter=696, compute time=549.264465
+iter=697, compute time=560.571533
+iter=698, compute time=548.680359
+iter=699, compute time=556.186951
+iter=700, compute time=556.765442
+iter=701, compute time=549.947998
+iter=702, compute time=555.838135
+iter=703, compute time=579.455688
+iter=704, compute time=560.637268
+iter=705, compute time=557.422302
+iter=706, compute time=559.530029
+iter=707, compute time=560.307861
+iter=708, compute time=554.049805
+iter=709, compute time=553.473083
+iter=710, compute time=553.808472
+iter=711, compute time=554.761902
+iter=712, compute time=558.089233
+iter=713, compute time=564.336975
+iter=714, compute time=567.883728
+iter=715, compute time=558.205383
+iter=716, compute time=555.746643
+iter=717, compute time=559.156128
+iter=718, compute time=558.425781
+iter=719, compute time=553.470276
+iter=720, compute time=554.612793
+iter=721, compute time=556.252502
+iter=722, compute time=554.147949
+iter=723, compute time=548.448120
+iter=724, compute time=565.864502
+iter=725, compute time=552.683838
+iter=726, compute time=556.911560
+iter=727, compute time=561.053772
+iter=728, compute time=561.908936
+iter=729, compute time=561.656250
+iter=730, compute time=554.454224
+iter=731, compute time=552.879761
+iter=732, compute time=563.475342
+iter=733, compute time=559.597290
+iter=734, compute time=560.086609
+iter=735, compute time=553.826965
+iter=736, compute time=563.132324
+iter=737, compute time=557.859619
+iter=738, compute time=560.460571
+iter=739, compute time=554.970215
+iter=740, compute time=554.399353
+iter=741, compute time=557.859558
+iter=742, compute time=557.131287
+iter=743, compute time=559.690674
+iter=744, compute time=555.716797
+iter=745, compute time=554.279724
+iter=746, compute time=569.454163
+iter=747, compute time=549.743530
+iter=748, compute time=557.936035
+iter=749, compute time=569.427246
+iter=750, compute time=555.511353
+iter=751, compute time=566.866028
+iter=752, compute time=558.188538
+iter=753, compute time=551.069214
+iter=754, compute time=553.754395
+iter=755, compute time=554.967163
+iter=756, compute time=561.157227
+iter=757, compute time=555.207153
+iter=758, compute time=556.251526
+iter=759, compute time=554.114502
+iter=760, compute time=572.338806
+iter=761, compute time=560.749268
+iter=762, compute time=557.881042
+iter=763, compute time=551.047424
+iter=764, compute time=552.380493
+iter=765, compute time=554.675537
+iter=766, compute time=551.908691
+iter=767, compute time=565.400085
+iter=768, compute time=556.590576
+iter=769, compute time=561.021118
+iter=770, compute time=556.456665
+iter=771, compute time=556.564514
+iter=772, compute time=556.786011
+iter=773, compute time=559.813171
+iter=774, compute time=563.006104
+iter=775, compute time=560.870239
+iter=776, compute time=548.757385
+iter=777, compute time=564.612244
+iter=778, compute time=557.139221
+iter=779, compute time=556.222290
+iter=780, compute time=557.643005
+iter=781, compute time=550.543030
+iter=782, compute time=557.331848
+iter=783, compute time=553.781555
+iter=784, compute time=556.275024
+iter=785, compute time=555.399536
+iter=786, compute time=564.508911
+iter=787, compute time=567.505554
+iter=788, compute time=558.105469
+iter=789, compute time=556.113831
+iter=790, compute time=560.948547
+iter=791, compute time=553.993591
+iter=792, compute time=551.613464
+iter=793, compute time=559.429138
+iter=794, compute time=557.018799
+iter=795, compute time=560.711243
+iter=796, compute time=561.287476
+iter=797, compute time=547.996277
+iter=798, compute time=574.895569
+iter=799, compute time=551.434143
+iter=800, compute time=556.887390
+iter=801, compute time=560.563354
+iter=802, compute time=548.474243
+iter=803, compute time=560.057800
+iter=804, compute time=548.609680
+iter=805, compute time=563.712891
+iter=806, compute time=558.987000
+iter=807, compute time=551.349609
+iter=808, compute time=561.816101
+iter=809, compute time=565.472595
+iter=810, compute time=552.681824
+iter=811, compute time=557.869324
+iter=812, compute time=560.964783
+iter=813, compute time=556.772339
+iter=814, compute time=570.456482
+iter=815, compute time=555.733643
+iter=816, compute time=549.171326
+iter=817, compute time=554.513672
+iter=818, compute time=558.104248
+iter=819, compute time=550.312378
+iter=820, compute time=560.560242
+iter=821, compute time=558.367737
+iter=822, compute time=553.307983
+iter=823, compute time=556.706421
+iter=824, compute time=550.996155
+iter=825, compute time=568.470093
+iter=826, compute time=558.826599
+iter=827, compute time=550.052307
+iter=828, compute time=555.608826
+iter=829, compute time=559.377686
+iter=830, compute time=555.493469
+iter=831, compute time=560.689758
+iter=832, compute time=548.506470
+iter=833, compute time=548.014404
+iter=834, compute time=559.151123
+iter=835, compute time=553.506653
+iter=836, compute time=567.678650
+iter=837, compute time=551.770508
+iter=838, compute time=550.037659
+iter=839, compute time=553.379089
+iter=840, compute time=554.425537
+iter=841, compute time=542.833557
+iter=842, compute time=561.010620
+iter=843, compute time=559.977173
+iter=844, compute time=557.110168
+iter=845, compute time=557.819946
+iter=846, compute time=557.023438
+iter=847, compute time=554.306030
+iter=848, compute time=553.787537
+iter=849, compute time=552.313660
+iter=850, compute time=547.650391
+iter=851, compute time=558.196106
+iter=852, compute time=560.235474
+iter=853, compute time=561.516602
+iter=854, compute time=559.255859
+iter=855, compute time=555.733337
+iter=856, compute time=558.881470
+iter=857, compute time=554.846252
+iter=858, compute time=557.765991
+iter=859, compute time=561.741272
+iter=860, compute time=555.781067
+iter=861, compute time=571.362122
+iter=862, compute time=566.328064
+iter=863, compute time=559.666321
+iter=864, compute time=558.337952
+iter=865, compute time=554.065063
+iter=866, compute time=549.306274
+iter=867, compute time=556.569885
+iter=868, compute time=560.181091
+iter=869, compute time=558.107544
+iter=870, compute time=549.689758
+iter=871, compute time=564.355408
+iter=872, compute time=564.952332
+iter=873, compute time=556.274170
+iter=874, compute time=560.185547
+iter=875, compute time=559.061096
+iter=876, compute time=558.683655
+iter=877, compute time=547.448547
+iter=878, compute time=552.290588
+iter=879, compute time=551.570496
+iter=880, compute time=557.856689
+iter=881, compute time=555.180847
+iter=882, compute time=561.574707
+iter=883, compute time=552.489319
+iter=884, compute time=549.109985
+iter=885, compute time=567.532349
+iter=886, compute time=549.630737
+iter=887, compute time=545.141357
+iter=888, compute time=558.195740
+iter=889, compute time=562.188049
+iter=890, compute time=559.909180
+iter=891, compute time=551.567932
+iter=892, compute time=558.833801
+iter=893, compute time=555.026794
+iter=894, compute time=563.122986
+iter=895, compute time=559.914368
+iter=896, compute time=562.344482
+iter=897, compute time=561.510254
+iter=898, compute time=551.794250
+iter=899, compute time=558.027100
+iter=900, compute time=551.616394
+iter=901, compute time=550.250244
+iter=902, compute time=557.385742
+iter=903, compute time=559.303589
+iter=904, compute time=567.360352
+iter=905, compute time=556.064453
+iter=906, compute time=563.544373
+iter=907, compute time=548.004333
+iter=908, compute time=561.402710
+iter=909, compute time=548.155640
+iter=910, compute time=566.331360
+iter=911, compute time=566.970825
+iter=912, compute time=554.490295
+iter=913, compute time=555.931580
+iter=914, compute time=550.367065
+iter=915, compute time=557.018127
+iter=916, compute time=562.041260
+iter=917, compute time=561.783508
+iter=918, compute time=569.876831
+iter=919, compute time=553.685486
+iter=920, compute time=553.843750
+iter=921, compute time=556.093262
+iter=922, compute time=566.784790
+iter=923, compute time=552.015503
+iter=924, compute time=550.785828
+iter=925, compute time=551.796326
+iter=926, compute time=553.129822
+iter=927, compute time=561.161499
+iter=928, compute time=552.974365
+iter=929, compute time=554.609009
+iter=930, compute time=552.956421
+iter=931, compute time=549.760742
+iter=932, compute time=554.530701
+iter=933, compute time=561.053223
+iter=934, compute time=554.077209
+iter=935, compute time=567.667664
+iter=936, compute time=553.666504
+iter=937, compute time=554.525330
+iter=938, compute time=559.712036
+iter=939, compute time=561.948181
+iter=940, compute time=556.122437
+iter=941, compute time=554.490234
+iter=942, compute time=550.658386
+iter=943, compute time=554.894531
+iter=944, compute time=549.572510
+iter=945, compute time=554.808594
+iter=946, compute time=553.538574
+iter=947, compute time=556.051697
+iter=948, compute time=568.091431
+iter=949, compute time=554.994812
+iter=950, compute time=556.848022
+iter=951, compute time=554.383667
+iter=952, compute time=556.644714
+iter=953, compute time=566.656433
+iter=954, compute time=552.142700
+iter=955, compute time=558.416565
+iter=956, compute time=560.042908
+iter=957, compute time=551.378479
+iter=958, compute time=551.492920
+iter=959, compute time=554.945557
+iter=960, compute time=553.792908
+iter=961, compute time=552.752625
+iter=962, compute time=553.578796
+iter=963, compute time=549.303955
+iter=964, compute time=552.277039
+iter=965, compute time=548.861389
+iter=966, compute time=552.033752
+iter=967, compute time=561.641296
+iter=968, compute time=541.010559
+iter=969, compute time=558.167053
+iter=970, compute time=553.290344
+iter=971, compute time=553.584595
+iter=972, compute time=559.664612
+iter=973, compute time=557.059753
+iter=974, compute time=552.770142
+iter=975, compute time=552.888550
+iter=976, compute time=550.997314
+iter=977, compute time=559.199646
+iter=978, compute time=555.804504
+iter=979, compute time=551.106323
+iter=980, compute time=554.614563
+iter=981, compute time=559.644958
+iter=982, compute time=551.325806
+iter=983, compute time=556.960632
+iter=984, compute time=547.367615
+iter=985, compute time=544.428894
+iter=986, compute time=562.678162
+iter=987, compute time=557.961975
+iter=988, compute time=565.674561
+iter=989, compute time=554.330566
+iter=990, compute time=560.069275
+iter=991, compute time=566.695679
+iter=992, compute time=553.618530
+iter=993, compute time=553.879456
+iter=994, compute time=553.799133
+iter=995, compute time=559.193298
+iter=996, compute time=547.351746
+iter=997, compute time=565.644592
+iter=998, compute time=552.980042
+iter=999, compute time=560.521851
+Done
+---------------------------------------
+Begin PBS Epilogue Sun Apr 16 14:35:48 EDT 2023
+Job ID:     544152.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:09:30,vmem=5501652kb,walltime=00:09:36,mem=23268kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-6.pace.gatech.edu
+End PBS Epilogue Sun Apr 16 14:35:48 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Sun Apr 16 14:38:56 EDT 2023
+Job ID:     544163.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Sun Apr 16 14:38:56 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, compute time=23318.814453
+iter=1, compute time=23066.554688
+iter=2, compute time=23565.718750
+iter=3, compute time=22668.203125
+iter=4, compute time=23177.457031
+iter=5, compute time=23243.427734
+iter=6, compute time=23080.294922
+iter=7, compute time=23114.314453
+iter=8, compute time=23219.289062
+iter=9, compute time=23456.675781
+Done
+---------------------------------------
+Begin PBS Epilogue Sun Apr 16 14:43:08 EDT 2023
+Job ID:     544163.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:04:04,vmem=5502856kb,walltime=00:04:12,mem=23304kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-6.pace.gatech.edu
+End PBS Epilogue Sun Apr 16 14:43:18 EDT 2023
+---------------------------------------
+
+---------------------------------------
+Begin PBS Prologue Sun Apr 16 20:52:42 EDT 2023
+Job ID:     544342.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Sun Apr 16 20:52:42 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, compute time=24016.519531
+Done
+---------------------------------------
+Begin PBS Epilogue Sun Apr 16 20:53:26 EDT 2023
+Job ID:     544342.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:36,vmem=5502868kb,walltime=00:00:44,mem=23312kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-5.pace.gatech.edu
+End PBS Epilogue Sun Apr 16 20:53:28 EDT 2023
+---------------------------------------

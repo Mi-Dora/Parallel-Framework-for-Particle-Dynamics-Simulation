@@ -63,8 +63,13 @@ void compute_kernel(double *__restrict__ pos,
     uint64_t _n_dim = *n_dim;
     particle_t *one = static_cast<particle_t*>(malloc(sizeof(particle_t)));
     particle_t *another = static_cast<particle_t*>(malloc(sizeof(particle_t)));
+    // cudaMalloc((void**)&one, sizeof(particle_t));
+    // cudaMalloc((void**)&another, sizeof(particle_t));
     one->ndim = _n_dim;
     another->ndim = _n_dim;
+    one->nfeat = *n_feat;
+    another->nfeat = *n_feat;
+    // double 
 
     for (uint64_t i = tid; i < (*n_particle); i += n_thread){
         one->position = pos+i*_n_dim;
@@ -84,11 +89,13 @@ void compute_kernel(double *__restrict__ pos,
         one->position = pos+i*_n_dim;
         one->velocity = vel+i*_n_dim;
         one->acceleration = acc+i*_n_dim;
-        for(int n = 0; n < _n_dim; n++){
+        for(uint64_t n = 0; n < _n_dim; n++){
             *(one->velocity+n) += *(one->acceleration+n) * (*timestep);
             *(one->position+n) += *(one->velocity+n) * (*timestep);
         }
     }
+    free(one);
+    free(another);
 
 }
 
