@@ -1229,3 +1229,483 @@ Nodes:
 atl1-1-01-002-5.pace.gatech.edu
 End PBS Epilogue Sun Apr 16 20:53:28 EDT 2023
 ---------------------------------------
+---------------------------------------
+Begin PBS Prologue Sun Apr 16 21:37:45 EDT 2023
+Job ID:     544358.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Sun Apr 16 21:37:45 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, compute time=42795.640625
+Done
+---------------------------------------
+Begin PBS Epilogue Sun Apr 16 21:38:51 EDT 2023
+Job ID:     544358.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:55,vmem=437480kb,walltime=00:01:06,mem=17872kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Sun Apr 16 21:39:14 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Sun Apr 16 21:39:49 EDT 2023
+Job ID:     544360.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Sun Apr 16 21:39:49 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, compute time=42980.316406
+Done
+---------------------------------------
+Begin PBS Epilogue Sun Apr 16 21:40:53 EDT 2023
+Job ID:     544360.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:55,vmem=585200kb,walltime=00:01:04,mem=44544kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Sun Apr 16 21:40:53 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Sun Apr 16 21:42:24 EDT 2023
+Job ID:     544362.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Sun Apr 16 21:42:24 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, compute time=23116.578125
+Done
+---------------------------------------
+Begin PBS Epilogue Sun Apr 16 21:43:07 EDT 2023
+Job ID:     544362.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:35,vmem=5502868kb,walltime=00:00:43,mem=23320kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Sun Apr 16 21:43:07 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Sun Apr 16 23:30:49 EDT 2023
+Job ID:     544388.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Sun Apr 16 23:30:49 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(59): warning: variable "gd" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(63): warning: variable "n_thread" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(59): warning: variable "gd" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(63): warning: variable "n_thread" was declared but never referenced
+
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(12): warning: variable "cell_size" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(12): warning: variable "cell_size" was declared but never referenced
+
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, compute time=7.184928
+Done
+---------------------------------------
+Begin PBS Epilogue Sun Apr 16 23:31:07 EDT 2023
+Job ID:     544388.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:12,vmem=0kb,walltime=00:00:18,mem=0kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-4.pace.gatech.edu
+End PBS Epilogue Sun Apr 16 23:31:31 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Sun Apr 16 23:39:05 EDT 2023
+Job ID:     544390.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Sun Apr 16 23:39:05 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(59): warning: variable "gd" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(63): warning: variable "n_thread" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(59): warning: variable "gd" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(63): warning: variable "n_thread" was declared but never referenced
+
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(12): warning: variable "cell_size" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(12): warning: variable "cell_size" was declared but never referenced
+
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, compute time=12.414240
+Done
+---------------------------------------
+Begin PBS Epilogue Sun Apr 16 23:39:23 EDT 2023
+Job ID:     544390.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:12,vmem=0kb,walltime=00:00:18,mem=0kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-4.pace.gatech.edu
+End PBS Epilogue Sun Apr 16 23:39:24 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Sun Apr 16 23:47:11 EDT 2023
+Job ID:     544393.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Sun Apr 16 23:47:11 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(59): warning: variable "gd" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(63): warning: variable "n_thread" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(59): warning: variable "gd" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(63): warning: variable "n_thread" was declared but never referenced
+
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(12): warning: variable "cell_size" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(12): warning: variable "cell_size" was declared but never referenced
+
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, compute time=12.336544
+Done
+---------------------------------------
+Begin PBS Epilogue Sun Apr 16 23:47:29 EDT 2023
+Job ID:     544393.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:12,vmem=0kb,walltime=00:00:18,mem=0kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Sun Apr 16 23:47:30 EDT 2023
+---------------------------------------

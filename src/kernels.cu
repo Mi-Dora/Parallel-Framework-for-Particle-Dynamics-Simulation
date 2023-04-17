@@ -32,8 +32,8 @@ void compute_kernel(double *__restrict__ pos,
     uint64_t gd = gridDim.x;
     uint64_t bid = blockIdx.x;
     uint64_t tx = threadIdx.x;
-    uint64_t n_thread = gridDim.x * gridDim.y * gridDim.z * blockDim.x;
     uint64_t _n_dim = *n_dim;
+    uint64_t _n_feat = *n_feat;
 
     const double G = 6.67e-11;
     
@@ -49,13 +49,13 @@ void compute_kernel(double *__restrict__ pos,
     share_acc_one[tx][1] = *(acc+offset*_n_dim+1);
     share_acc_one[tx][2] = *(acc+offset*_n_dim+2);
 
-    for (uint64_t i = 0; i < gridDim.x; i++){
+    for (uint64_t i = 0; i < gd; i++){
         offset = i*blockDim.x+tx;
         share_pos_another[tx][0] = *(pos+offset*_n_dim);
         share_pos_another[tx][1] = *(pos+offset*_n_dim+1);
         share_pos_another[tx][2] = *(pos+offset*_n_dim+2);
 
-        share_feat_another[tx] = *(feats+offset*(*n_feat));
+        share_feat_another[tx] = *(feats+offset*_n_feat);
         __syncthreads();
         double dis_vec[3];
         for (uint64_t j = 0; j < BLOCKSIZE; j++){
