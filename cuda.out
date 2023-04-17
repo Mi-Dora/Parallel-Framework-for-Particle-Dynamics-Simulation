@@ -344,3 +344,53 @@ Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
 [ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
 [ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
 [ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(32): warning: variable "gd" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(35): warning: variable "n_thread" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(32): warning: variable "gd" was declared but never referenced
+
+/storage/home/hcocice1/ydu340/Particle-new/src/kernels.cu(35): warning: variable "n_thread" was declared but never referenced
+
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, n_particle=16384, avg compute time per iter=12.550784 ms
+iter=50, n_particle=16384, avg compute time per iter=11.527507 ms
+iter=100, n_particle=16384, avg compute time per iter=11.305547 ms
+iter=150, n_particle=16384, avg compute time per iter=11.230859 ms
+iter=200, n_particle=16384, avg compute time per iter=11.192551 ms
+iter=250, n_particle=16384, avg compute time per iter=11.169697 ms
+iter=300, n_particle=16384, avg compute time per iter=11.154566 ms
+iter=350, n_particle=16384, avg compute time per iter=11.145669 ms
+iter=400, n_particle=16384, avg compute time per iter=11.137177 ms
+iter=450, n_particle=16384, avg compute time per iter=11.130408 ms
+iter=500, n_particle=16384, avg compute time per iter=11.124950 ms
+iter=550, n_particle=16384, avg compute time per iter=11.120337 ms
+iter=600, n_particle=16384, avg compute time per iter=11.116488 ms
+iter=650, n_particle=16384, avg compute time per iter=11.113179 ms
+iter=700, n_particle=16384, avg compute time per iter=11.110477 ms
+iter=750, n_particle=16384, avg compute time per iter=11.108141 ms
+iter=800, n_particle=16384, avg compute time per iter=11.106035 ms
+iter=850, n_particle=16384, avg compute time per iter=11.104094 ms
+iter=900, n_particle=16384, avg compute time per iter=11.102332 ms
+iter=950, n_particle=16384, avg compute time per iter=11.100892 ms
+iter=1000, n_particle=16384, avg compute time per iter=11.099577 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Mon Apr 17 00:30:03 EDT 2023
+Job ID:     544401.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:28,vmem=0kb,walltime=00:00:36,mem=0kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-1.pace.gatech.edu
+End PBS Epilogue Mon Apr 17 00:30:07 EDT 2023
+---------------------------------------
