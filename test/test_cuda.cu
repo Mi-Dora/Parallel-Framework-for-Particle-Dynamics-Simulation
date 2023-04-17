@@ -7,9 +7,8 @@
 
 int main(int argc, char** argv) {
 
-    const std::string inputFilename = "/storage/home/hcocice1/ydu340/Particle-new/data/data10000.txt";
+    const std::string inputFilename = "/storage/home/hcocice1/ydu340/Particle-new/data/data16384.txt";
     const double timeStep = 0.1;
-    int cell_size = 4;
 
     chunk_particles_t* chunkParticles = nullptr;
     load_particles(inputFilename, &chunkParticles);
@@ -21,14 +20,15 @@ int main(int argc, char** argv) {
 
     dim3 grid_size, block_size;
     size_t shmem_size;
-    kernel_params_init(grid_size, block_size, shmem_size, cell_size);
+    kernel_params_init(grid_size, block_size, shmem_size, chunkParticles->nParticle);
     
     cudaEvent_t start, stop;
     cuErrChk(cudaEventCreate(&start));
     cuErrChk(cudaEventCreate(&stop));
 
     float cur_time = 0.;
-    for(int iter=0; iter<1; iter++) {
+    float tt_time = 0;
+    for(int iter=0; iter<1001; iter++) {
         
         cuErrChk(cudaEventRecord(start, NULL));
         compute_kernel <<< grid_size, block_size, shmem_size >>> (
@@ -37,10 +37,11 @@ int main(int argc, char** argv) {
         cuErrChk(cudaEventSynchronize(stop));
         cur_time = 0;
         cuErrChk(cudaEventElapsedTime(&cur_time, start, stop));
-        printf("iter=%d, compute time=%.6f\n", iter, cur_time);
-        if(iter%9 == 0) {
+        tt_time += cur_time;
+        if(iter%50 == 0) {
+            printf("iter=%d, n_particle=%d, avg compute time per iter=%.6f ms\n", iter, chunkParticles->nParticle, tt_time/(iter+1));
             copy2host(d_pos, d_vel, d_acc, d_feats, chunkParticles);
-            std::string outputFilename = "/storage/home/hcocice1/ydu340/Particle-new/data/10000_"  + std::to_string(iter) + ".txt";
+            std::string outputFilename = "/storage/home/hcocice1/ydu340/Particle-new/data/16384_"  + std::to_string(iter) + ".txt";
             store_particles(outputFilename, chunkParticles);
         }
     }

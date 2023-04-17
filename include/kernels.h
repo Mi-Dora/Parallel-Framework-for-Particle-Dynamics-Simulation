@@ -4,6 +4,7 @@
 #include <cuda_runtime.h>
 #include <cstdint>
 #include "particle.h"
+#include "device.h"
 
 // void kernel(dim3& grid_size, dim3& block_size, size_t& shmem_size, 
 //             double* d_pos, double* d_vel, double* d_acc, double* d_feats,

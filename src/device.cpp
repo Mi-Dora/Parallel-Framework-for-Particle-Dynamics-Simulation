@@ -58,16 +58,14 @@ void copy2host(double* d_pos, double* d_vel, double* d_acc, double* d_feats, chu
 
 }
 
-void kernel_params_init(dim3 &grid_size, dim3 &block_size, size_t &shmem_size, int cell_size) {
+void kernel_params_init(dim3 &grid_size, dim3 &block_size, size_t &shmem_size, int n_particle) {
     
-    block_size.x = 256;
-    // block_size.y = 32;
+    block_size.x = BLOCKSIZE;
 
-    grid_size.x = cell_size;
-    grid_size.y = cell_size;
-    grid_size.z = cell_size;
+    grid_size.x = n_particle / BLOCKSIZE;
 
     shmem_size = 0;
+    // shmem_size = 16*16*3*sizeof(double);
 }
 
 void device_free(double** d_pos, double** d_vel, double** d_acc, double** d_feats,
