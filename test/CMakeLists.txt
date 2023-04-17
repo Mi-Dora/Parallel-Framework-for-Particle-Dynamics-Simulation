@@ -15,3 +15,6 @@ target_link_libraries(TEST_gather_scatter pfpds MPI::MPI_CXX)
 
 add_executable(TEST_dense_mpi test_dense_mpi.cpp)
 target_link_libraries(TEST_dense_mpi pfpds MPI::MPI_CXX)
+
+add_executable(TEST_neo_dense_mpi test_dense_mpi_neo.cpp)
+target_link_libraries(TEST_neo_dense_mpi neo_particles MPI::MPI_CXX)

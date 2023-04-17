@@ -12,4 +12,5 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3 -fopenmp")
 include_directories(include)
 
 add_subdirectory(src)
+add_subdirectory(src/neo)
 add_subdirectory(test)

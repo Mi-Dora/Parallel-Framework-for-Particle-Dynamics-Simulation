@@ -522,7 +522,7 @@ void reduce(particle_t* localParticlesX, int localNParticlesX,
         localNParticlesX*localParticlesX->ndim,
         MPI_DOUBLE,
         MPI_SUM,
-        topology->reduceYComm
+        topology->reduceXComm
     );
     #pragma omp parallel for collapse(2)
     for(int n=0; n<localNParticlesX; n++)
@@ -538,7 +538,7 @@ void reduce(particle_t* localParticlesX, int localNParticlesX,
         localNParticlesY*localParticlesY->ndim,
         MPI_DOUBLE,
         MPI_SUM,
-        topology->reduceXComm
+        topology->reduceYComm
     );
     #pragma omp parallel for collapse(2)
     for(int n=0; n<localNParticlesY; n++)
