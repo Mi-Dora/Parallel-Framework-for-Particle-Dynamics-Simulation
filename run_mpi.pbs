@@ -20,20 +20,30 @@ module load gcc cmake openmpi valgrind
 module load gcc cmake openmpi valgrind
 module load gcc cmake openmpi valgrind
 
-mpirun -np 128  ./build/test/TEST_neo_dense_mpi 16 8 data/data10k.txt
-mpirun -np 96  ./build/test/TEST_neo_dense_mpi 8 12 data/data10k.txt
-mpirun -np 72  ./build/test/TEST_neo_dense_mpi 8 9 data/data10k.txt
-mpirun -np 64  ./build/test/TEST_neo_dense_mpi 8 8 data/data10k.txt
-mpirun -np 48  ./build/test/TEST_neo_dense_mpi 6 8 data/data10k.txt
-mpirun -np 36  ./build/test/TEST_neo_dense_mpi 4 9 data/data10k.txt
-mpirun -np 32  ./build/test/TEST_neo_dense_mpi 4 8 data/data10k.txt
-mpirun -np 24  ./build/test/TEST_neo_dense_mpi 4 6 data/data10k.txt
-mpirun -np 16  ./build/test/TEST_neo_dense_mpi 4 4 data/data10k.txt
-mpirun -np 12  ./build/test/TEST_neo_dense_mpi 3 4 data/data10k.txt
-mpirun -np 8 ./build/test/TEST_neo_dense_mpi 2 4 data/data10k.txt
-mpirun -np 6 ./build/test/TEST_neo_dense_mpi 2 3 data/data10k.txt
-mpirun -np 4 ./build/test/TEST_neo_dense_mpi 2 2 data/data10k.txt
-mpirun -np 2 ./build/test/TEST_neo_dense_mpi 1 2 data/data10k.txt
+mpirun -np 128  ./build/test/TEST_neo_cutoff_mpi 4 4 8 data/data10k.txt
+mpirun -np 96  ./build/test/TEST_neo_cutoff_mpi 4 4 6 data/data10k.txt
+mpirun -np 72  ./build/test/TEST_neo_cutoff_mpi 4 6 3 data/data10k.txt
+mpirun -np 64  ./build/test/TEST_neo_cutoff_mpi 4 4 4 data/data10k.txt
+mpirun -np 48  ./build/test/TEST_neo_cutoff_mpi 4 4 3 data/data10k.txt
+mpirun -np 36  ./build/test/TEST_neo_cutoff_mpi 4 3 3 data/data10k.txt
+mpirun -np 32  ./build/test/TEST_neo_cutoff_mpi 4 4 2 data/data10k.txt
+mpirun -np 24  ./build/test/TEST_neo_cutoff_mpi 2 4 3 data/data10k.txt
+
+
+# mpirun -np 128  ./build/test/TEST_neo_dense_mpi 16 8 data/data10k.txt
+# mpirun -np 96  ./build/test/TEST_neo_dense_mpi 8 12 data/data10k.txt
+# mpirun -np 72  ./build/test/TEST_neo_dense_mpi 8 9 data/data10k.txt
+# mpirun -np 64  ./build/test/TEST_neo_dense_mpi 8 8 data/data10k.txt
+# mpirun -np 48  ./build/test/TEST_neo_dense_mpi 6 8 data/data10k.txt
+# mpirun -np 36  ./build/test/TEST_neo_dense_mpi 4 9 data/data10k.txt
+# mpirun -np 32  ./build/test/TEST_neo_dense_mpi 4 8 data/data10k.txt
+# mpirun -np 24  ./build/test/TEST_neo_dense_mpi 4 6 data/data10k.txt
+# mpirun -np 16  ./build/test/TEST_neo_dense_mpi 4 4 data/data10k.txt
+# mpirun -np 12  ./build/test/TEST_neo_dense_mpi 3 4 data/data10k.txt
+# mpirun -np 8 ./build/test/TEST_neo_dense_mpi 2 4 data/data10k.txt
+# mpirun -np 6 ./build/test/TEST_neo_dense_mpi 2 3 data/data10k.txt
+# mpirun -np 4 ./build/test/TEST_neo_dense_mpi 2 2 data/data10k.txt
+# mpirun -np 2 ./build/test/TEST_neo_dense_mpi 1 2 data/data10k.txt
 
 # mpirun -np 16 --map-by node:pe=8 ./build/test/TEST_neo_dense_mpi 4 4 data/data10k.txt
 # mpirun -np 12 --map-by node:pe=8 ./build/test/TEST_neo_dense_mpi 3 4 data/data10k.txt

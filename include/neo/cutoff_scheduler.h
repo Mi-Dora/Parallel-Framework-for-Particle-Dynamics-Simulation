@@ -2,6 +2,7 @@
 #define __NEO_CUTOFF_SCHEDULER_H__
 #include "neo/particle.h"
 #include <vector>
+#include <mpi.h>
 
 typedef struct {
     int rankX;
@@ -18,6 +19,9 @@ typedef struct {
     MPI_Comm zEdgeComm;
 } topology_t;
 
+void setupCommunicators(topology_t* topology, int gridX, int gridY, int gridZ, int subGridX, int subGridY, int subGridZ);
+
+
 
 void divideGroupN(std::vector<particle_t>* allParticles, 
                 std::vector<std::vector<particle_t>>* groupParticles,
@@ -28,5 +32,9 @@ void dispatch(std::vector<particle_t>* allParticles,
                 std::vector<std::vector<particle_t>>* localParticleGroups,
                 topology_t* topology
                 );
+
+void gather(std::vector<std::vector<particle_t>>* localParticleGroups, 
+            std::vector<particle_t>* allParticles, 
+            topology_t* topology);
 
 #endif

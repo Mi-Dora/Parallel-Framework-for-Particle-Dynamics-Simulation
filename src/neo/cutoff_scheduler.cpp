@@ -12,6 +12,26 @@ public:
     }
 };
 
+void setupCommunicators(topology_t* topology, int gridX, int gridY, int gridZ, int subGridX, int subGridY, int subGridZ) {
+    topology->gridX = gridX;
+    topology->gridY = gridY;
+    topology->gridZ = gridZ;
+    topology->subgridX = subGridX;
+    topology->subgridY = subGridY;
+    topology->subgridZ = subGridZ;
+    int compSize, rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &compSize);
+    topology->rankX = rank % gridX;
+    topology->rankY = (rank / gridX) % gridY;
+    topology->rankZ = rank / gridX / gridY;
+
+    MPI_Comm_split(MPI_COMM_WORLD, topology->rankY+topology->rankZ*gridY, topology->rankX, &(topology->xEdgeComm));
+    MPI_Comm_split(MPI_COMM_WORLD, topology->rankX+topology->rankZ*gridX, topology->rankY, &(topology->yEdgeComm));
+    MPI_Comm_split(MPI_COMM_WORLD, topology->rankY+topology->rankX*gridY, topology->rankZ, &(topology->zEdgeComm));
+}
+
+
 void divideGroupN(std::vector<particle_t>* allParticles, 
                 std::vector<std::vector<particle_t>>* groupParticles,
                 int ndim,
@@ -174,7 +194,7 @@ void dispatch(std::vector<particle_t>* allParticles,
                 MPI_Send(
                     &sizeBlock,
                     1,
-                    MPI_INIT,
+                    MPI_INT,
                     i,
                     i,
                     topology->zEdgeComm
@@ -208,7 +228,7 @@ void dispatch(std::vector<particle_t>* allParticles,
 
     // TODO: no subgrid, need to complete
     localParticleGroups->resize(0);
-    localParticleGroups->at(0).push_back(block);
+    localParticleGroups->push_back(block);
 
     block.clear();
     for(int i=0; i<blocks.size(); i++)
@@ -232,8 +252,39 @@ void gather(std::vector<std::vector<particle_t>>* localParticleGroups,
             topology_t* topology) {
     int rank;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    int size;
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
     if(rank==0) {
-
+        allParticles->clear();
+        for(int i=0; i<size; i++) {
+            if(i==0) {
+                for(int n=0; n<localParticleGroups->size(); n++)
+                    for(int nn=0; nn<localParticleGroups->at(n).size(); nn++)
+                        allParticles->push_back(localParticleGroups->at(n).at(nn));
+            }
+            else {
+                std::vector<particle_t> particlesRx;
+                int ngroup;
+                MPI_Recv(&ngroup, 1, MPI_INT, i, 0, MPI_COMM_WORLD, nullptr);
+                for(int n=0; n<ngroup; n++) {
+                    int groupSize;
+                    MPI_Recv(&groupSize, 1, MPI_INT, i, 2*n+1, MPI_COMM_WORLD, nullptr);
+                    particlesRx.resize(groupSize);
+                    MPI_Recv(
+                        const_cast<particle_t*>(particlesRx.data()),
+                        groupSize * sizeof(particle_t),
+                        MPI_BYTE,
+                        i, 
+                        2*n+2,
+                        MPI_COMM_WORLD,
+                        nullptr
+                    );
+                    for(int j=0; j<particlesRx.size(); j++)
+                        allParticles->push_back(particlesRx.at(j));
+                    particlesRx.clear();
+                }
+            }
+        }
     }
     else {
         int ngroups = localParticleGroups->size();
@@ -266,4 +317,6 @@ void gather(std::vector<std::vector<particle_t>>* localParticleGroups,
 
         }
     }
+    return;
 }
+
