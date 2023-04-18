@@ -85,7 +85,7 @@ void scatter(
     MPI_Barrier(MPI_COMM_WORLD);
 
     int localNParticlesX = *(metadata+0);
-    int localNParticlesY = *(metadata+0);
+    int localNParticlesY = *(metadata+1);
     localParticlesX->resize(localNParticlesX);
     localParticlesY->resize(localNParticlesY);
 

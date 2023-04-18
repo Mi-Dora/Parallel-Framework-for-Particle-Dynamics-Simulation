@@ -13,6 +13,9 @@ typedef struct {
     int subgridX;
     int subgridY;
     int subgridZ;
+    MPI_Comm xEdgeComm;
+    MPI_Comm yEdgeComm;
+    MPI_Comm zEdgeComm;
 } topology_t;
 
 
@@ -22,8 +25,7 @@ void divideGroupN(std::vector<particle_t>* allParticles,
                 int ngroup);
 
 void dispatch(std::vector<particle_t>* allParticles, 
-                std::vector<particle_t>* localParticles,
-                std::vector<particle_t>* neighborParticles,
+                std::vector<std::vector<particle_t>>* localParticleGroups,
                 topology_t* topology
                 );
 
