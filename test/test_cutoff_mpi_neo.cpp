@@ -66,7 +66,8 @@ int main(int argc, char** argv) {
         // }
     }
     totalTime += MPI_Wtime();
-    printf("avg iter time %f\n", totalTime / totalIter);
+    if(rankX==0 && rankY==0 && rankZ==0)
+        printf("avg iter time %f\n", totalTime / totalIter);
     gather(&localParticleGroups, &globalParticles, &topology);
 
     // storeParticles(scatterFilenameX, &localParticlesX);
