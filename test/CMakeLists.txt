@@ -21,3 +21,6 @@ target_link_libraries(TEST_neo_dense_mpi neo_particles MPI::MPI_CXX)
 
 add_executable(TEST_neo_cutoff_mpi test_cutoff_mpi_neo.cpp)
 target_link_libraries(TEST_neo_cutoff_mpi neo_particles MPI::MPI_CXX)
+
+add_executable(TEST_neo_centroid_mpi test_centroid_mpi_neo.cpp)
+target_link_libraries(TEST_neo_centroid_mpi neo_particles MPI::MPI_CXX)

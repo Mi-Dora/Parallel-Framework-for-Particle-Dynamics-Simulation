@@ -1,0 +1,94 @@
+---------------------------------------
+Begin PBS Prologue Tue Apr 18 21:45:07 EDT 2023
+Job ID:     545403.sched-coc-ice.pace.gatech.edu
+User ID:    cman8
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-multi
+End PBS Prologue Tue Apr 18 21:45:07 EDT 2023
+---------------------------------------
+centroid 1m
+---------------------------------------
+Begin PBS Epilogue Tue Apr 18 21:51:41 EDT 2023
+Job ID:     545403.sched-coc-ice.pace.gatech.edu
+User ID:    cman8
+Job name:   ParticalSim-Proj
+Resources:  nodes=16:ppn=8,neednodes=16:ppn=8,walltime=01:00:00
+Rsrc Used:  cput=12:51:15,vmem=71860680kb,walltime=00:06:11,mem=37254344kb,energy_used=0
+Queue:      coc-ice-multi
+Nodes:     
+atl1-1-02-003-19-l.pace.gatech.edu atl1-1-02-003-19-r.pace.gatech.edu 
+atl1-1-02-003-20-l.pace.gatech.edu atl1-1-02-004-15-r.pace.gatech.edu 
+atl1-1-02-010-1-l.pace.gatech.edu atl1-1-02-010-1-r.pace.gatech.edu 
+atl1-1-02-010-2-r.pace.gatech.edu atl1-1-02-010-6-l.pace.gatech.edu 
+atl1-1-02-010-6-r.pace.gatech.edu atl1-1-02-010-7-l.pace.gatech.edu 
+atl1-1-03-007-22-l.pace.gatech.edu
+End PBS Epilogue Tue Apr 18 21:51:42 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Tue Apr 18 21:51:45 EDT 2023
+Job ID:     545407.sched-coc-ice.pace.gatech.edu
+User ID:    cman8
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-multi
+End PBS Prologue Tue Apr 18 21:51:45 EDT 2023
+---------------------------------------
+centroid 10k
+avg iter time 0.000867
+avg iter time 0.001736
+avg iter time 0.003477
+avg iter time 0.017363
+avg iter time 0.200226
+avg iter time 0.400989
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node atl1-1-02-003-20-l exited on signal 9 (Killed).
+--------------------------------------------------------------------------
+cutoff 10k
+avg iter time 0.000867
+avg iter time 0.001734
+avg iter time 0.003480
+avg iter time 0.017386
+avg iter time 0.200165
+avg iter time 0.400395
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+A process has executed an operation involving a call to the
+"fork()" system call to create a child process.  Open MPI is currently
+operating in a condition that could result in memory corruption or
+other system errors; your job may hang, crash, or produce silent
+data corruption.  The use of fork() (or system() or other calls that
+create child processes) is strongly discouraged.
+
+The process that invoked fork was:
+
+  Local host:          [[61616,1],0] (PID 211899)
+
+If you are *absolutely sure* that your application will successfully
+and correctly survive a call to fork(), you may disable this warning
+by setting the mpi_warn_on_fork MCA parameter to 0.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 0 on node atl1-1-02-003-20-l exited on signal 9 (Killed).
+--------------------------------------------------------------------------
+---------------------------------------
+Begin PBS Epilogue Tue Apr 18 22:01:02 EDT 2023
+Job ID:     545407.sched-coc-ice.pace.gatech.edu
+User ID:    cman8
+Job name:   ParticalSim-Proj
+Resources:  nodes=16:ppn=8,neednodes=16:ppn=8,walltime=01:00:00
+Rsrc Used:  cput=00:28:21,vmem=3794364kb,walltime=00:08:58,mem=711688kb,energy_used=0
+Queue:      coc-ice-multi
+Nodes:     
+atl1-1-02-003-19-l.pace.gatech.edu atl1-1-02-003-19-r.pace.gatech.edu 
+atl1-1-02-003-20-l.pace.gatech.edu atl1-1-02-004-15-r.pace.gatech.edu 
+atl1-1-02-010-1-l.pace.gatech.edu atl1-1-02-010-1-r.pace.gatech.edu 
+atl1-1-02-010-6-l.pace.gatech.edu atl1-1-02-010-6-r.pace.gatech.edu 
+atl1-1-02-010-7-l.pace.gatech.edu atl1-1-03-007-22-l.pace.gatech.edu
+End PBS Epilogue Tue Apr 18 22:01:02 EDT 2023
+---------------------------------------

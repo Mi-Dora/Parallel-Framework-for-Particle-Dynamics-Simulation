@@ -1,5 +1,5 @@
 #include "neo/particle.h"
-#include "neo/cutoff_scheduler.h"
+#include "neo/centroid_scheduler.h"
 #include "neo/user_def/gravity_particle.h"
 #include <string>
 #include "mpi.h"

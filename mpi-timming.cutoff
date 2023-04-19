@@ -1,0 +1,43 @@
+---------------------------------------
+Begin PBS Prologue Mon Apr 17 23:41:36 EDT 2023
+Job ID:     544856.sched-coc-ice.pace.gatech.edu
+User ID:    cman8
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-multi
+End PBS Prologue Mon Apr 17 23:41:36 EDT 2023
+---------------------------------------
+avg iter time 0.000876
+avg iter time 0.001556
+avg iter time 0.002739
+avg iter time 0.003501
+avg iter time 0.006236
+avg iter time 0.011183
+avg iter time 0.014225
+--------------------------------------------------------------------------
+A system call failed during shared memory initialization that should
+not have.  It is likely that your MPI job will now either abort or
+experience performance degradation.
+
+  Local host:  atl1-1-02-003-19-r.pace.gatech.edu
+  System call: open(2) 
+  Error:       Permission denied (errno 13)
+--------------------------------------------------------------------------
+avg iter time 0.025129
+[atl1-1-02-003-19-l.pace.gatech.edu:53409] 7 more processes have sent help message help-opal-shmem-mmap.txt / sys call fail
+[atl1-1-02-003-19-l.pace.gatech.edu:53409] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+---------------------------------------
+Begin PBS Epilogue Mon Apr 17 23:41:54 EDT 2023
+Job ID:     544856.sched-coc-ice.pace.gatech.edu
+User ID:    cman8
+Job name:   ParticalSim-Proj
+Resources:  nodes=16:ppn=8,neednodes=16:ppn=8,walltime=01:00:00
+Rsrc Used:  cput=00:06:51,vmem=0kb,walltime=00:00:17,mem=1156kb,energy_used=0
+Queue:      coc-ice-multi
+Nodes:     
+atl1-1-02-003-19-l.pace.gatech.edu atl1-1-02-003-19-r.pace.gatech.edu 
+atl1-1-02-003-20-l.pace.gatech.edu atl1-1-02-004-15-r.pace.gatech.edu 
+atl1-1-02-010-1-r.pace.gatech.edu atl1-1-02-010-2-l.pace.gatech.edu 
+atl1-1-02-010-2-r.pace.gatech.edu atl1-1-02-010-5-r.pace.gatech.edu 
+atl1-1-02-010-6-l.pace.gatech.edu
+End PBS Epilogue Mon Apr 17 23:41:55 EDT 2023
+---------------------------------------

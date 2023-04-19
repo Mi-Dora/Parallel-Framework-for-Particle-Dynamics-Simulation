@@ -6,5 +6,4 @@
 *.fatbin
 .vscode
 build
-*.txt
 data

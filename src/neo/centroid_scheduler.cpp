@@ -1,9 +1,10 @@
-#include "neo/cutoff_scheduler.h"
+#include "neo/centroid_scheduler.h"
 #include "neo/particle.h"
 #include <vector>
 #include <algorithm>
 #include <tuple>
 #include <mpi.h>
+#include <cassert>
 
 class _CompParticlesPos {
 public:
@@ -224,6 +225,7 @@ void dispatch(std::vector<particle_t>* allParticles,
             nullptr
         );
     }
+
     MPI_Barrier(MPI_COMM_WORLD);
 
     // block.clear();
@@ -268,6 +270,31 @@ void dispatch(std::vector<particle_t>* allParticles,
     for(int i=0; i<slices.size(); i++)
         slices.at(i).clear();
     slices.clear();
+
+    std::vector<particle_t> blockCentroidsTx;
+    std::vector<particle_t> blockCentroidsRx;
+    blockCentroidsTx.resize(gridX*gridY*gridZ*subgridX*subgridY*subgridZ);
+    blockCentroidsRx.resize(gridX*gridY*gridZ*subgridX*subgridY*subgridZ);
+    for(int nn=0; nn<subgridX*subgridY*subgridZ; nn++) {
+        particle_t* p = std::addressof(blockCentroidsTx.at(nn));
+        getCentroid(std::addressof(localParticleGroups->at(nn)), &p, 0);
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Allgather(
+        const_cast<particle_t*>(blockCentroidsTx.data()),
+        subgridX*subgridY*subgridZ*sizeof(particle_t),
+        MPI_BYTE,
+        const_cast<particle_t*>(blockCentroidsRx.data()),
+        subgridX*subgridY*subgridZ*sizeof(particle_t),
+        MPI_BYTE,
+        MPI_COMM_WORLD
+    );
+    for(int n=0; n<blockCentroidsRx.size(); n++) {
+        for(int nn=0; nn<localParticleGroups->size(); nn++)
+            localParticleGroups->at(nn).push_back(blockCentroidsRx.at(n));
+    }
+    blockCentroidsRx.clear();
+    blockCentroidsTx.clear();
 }
 
 
@@ -303,8 +330,11 @@ void gather(std::vector<std::vector<particle_t>>* localParticleGroups,
                         MPI_COMM_WORLD,
                         nullptr
                     );
-                    for(int j=0; j<particlesRx.size(); j++)
+                    for(int j=0; j<particlesRx.size(); j++){
+                        if(particlesRx.at(j).id&0xff00000000000000ul)
+                            continue;
                         allParticles->push_back(particlesRx.at(j));
+                    }
                     particlesRx.clear();
                 }
             }
@@ -344,3 +374,41 @@ void gather(std::vector<std::vector<particle_t>>* localParticleGroups,
     return;
 }
 
+void getCentroid(std::vector<particle_t>* particles, particle_t** centroid, int weightFeat) {
+    uint64_t id = 0;
+    if(*centroid == nullptr)
+        *centroid = static_cast<particle_t*>(malloc(sizeof(particle_t)));
+    assert(weightFeat < PARTICLE_N_FEAT);
+    double pos[PARTICLE_N_DIM];
+    double vel[PARTICLE_N_DIM];
+    double feat[PARTICLE_N_FEAT];
+    for(int n=0; n<PARTICLE_N_DIM; n++) {
+        pos[n] = 0.0;
+        vel[n] = 0.0;
+    }
+    for(int n=0; n<PARTICLE_N_FEAT; n++)
+        feat[n] = 0.0;
+    for(int n=0; n<particles->size(); n++) {
+        particle_t& particle = particles->at(n);
+        for(int i=0; i<PARTICLE_N_DIM; i++) {
+            pos[i] += particle.position[i] * particle.features[weightFeat];
+            vel[i] += particle.velocity[i] * particle.features[weightFeat];
+        }
+        for(int i=0; i<PARTICLE_N_FEAT; i++)
+            feat[i] += particle.features[i];
+        id += particle.id;
+    }
+    for(int n=0; n<PARTICLE_N_DIM; n++) {
+        pos[n] /= feat[weightFeat];
+        vel[n] /= feat[weightFeat];
+        (*centroid)->position[n] = pos[n];
+        (*centroid)->velocity[n] = vel[n];
+        (*centroid)->acceleration[n] = 0.0;
+    }
+    for(int n=0; n<PARTICLE_N_FEAT; n++) {
+        (*centroid)->features[n] = feat[n];
+    }
+    (*centroid)->enabled = true;
+    (*centroid)->id = (id>>8) | 0xff00000000000000ul;
+    
+}
