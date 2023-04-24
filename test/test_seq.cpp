@@ -16,7 +16,8 @@ int main(int argc, char* argv[]) {
 
     chunk_particles_t* chunkParticles = nullptr;
     load_particles(inputFilename, &chunkParticles);
-
+    double pos_min = -100.;
+    double pos_max = 100.;
 
     double *pos, *vel, *acc, *feats;
 
@@ -66,6 +67,8 @@ int main(int argc, char* argv[]) {
             for(uint64_t n = 0; n < n_dim; n++){
                 *(one->velocity+n) += *(one->acceleration+n) * timeStep;
                 *(one->position+n) += *(one->velocity+n) * timeStep;
+                if (*(one->position+n) < pos_min) *(one->position+n) += pos_max-pos_min;
+                if (*(one->position+n) > pos_max) *(one->position+n) -= pos_max-pos_min;
             }
         }
         auto end = std::chrono::steady_clock::now();
@@ -73,7 +76,7 @@ int main(int argc, char* argv[]) {
         if(iter%save_interval == 0) {
             cout << "Sequential: n_particle = " << n_particle << ", compute time per iter = " << elapsed.count() << "ms" << endl;
             // printf("iter=%d, n_particle=%d, avg compute time per iter=%.6f ms\n", iter, chunkParticles->nParticle, tt_time/(iter+1));
-            std::string outputFilename = "/storage/home/hcocice1/ydu340/Particle-new/data/seq_" + n_par + "_"  + std::to_string(iter) + ".txt";
+            std::string outputFilename = "/storage/home/hcocice1/ydu340/Particle-new/data/vis/seq_" + n_par + "_"  + std::to_string(iter) + ".txt";
             store_particles(outputFilename, chunkParticles);
         }
     }

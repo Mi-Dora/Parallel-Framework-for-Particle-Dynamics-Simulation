@@ -17,6 +17,8 @@ int main(int argc, char** argv) {
     chunk_particles_t* chunkParticles = nullptr;
     load_particles(inputFilename, &chunkParticles);
 
+    double pos_min = -100.;
+    double pos_max = 100.;
 
     double *d_pos, *d_vel, *d_acc, *d_feats, *d_timestep;
     uint64_t *d_n_particle, *d_n_dim, *d_n_feat;
@@ -66,7 +68,7 @@ int main(int argc, char** argv) {
             cur_time = 0;
             cuErrChk(cudaEventElapsedTime(&cur_time, start, stop));
             printf("n_particle=%d, copy back memory time = %.6f ms\n", chunkParticles->nParticle, cur_time);
-            std::string outputFilename = "/storage/home/hcocice1/ydu340/Particle-new/data/cuda_" + n_par + "_"   + std::to_string(iter) + ".txt";
+            std::string outputFilename = "/storage/home/hcocice1/ydu340/Particle-new/data/vis/cuda_" + n_par + "_"   + std::to_string(iter) + ".txt";
             store_particles(outputFilename, chunkParticles);
         }
     }

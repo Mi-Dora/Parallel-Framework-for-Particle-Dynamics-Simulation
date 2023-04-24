@@ -37,6 +37,8 @@ void compute_kernel(double *__restrict__ pos,
     double _timestep = *timestep;
 
     const double G = 6.67e-11;
+    const double pos_min = -100.;
+    const double pos_max = 100.;
     
     __shared__ double share_pos_one[BLOCKSIZE][3];
     __shared__ double share_acc_one[BLOCKSIZE][3];
@@ -72,16 +74,16 @@ void compute_kernel(double *__restrict__ pos,
         }
     }
     offset = bid*blockDim.x+tx;
-    *(acc+offset*_n_dim) = share_acc_one[tx][0];
-    *(acc+offset*_n_dim+1) = share_acc_one[tx][1];
-    *(acc+offset*_n_dim+2) = share_acc_one[tx][2];
+    for (int n = 0; n < _n_dim; n++)
+        *(acc+offset*_n_dim+n) = share_acc_one[tx][n];
 
-    *(vel+offset*_n_dim) += share_acc_one[tx][0]*_timestep;
-    *(vel+offset*_n_dim+1) += share_acc_one[tx][1]*_timestep;
-    *(vel+offset*_n_dim+2) += share_acc_one[tx][2]*_timestep;
+    for (int n = 0; n < _n_dim; n++)
+        *(vel+offset*_n_dim+n) += share_acc_one[tx][n]*_timestep;
 
-    *(pos+offset*_n_dim) += *(vel+offset*_n_dim)*_timestep;
-    *(pos+offset*_n_dim+1) += *(vel+offset*_n_dim+1)*_timestep;
-    *(pos+offset*_n_dim+2) += *(vel+offset*_n_dim+2)*_timestep;
+    for (int n = 0; n < _n_dim; n++){
+        *(pos+offset*_n_dim+n) += *(vel+offset*_n_dim+n)*_timestep;
+        if (*(pos+offset*_n_dim+n) < pos_min) *(pos+offset*_n_dim+n) += pos_max-pos_min;
+        if (*(pos+offset*_n_dim+n) > pos_max) *(pos+offset*_n_dim+n) -= pos_max-pos_min;
+    }
 
 }

@@ -10,8 +10,8 @@ int main(int argc, char* argv[]) {
 
     std::string n_par = argv[1];
     std::string n_iter = argv[2];
-    const std::string inputFilename_cuda = "/storage/home/hcocice1/ydu340/Particle-new/data/cuda_" + n_par + "_" + n_iter + ".txt";
-    const std::string inputFilename_seq = "/storage/home/hcocice1/ydu340/Particle-new/data/seq_" + n_par + "_" + n_iter + ".txt";
+    const std::string inputFilename_cuda = "/storage/home/hcocice1/ydu340/Particle-new/data/vis/cuda_" + n_par + "_" + n_iter + ".txt";
+    const std::string inputFilename_seq = "/storage/home/hcocice1/ydu340/Particle-new/data/vis/seq_" + n_par + "_" + n_iter + ".txt";
 
     chunk_particles_t* cuda_chunkParticles = nullptr;
     chunk_particles_t* seq_chunkParticles = nullptr;
