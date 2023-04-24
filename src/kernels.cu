@@ -34,6 +34,7 @@ void compute_kernel(double *__restrict__ pos,
     uint64_t tx = threadIdx.x;
     uint64_t _n_dim = *n_dim;
     uint64_t _n_feat = *n_feat;
+    double _timestep = *timestep;
 
     const double G = 6.67e-11;
     
@@ -75,12 +76,12 @@ void compute_kernel(double *__restrict__ pos,
     *(acc+offset*_n_dim+1) = share_acc_one[tx][1];
     *(acc+offset*_n_dim+2) = share_acc_one[tx][2];
 
-    *(vel+offset*_n_dim) += share_acc_one[tx][0];
-    *(vel+offset*_n_dim+1) += share_acc_one[tx][1];
-    *(vel+offset*_n_dim+2) += share_acc_one[tx][2];
+    *(vel+offset*_n_dim) += share_acc_one[tx][0]*_timestep;
+    *(vel+offset*_n_dim+1) += share_acc_one[tx][1]*_timestep;
+    *(vel+offset*_n_dim+2) += share_acc_one[tx][2]*_timestep;
 
-    *(pos+offset*_n_dim) += *(vel+offset*_n_dim);
-    *(pos+offset*_n_dim+1) += *(vel+offset*_n_dim+1);
-    *(pos+offset*_n_dim+2) += *(vel+offset*_n_dim+2);
+    *(pos+offset*_n_dim) += *(vel+offset*_n_dim)*_timestep;
+    *(pos+offset*_n_dim+1) += *(vel+offset*_n_dim+1)*_timestep;
+    *(pos+offset*_n_dim+2) += *(vel+offset*_n_dim+2)*_timestep;
 
 }
