@@ -394,3 +394,1106 @@ Nodes:
 atl1-1-01-002-1.pace.gatech.edu
 End PBS Epilogue Mon Apr 17 00:30:07 EDT 2023
 ---------------------------------------
+---------------------------------------
+Begin PBS Prologue Mon Apr 17 17:33:36 EDT 2023
+Job ID:     544689.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Mon Apr 17 17:33:36 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, n_particle=16384, avg compute time per iter=12.582912 ms
+iter=50, n_particle=16384, avg compute time per iter=11.600952 ms
+iter=100, n_particle=16384, avg compute time per iter=11.348854 ms
+iter=150, n_particle=16384, avg compute time per iter=11.263048 ms
+iter=200, n_particle=16384, avg compute time per iter=11.220349 ms
+iter=250, n_particle=16384, avg compute time per iter=11.193583 ms
+iter=300, n_particle=16384, avg compute time per iter=11.176113 ms
+iter=350, n_particle=16384, avg compute time per iter=11.163402 ms
+iter=400, n_particle=16384, avg compute time per iter=11.153971 ms
+iter=450, n_particle=16384, avg compute time per iter=11.146974 ms
+iter=500, n_particle=16384, avg compute time per iter=11.141220 ms
+iter=550, n_particle=16384, avg compute time per iter=11.136338 ms
+iter=600, n_particle=16384, avg compute time per iter=11.132192 ms
+iter=650, n_particle=16384, avg compute time per iter=11.128659 ms
+iter=700, n_particle=16384, avg compute time per iter=11.125616 ms
+iter=750, n_particle=16384, avg compute time per iter=11.122966 ms
+iter=800, n_particle=16384, avg compute time per iter=11.120656 ms
+iter=850, n_particle=16384, avg compute time per iter=11.118716 ms
+iter=900, n_particle=16384, avg compute time per iter=11.117025 ms
+iter=950, n_particle=16384, avg compute time per iter=11.115553 ms
+iter=1000, n_particle=16384, avg compute time per iter=11.114236 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Mon Apr 17 17:34:09 EDT 2023
+Job ID:     544689.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:27,vmem=0kb,walltime=00:00:33,mem=0kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Mon Apr 17 17:34:14 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Mon Apr 17 19:21:42 EDT 2023
+Job ID:     544729.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Mon Apr 17 19:21:42 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, n_particle=16384, avg compute time per iter=12.479616 ms
+iter=50, n_particle=16384, avg compute time per iter=11.273490 ms
+iter=100, n_particle=16384, avg compute time per iter=11.171043 ms
+iter=150, n_particle=16384, avg compute time per iter=11.130429 ms
+iter=200, n_particle=16384, avg compute time per iter=11.109789 ms
+iter=250, n_particle=16384, avg compute time per iter=11.097922 ms
+iter=300, n_particle=16384, avg compute time per iter=11.089737 ms
+iter=350, n_particle=16384, avg compute time per iter=11.084220 ms
+iter=400, n_particle=16384, avg compute time per iter=11.079695 ms
+iter=450, n_particle=16384, avg compute time per iter=11.075356 ms
+iter=500, n_particle=16384, avg compute time per iter=11.072001 ms
+iter=550, n_particle=16384, avg compute time per iter=11.069191 ms
+iter=600, n_particle=16384, avg compute time per iter=11.067418 ms
+iter=650, n_particle=16384, avg compute time per iter=11.066051 ms
+iter=700, n_particle=16384, avg compute time per iter=11.064720 ms
+iter=750, n_particle=16384, avg compute time per iter=11.063660 ms
+iter=800, n_particle=16384, avg compute time per iter=11.063519 ms
+iter=850, n_particle=16384, avg compute time per iter=11.062527 ms
+iter=900, n_particle=16384, avg compute time per iter=11.061741 ms
+iter=950, n_particle=16384, avg compute time per iter=11.060984 ms
+iter=1000, n_particle=16384, avg compute time per iter=11.060355 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Mon Apr 17 19:22:15 EDT 2023
+Job ID:     544729.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:26,vmem=890392kb,walltime=00:00:33,mem=31560kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-2.pace.gatech.edu
+End PBS Epilogue Mon Apr 17 19:22:38 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Mon Apr 17 19:24:48 EDT 2023
+Job ID:     544731.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Mon Apr 17 19:24:48 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+iter=0, n_particle=16384, avg compute time per iter=14.710048 ms
+iter=50, n_particle=16384, avg compute time per iter=13.284683 ms
+iter=100, n_particle=16384, avg compute time per iter=12.998866 ms
+iter=150, n_particle=16384, avg compute time per iter=12.902606 ms
+iter=200, n_particle=16384, avg compute time per iter=12.854292 ms
+iter=250, n_particle=16384, avg compute time per iter=12.825407 ms
+iter=300, n_particle=16384, avg compute time per iter=12.805667 ms
+iter=350, n_particle=16384, avg compute time per iter=12.791646 ms
+iter=400, n_particle=16384, avg compute time per iter=12.781501 ms
+iter=450, n_particle=16384, avg compute time per iter=12.773570 ms
+iter=500, n_particle=16384, avg compute time per iter=12.767279 ms
+iter=550, n_particle=16384, avg compute time per iter=12.762476 ms
+iter=600, n_particle=16384, avg compute time per iter=12.758291 ms
+iter=650, n_particle=16384, avg compute time per iter=12.754655 ms
+iter=700, n_particle=16384, avg compute time per iter=12.751492 ms
+iter=750, n_particle=16384, avg compute time per iter=12.748899 ms
+iter=800, n_particle=16384, avg compute time per iter=12.746466 ms
+iter=850, n_particle=16384, avg compute time per iter=12.744197 ms
+iter=900, n_particle=16384, avg compute time per iter=12.742225 ms
+iter=950, n_particle=16384, avg compute time per iter=12.740483 ms
+iter=1000, n_particle=16384, avg compute time per iter=12.739050 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Mon Apr 17 19:25:23 EDT 2023
+Job ID:     544731.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:28,vmem=5405428kb,walltime=00:00:35,mem=24092kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-5.pace.gatech.edu
+End PBS Epilogue Mon Apr 17 19:25:47 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Mon Apr 17 21:34:11 EDT 2023
+Job ID:     544773.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Mon Apr 17 21:34:11 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+n_particle=16384, allocate memory time = 0.606656 ms
+iter=0, n_particle=16384, avg compute time per iter=12.485344 ms
+n_particle=16384, copy back memory time = 0.388416 ms
+iter=50, n_particle=16384, avg compute time per iter=11.504461 ms
+n_particle=16384, copy back memory time = 0.365408 ms
+iter=100, n_particle=16384, avg compute time per iter=11.276525 ms
+n_particle=16384, copy back memory time = 0.325856 ms
+iter=150, n_particle=16384, avg compute time per iter=11.203409 ms
+n_particle=16384, copy back memory time = 0.317408 ms
+iter=200, n_particle=16384, avg compute time per iter=11.163448 ms
+n_particle=16384, copy back memory time = 0.312064 ms
+iter=250, n_particle=16384, avg compute time per iter=11.138746 ms
+n_particle=16384, copy back memory time = 0.307776 ms
+iter=300, n_particle=16384, avg compute time per iter=11.122648 ms
+n_particle=16384, copy back memory time = 0.318080 ms
+iter=350, n_particle=16384, avg compute time per iter=11.111141 ms
+n_particle=16384, copy back memory time = 0.316032 ms
+iter=400, n_particle=16384, avg compute time per iter=11.102334 ms
+n_particle=16384, copy back memory time = 0.413216 ms
+iter=450, n_particle=16384, avg compute time per iter=11.095676 ms
+n_particle=16384, copy back memory time = 0.360480 ms
+iter=500, n_particle=16384, avg compute time per iter=11.090228 ms
+n_particle=16384, copy back memory time = 0.303808 ms
+iter=550, n_particle=16384, avg compute time per iter=11.085783 ms
+n_particle=16384, copy back memory time = 0.309824 ms
+iter=600, n_particle=16384, avg compute time per iter=11.082953 ms
+n_particle=16384, copy back memory time = 0.311136 ms
+iter=650, n_particle=16384, avg compute time per iter=11.080101 ms
+n_particle=16384, copy back memory time = 0.313472 ms
+iter=700, n_particle=16384, avg compute time per iter=11.077498 ms
+n_particle=16384, copy back memory time = 0.315680 ms
+iter=750, n_particle=16384, avg compute time per iter=11.075276 ms
+n_particle=16384, copy back memory time = 0.322112 ms
+iter=800, n_particle=16384, avg compute time per iter=11.073338 ms
+n_particle=16384, copy back memory time = 0.318720 ms
+iter=850, n_particle=16384, avg compute time per iter=11.071662 ms
+n_particle=16384, copy back memory time = 0.337504 ms
+iter=900, n_particle=16384, avg compute time per iter=11.070151 ms
+n_particle=16384, copy back memory time = 0.322848 ms
+iter=950, n_particle=16384, avg compute time per iter=11.068767 ms
+n_particle=16384, copy back memory time = 0.328864 ms
+iter=1000, n_particle=16384, avg compute time per iter=11.067480 ms
+n_particle=16384, copy back memory time = 0.334080 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Mon Apr 17 21:34:44 EDT 2023
+Job ID:     544773.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:26,vmem=0kb,walltime=00:00:33,mem=0kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-2.pace.gatech.edu
+End PBS Epilogue Mon Apr 17 21:35:08 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Mon Apr 17 21:49:45 EDT 2023
+Job ID:     544789.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Mon Apr 17 21:49:45 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(6): error: name must be a namespace name
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(30): error: "start" has already been declared in the current scope
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(30): error: name followed by "::" must be a class or namespace name
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(35): error: name followed by "::" must be a class or namespace name
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(36): error: identifier "duration_cast" is undefined
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(36): error: identifier "microseconds" is undefined
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(38): error: name followed by "::" must be a class or namespace name
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(38): error: name followed by "::" must be a class or namespace name
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(65): error: name followed by "::" must be a class or namespace name
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(72): error: name followed by "::" must be a class or namespace name
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(75): error: name followed by "::" must be a class or namespace name
+
+/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu(75): error: name followed by "::" must be a class or namespace name
+
+12 errors detected in the compilation of "/storage/home/hcocice1/ydu340/Particle-new/test/test_cuda.cu".
+make[2]: *** [test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o] Error 1
+make[1]: *** [test/CMakeFiles/TEST_cuda.dir/all] Error 2
+make: *** [all] Error 2
+/var/spool/torque/mom_priv/jobs/544789.sched-coc-ice.pace.gatech.edu.SC: line 22: ./build/test/TEST_cuda: No such file or directory
+Done
+---------------------------------------
+Begin PBS Epilogue Mon Apr 17 21:50:05 EDT 2023
+Job ID:     544789.sched-coc-ice.pace.gatech.edu7
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:11,vmem=0kb,walltime=00:00:20,mem=0kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-5.pace.gatech.edu
+End PBS Epilogue Mon Apr 17 21:50:25 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Mon Apr 17 21:56:09 EDT 2023
+Job ID:     544791.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Mon Apr 17 21:56:09 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+ctime allocate time0s
+n_particle=16384, allocate memory time = 0.604160 ms
+iter=0, n_particle=16384, avg compute time per iter=12.601312 ms
+n_particle=16384, copy back memory time = 0.395104 ms
+iter=50, n_particle=16384, avg compute time per iter=11.296043 ms
+n_particle=16384, copy back memory time = 0.380288 ms
+iter=100, n_particle=16384, avg compute time per iter=11.169397 ms
+n_particle=16384, copy back memory time = 0.331968 ms
+iter=150, n_particle=16384, avg compute time per iter=11.117185 ms
+n_particle=16384, copy back memory time = 0.316064 ms
+iter=200, n_particle=16384, avg compute time per iter=11.090755 ms
+n_particle=16384, copy back memory time = 0.318528 ms
+iter=250, n_particle=16384, avg compute time per iter=11.075115 ms
+n_particle=16384, copy back memory time = 0.327712 ms
+iter=300, n_particle=16384, avg compute time per iter=11.067469 ms
+n_particle=16384, copy back memory time = 0.332992 ms
+iter=350, n_particle=16384, avg compute time per iter=11.062738 ms
+n_particle=16384, copy back memory time = 0.319808 ms
+iter=400, n_particle=16384, avg compute time per iter=11.059420 ms
+n_particle=16384, copy back memory time = 0.320576 ms
+iter=450, n_particle=16384, avg compute time per iter=11.056629 ms
+n_particle=16384, copy back memory time = 0.334240 ms
+iter=500, n_particle=16384, avg compute time per iter=11.052048 ms
+n_particle=16384, copy back memory time = 0.354720 ms
+iter=550, n_particle=16384, avg compute time per iter=11.048341 ms
+n_particle=16384, copy back memory time = 0.335712 ms
+iter=600, n_particle=16384, avg compute time per iter=11.045288 ms
+n_particle=16384, copy back memory time = 0.323904 ms
+iter=650, n_particle=16384, avg compute time per iter=11.042707 ms
+n_particle=16384, copy back memory time = 0.331712 ms
+iter=700, n_particle=16384, avg compute time per iter=11.040434 ms
+n_particle=16384, copy back memory time = 0.352096 ms
+iter=750, n_particle=16384, avg compute time per iter=11.038465 ms
+n_particle=16384, copy back memory time = 0.326272 ms
+iter=800, n_particle=16384, avg compute time per iter=11.036715 ms
+n_particle=16384, copy back memory time = 0.313760 ms
+iter=850, n_particle=16384, avg compute time per iter=11.035217 ms
+n_particle=16384, copy back memory time = 0.315136 ms
+iter=900, n_particle=16384, avg compute time per iter=11.033875 ms
+n_particle=16384, copy back memory time = 0.318656 ms
+iter=950, n_particle=16384, avg compute time per iter=11.032729 ms
+n_particle=16384, copy back memory time = 0.328320 ms
+iter=1000, n_particle=16384, avg compute time per iter=11.031789 ms
+n_particle=16384, copy back memory time = 0.325856 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Mon Apr 17 21:56:44 EDT 2023
+Job ID:     544791.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:27,vmem=840252kb,walltime=00:00:35,mem=59764kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Mon Apr 17 21:56:45 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Mon Apr 17 22:31:49 EDT 2023
+Job ID:     544812.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Mon Apr 17 22:31:49 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+ctime allocate time0s
+n_particle=8192, allocate memory time = 0.408576 ms
+iter=0, n_particle=8192, avg compute time per iter=6.222848 ms
+n_particle=8192, copy back memory time = 0.203904 ms
+iter=50, n_particle=8192, avg compute time per iter=5.982874 ms
+n_particle=8192, copy back memory time = 0.220736 ms
+iter=100, n_particle=8192, avg compute time per iter=5.777454 ms
+n_particle=8192, copy back memory time = 0.219104 ms
+iter=150, n_particle=8192, avg compute time per iter=5.702387 ms
+n_particle=8192, copy back memory time = 0.218080 ms
+iter=200, n_particle=8192, avg compute time per iter=5.664167 ms
+n_particle=8192, copy back memory time = 0.221440 ms
+iter=250, n_particle=8192, avg compute time per iter=5.641032 ms
+n_particle=8192, copy back memory time = 0.222720 ms
+iter=300, n_particle=8192, avg compute time per iter=5.625759 ms
+n_particle=8192, copy back memory time = 0.218944 ms
+iter=350, n_particle=8192, avg compute time per iter=5.614925 ms
+n_particle=8192, copy back memory time = 0.218624 ms
+iter=400, n_particle=8192, avg compute time per iter=5.606977 ms
+n_particle=8192, copy back memory time = 0.219776 ms
+iter=450, n_particle=8192, avg compute time per iter=5.600797 ms
+n_particle=8192, copy back memory time = 0.218720 ms
+iter=500, n_particle=8192, avg compute time per iter=5.595543 ms
+n_particle=8192, copy back memory time = 0.218112 ms
+iter=550, n_particle=8192, avg compute time per iter=5.591283 ms
+n_particle=8192, copy back memory time = 0.218560 ms
+iter=600, n_particle=8192, avg compute time per iter=5.587716 ms
+n_particle=8192, copy back memory time = 0.217792 ms
+iter=650, n_particle=8192, avg compute time per iter=5.585048 ms
+n_particle=8192, copy back memory time = 0.222464 ms
+iter=700, n_particle=8192, avg compute time per iter=5.582716 ms
+n_particle=8192, copy back memory time = 0.216640 ms
+iter=750, n_particle=8192, avg compute time per iter=5.580648 ms
+n_particle=8192, copy back memory time = 0.220320 ms
+iter=800, n_particle=8192, avg compute time per iter=5.578938 ms
+n_particle=8192, copy back memory time = 0.217984 ms
+iter=850, n_particle=8192, avg compute time per iter=5.577394 ms
+n_particle=8192, copy back memory time = 0.218912 ms
+iter=900, n_particle=8192, avg compute time per iter=5.576004 ms
+n_particle=8192, copy back memory time = 0.221984 ms
+iter=950, n_particle=8192, avg compute time per iter=5.574868 ms
+n_particle=8192, copy back memory time = 0.216800 ms
+iter=1000, n_particle=8192, avg compute time per iter=5.572171 ms
+n_particle=8192, copy back memory time = 0.217152 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Mon Apr 17 22:32:14 EDT 2023
+Job ID:     544812.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:18,vmem=0kb,walltime=00:00:25,mem=0kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Mon Apr 17 22:32:15 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Mon Apr 17 22:34:24 EDT 2023
+Job ID:     544814.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Mon Apr 17 22:34:24 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+ctime allocate time0s
+n_particle=32768, allocate memory time = 1.035264 ms
+iter=0, n_particle=32768, avg compute time per iter=28.676096 ms
+n_particle=32768, copy back memory time = 0.779648 ms
+iter=50, n_particle=32768, avg compute time per iter=25.677408 ms
+n_particle=32768, copy back memory time = 0.799328 ms
+iter=100, n_particle=32768, avg compute time per iter=25.512629 ms
+n_particle=32768, copy back memory time = 0.796608 ms
+iter=150, n_particle=32768, avg compute time per iter=25.459028 ms
+n_particle=32768, copy back memory time = 0.795008 ms
+iter=200, n_particle=32768, avg compute time per iter=25.431223 ms
+n_particle=32768, copy back memory time = 0.796160 ms
+iter=250, n_particle=32768, avg compute time per iter=25.415144 ms
+n_particle=32768, copy back memory time = 0.796832 ms
+iter=300, n_particle=32768, avg compute time per iter=25.403488 ms
+n_particle=32768, copy back memory time = 0.796192 ms
+iter=350, n_particle=32768, avg compute time per iter=25.395073 ms
+n_particle=32768, copy back memory time = 0.794656 ms
+iter=400, n_particle=32768, avg compute time per iter=25.388687 ms
+n_particle=32768, copy back memory time = 0.790816 ms
+iter=450, n_particle=32768, avg compute time per iter=25.383747 ms
+n_particle=32768, copy back memory time = 0.794016 ms
+iter=500, n_particle=32768, avg compute time per iter=25.379757 ms
+n_particle=32768, copy back memory time = 0.795456 ms
+iter=550, n_particle=32768, avg compute time per iter=25.376863 ms
+n_particle=32768, copy back memory time = 0.796768 ms
+iter=600, n_particle=32768, avg compute time per iter=25.374115 ms
+n_particle=32768, copy back memory time = 0.793792 ms
+iter=650, n_particle=32768, avg compute time per iter=25.372198 ms
+n_particle=32768, copy back memory time = 0.813984 ms
+iter=700, n_particle=32768, avg compute time per iter=25.370319 ms
+n_particle=32768, copy back memory time = 0.796000 ms
+iter=750, n_particle=32768, avg compute time per iter=25.368734 ms
+n_particle=32768, copy back memory time = 0.796192 ms
+iter=800, n_particle=32768, avg compute time per iter=25.367283 ms
+n_particle=32768, copy back memory time = 0.797024 ms
+iter=850, n_particle=32768, avg compute time per iter=25.365988 ms
+n_particle=32768, copy back memory time = 0.799936 ms
+iter=900, n_particle=32768, avg compute time per iter=25.364836 ms
+n_particle=32768, copy back memory time = 0.801024 ms
+iter=950, n_particle=32768, avg compute time per iter=25.363800 ms
+n_particle=32768, copy back memory time = 0.792224 ms
+iter=1000, n_particle=32768, avg compute time per iter=25.362881 ms
+n_particle=32768, copy back memory time = 0.793088 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Mon Apr 17 22:35:08 EDT 2023
+Job ID:     544814.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:38,vmem=0kb,walltime=00:00:44,mem=0kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Mon Apr 17 22:35:08 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Mon Apr 17 22:35:57 EDT 2023
+Job ID:     544816.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Mon Apr 17 22:35:57 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[ 10%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 40%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 50%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 60%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 70%] Linking CXX static library libpfpds.a
+[ 70%] Built target pfpds
+[ 80%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 90%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+ctime allocate time0s
+n_particle=4096, allocate memory time = 0.312320 ms
+iter=0, n_particle=4096, avg compute time per iter=3.144704 ms
+n_particle=4096, copy back memory time = 0.110880 ms
+iter=50, n_particle=4096, avg compute time per iter=3.097189 ms
+n_particle=4096, copy back memory time = 0.127232 ms
+iter=100, n_particle=4096, avg compute time per iter=3.023306 ms
+n_particle=4096, copy back memory time = 0.127680 ms
+iter=150, n_particle=4096, avg compute time per iter=2.950249 ms
+n_particle=4096, copy back memory time = 0.125344 ms
+iter=200, n_particle=4096, avg compute time per iter=2.903244 ms
+n_particle=4096, copy back memory time = 0.127392 ms
+iter=250, n_particle=4096, avg compute time per iter=2.874978 ms
+n_particle=4096, copy back memory time = 0.125216 ms
+iter=300, n_particle=4096, avg compute time per iter=2.856092 ms
+n_particle=4096, copy back memory time = 0.124896 ms
+iter=350, n_particle=4096, avg compute time per iter=2.842563 ms
+n_particle=4096, copy back memory time = 0.125760 ms
+iter=400, n_particle=4096, avg compute time per iter=2.832403 ms
+n_particle=4096, copy back memory time = 0.125248 ms
+iter=450, n_particle=4096, avg compute time per iter=2.824529 ms
+n_particle=4096, copy back memory time = 0.127072 ms
+iter=500, n_particle=4096, avg compute time per iter=2.818225 ms
+n_particle=4096, copy back memory time = 0.126016 ms
+iter=550, n_particle=4096, avg compute time per iter=2.813077 ms
+n_particle=4096, copy back memory time = 0.128416 ms
+iter=600, n_particle=4096, avg compute time per iter=2.808772 ms
+n_particle=4096, copy back memory time = 0.125632 ms
+iter=650, n_particle=4096, avg compute time per iter=2.805140 ms
+n_particle=4096, copy back memory time = 0.124352 ms
+iter=700, n_particle=4096, avg compute time per iter=2.802036 ms
+n_particle=4096, copy back memory time = 0.124832 ms
+iter=750, n_particle=4096, avg compute time per iter=2.799324 ms
+n_particle=4096, copy back memory time = 0.124640 ms
+iter=800, n_particle=4096, avg compute time per iter=2.796951 ms
+n_particle=4096, copy back memory time = 0.127808 ms
+iter=850, n_particle=4096, avg compute time per iter=2.794858 ms
+n_particle=4096, copy back memory time = 0.125120 ms
+iter=900, n_particle=4096, avg compute time per iter=2.793013 ms
+n_particle=4096, copy back memory time = 0.126176 ms
+iter=950, n_particle=4096, avg compute time per iter=2.791349 ms
+n_particle=4096, copy back memory time = 0.125632 ms
+iter=1000, n_particle=4096, avg compute time per iter=2.789848 ms
+n_particle=4096, copy back memory time = 0.125216 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Mon Apr 17 22:36:19 EDT 2023
+Job ID:     544816.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:15,vmem=5403776kb,walltime=00:00:22,mem=22392kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Mon Apr 17 22:36:20 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Tue Apr 18 19:10:19 EDT 2023
+Job ID:     545291.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Tue Apr 18 19:10:19 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[  7%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 15%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 23%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 38%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 46%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 53%] Linking CXX static library libpfpds.a
+[ 53%] Built target pfpds
+[ 61%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 69%] Building CXX object test/CMakeFiles/TEST_seq.dir/test_seq.cpp.o
+/storage/home/hcocice1/ydu340/Particle-new/test/test_seq.cpp: In function ‘int main(int, char**)’:
+/storage/home/hcocice1/ydu340/Particle-new/test/test_seq.cpp:59:35: error: ‘_n_dim’ was not declared in this scope
+             one->position = pos+i*_n_dim;
+                                   ^~~~~~
+/storage/home/hcocice1/ydu340/Particle-new/test/test_seq.cpp:59:35: note: suggested alternative: ‘n_dim’
+             one->position = pos+i*_n_dim;
+                                   ^~~~~~
+                                   n_dim
+/storage/home/hcocice1/ydu340/Particle-new/test/test_seq.cpp:63:66: error: ‘timestep’ was not declared in this scope
+                 *(one->velocity+n) += *(one->acceleration+n) * (*timestep);
+                                                                  ^~~~~~~~
+/storage/home/hcocice1/ydu340/Particle-new/test/test_seq.cpp:63:66: note: suggested alternative: ‘timeStep’
+                 *(one->velocity+n) += *(one->acceleration+n) * (*timestep);
+                                                                  ^~~~~~~~
+                                                                  timeStep
+make[2]: *** [test/CMakeFiles/TEST_seq.dir/test_seq.cpp.o] Error 1
+make[1]: *** [test/CMakeFiles/TEST_seq.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+[ 76%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[ 84%] Linking CXX executable TEST_cuda
+[ 84%] Built target TEST_cuda
+make: *** [all] Error 2
+Sequential
+/var/spool/torque/mom_priv/jobs/545291.sched-coc-ice.pace.gatech.edu.SC: line 23: ./build/test/TEST_seq: No such file or directory
+CUDA
+ctime allocate time0s
+n_particle=4096, allocate memory time = 0.382272 ms
+iter=0, n_particle=4096, avg compute time per iter=3.143584 ms
+n_particle=4096, copy back memory time = 0.137888 ms
+iter=50, n_particle=4096, avg compute time per iter=3.076437 ms
+n_particle=4096, copy back memory time = 0.156352 ms
+iter=100, n_particle=4096, avg compute time per iter=2.950770 ms
+n_particle=4096, copy back memory time = 0.149376 ms
+iter=150, n_particle=4096, avg compute time per iter=2.894405 ms
+n_particle=4096, copy back memory time = 0.149344 ms
+iter=200, n_particle=4096, avg compute time per iter=2.865061 ms
+n_particle=4096, copy back memory time = 0.150208 ms
+iter=250, n_particle=4096, avg compute time per iter=2.847463 ms
+n_particle=4096, copy back memory time = 0.148608 ms
+iter=300, n_particle=4096, avg compute time per iter=2.835657 ms
+n_particle=4096, copy back memory time = 0.148704 ms
+iter=350, n_particle=4096, avg compute time per iter=2.827251 ms
+n_particle=4096, copy back memory time = 0.153216 ms
+iter=400, n_particle=4096, avg compute time per iter=2.820923 ms
+n_particle=4096, copy back memory time = 0.153216 ms
+iter=450, n_particle=4096, avg compute time per iter=2.815984 ms
+n_particle=4096, copy back memory time = 0.150176 ms
+iter=500, n_particle=4096, avg compute time per iter=2.812060 ms
+n_particle=4096, copy back memory time = 0.149024 ms
+iter=550, n_particle=4096, avg compute time per iter=2.808823 ms
+n_particle=4096, copy back memory time = 0.149504 ms
+iter=600, n_particle=4096, avg compute time per iter=2.806127 ms
+n_particle=4096, copy back memory time = 0.148160 ms
+iter=650, n_particle=4096, avg compute time per iter=2.803855 ms
+n_particle=4096, copy back memory time = 0.148992 ms
+iter=700, n_particle=4096, avg compute time per iter=2.801886 ms
+n_particle=4096, copy back memory time = 0.148448 ms
+iter=750, n_particle=4096, avg compute time per iter=2.800195 ms
+n_particle=4096, copy back memory time = 0.148640 ms
+iter=800, n_particle=4096, avg compute time per iter=2.798713 ms
+n_particle=4096, copy back memory time = 0.149568 ms
+iter=850, n_particle=4096, avg compute time per iter=2.797404 ms
+n_particle=4096, copy back memory time = 0.148736 ms
+iter=900, n_particle=4096, avg compute time per iter=2.796246 ms
+n_particle=4096, copy back memory time = 0.149920 ms
+iter=950, n_particle=4096, avg compute time per iter=2.795213 ms
+n_particle=4096, copy back memory time = 0.148224 ms
+iter=1000, n_particle=4096, avg compute time per iter=2.794294 ms
+n_particle=4096, copy back memory time = 0.149472 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Tue Apr 18 19:10:46 EDT 2023
+Job ID:     545291.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:16,vmem=0kb,walltime=00:00:27,mem=0kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-5.pace.gatech.edu
+End PBS Epilogue Tue Apr 18 19:11:10 EDT 2023
+---------------------------------------

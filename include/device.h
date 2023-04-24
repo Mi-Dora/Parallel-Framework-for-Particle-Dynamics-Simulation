@@ -7,7 +7,7 @@
 #include "errs.h"
 #include "particle.h"
 
-#define BLOCKSIZE 128
+#define BLOCKSIZE 256
 
 void device_allocate_init(double** d_pos, double** d_vel, double** d_acc, double** d_feats,
                             std::uint64_t** d_n_particle, std::uint64_t** d_n_dim, std::uint64_t** d_n_feat, double** d_timestep, 

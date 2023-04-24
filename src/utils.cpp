@@ -12,7 +12,7 @@ void get_distance_vec(const double* vecA, const double* vecB, const int ndim, do
     ret = static_cast<double*>(malloc(sizeof(double)*ndim));
     *vecRet = ret;
     for(int n=0; n<ndim; n++) 
-        *(ret++) = *(a++) - *(b++);
+        *(ret++) = *(b++) - *(a++);
 }
 
 

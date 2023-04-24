@@ -8,3 +8,7 @@
 build
 *.txt
 data
+core.TEST_seq.121695.1681866211.atl1-1-01-002-4.pace.gatech.edu
+.gitignore
+core.TEST_cuda.121699.1681866212.atl1-1-01-002-4.pace.gatech.edu
+core.TEST_seq.120256.1681865976.atl1-1-01-002-4.pace.gatech.edu

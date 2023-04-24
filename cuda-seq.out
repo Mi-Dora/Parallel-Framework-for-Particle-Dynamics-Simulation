@@ -1,0 +1,324 @@
+---------------------------------------
+Begin PBS Prologue Tue Apr 18 21:39:26 EDT 2023
+Job ID:     545400.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Tue Apr 18 21:39:26 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/pace-apps/spack/packages/0.12/linux-rhel7-x86_64/gcc-4.8.5/gcc-8.3.0-opnwtdjumg2hxo4ljvnx77ugb6afmvj3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 11.1.74
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/pace-apps/manual/packages/cuda/11.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/pace-apps/manual/packages/cuda/11.1/include (found version "11.1.74") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /storage/home/hcocice1/ydu340/Particle-new/build
+[  6%] Building CXX object src/CMakeFiles/pfpds.dir/particle.cpp.o
+[ 12%] Building CXX object src/CMakeFiles/pfpds.dir/utils.cpp.o
+[ 18%] Building CXX object src/CMakeFiles/pfpds.dir/world.cpp.o
+[ 25%] Building CXX object src/CMakeFiles/pfpds.dir/user_def/gravity_particle.cpp.o
+[ 31%] Building CUDA object src/CMakeFiles/pfpds.dir/kernels.cu.o
+[ 37%] Building CXX object src/CMakeFiles/pfpds.dir/device.cpp.o
+[ 43%] Linking CXX static library libpfpds.a
+[ 43%] Built target pfpds
+[ 50%] Building CUDA object test/CMakeFiles/TEST_cuda.dir/test_cuda.cu.o
+[ 62%] Building CXX object test/CMakeFiles/TEST_seq.dir/test_seq.cpp.o
+[ 62%] Building CXX object test/CMakeFiles/TEST_correctness.dir/test_correctness.cpp.o
+[ 68%] Linking CUDA device code CMakeFiles/TEST_correctness.dir/cmake_device_link.o
+[ 75%] Linking CUDA device code CMakeFiles/TEST_seq.dir/cmake_device_link.o
+[ 81%] Linking CXX executable TEST_correctness
+[ 87%] Linking CXX executable TEST_seq
+[ 87%] Built target TEST_correctness
+[ 87%] Built target TEST_seq
+[ 93%] Linking CUDA device code CMakeFiles/TEST_cuda.dir/cmake_device_link.o
+[100%] Linking CXX executable TEST_cuda
+[100%] Built target TEST_cuda
+Finished. Check the 'build' directory for results.
+Sequential n=4096
+Seq iter 0
+Sequential: n_particle = 4096, compute time per iter = 767ms
+CUDA n=4096
+n_particle=4096, allocate memory time = 0.309248 ms
+iter=0, n_particle=4096, avg compute time per iter=3.153920 ms
+n_particle=4096, copy back memory time = 0.111520 ms
+Correctness
+Pass Correctness Validation!
+Sequential n=16384
+Seq iter 0
+Sequential: n_particle = 16384, compute time per iter = 12249ms
+CUDA n=16384
+n_particle=16384, allocate memory time = 0.602112 ms
+iter=0, n_particle=16384, avg compute time per iter=12.570592 ms
+n_particle=16384, copy back memory time = 0.390176 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Tue Apr 18 21:40:01 EDT 2023
+Job ID:     545400.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:00:28,vmem=0kb,walltime=00:00:35,mem=0kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Tue Apr 18 21:40:18 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Tue Apr 18 21:52:48 EDT 2023
+Job ID:     545408.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Tue Apr 18 21:52:48 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+\nSequential n=4096
+Seq iter 0
+Sequential: n_particle = 4096, compute time per iter = 767ms
+\nCUDA n=4096
+n_particle=4096, allocate memory time = 0.325632 ms
+iter=0, n_particle=4096, avg compute time per iter=3.143680 ms
+n_particle=4096, copy back memory time = 0.112832 ms
+\nCorrectness
+Pass Correctness Validation!
+\nSequential n=16384
+Seq iter 0
+Sequential: n_particle = 16384, compute time per iter = 12250ms
+\nCUDA n=16384
+n_particle=16384, allocate memory time = 0.598016 ms
+iter=0, n_particle=16384, avg compute time per iter=12.394496 ms
+n_particle=16384, copy back memory time = 0.423232 ms
+\nCUDA n=2162688
+n_particle=2162688, allocate memory time = 37.895168 ms
+iter=0, n_particle=2162688, avg compute time per iter=81073.578125 ms
+n_particle=2162688, copy back memory time = 37.417439 ms
+\nDone
+---------------------------------------
+Begin PBS Epilogue Tue Apr 18 21:54:52 EDT 2023
+Job ID:     545408.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:01:59,vmem=5919848kb,walltime=00:02:04,mem=309136kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Tue Apr 18 21:55:11 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Tue Apr 18 21:59:00 EDT 2023
+Job ID:     545415.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Tue Apr 18 21:59:00 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+ 
+\nSequential n=4096
+Seq iter 0
+Sequential: n_particle = 4096, compute time per iter = 767ms
+ 
+CUDA n=4096
+n_particle=4096, allocate memory time = 0.307200 ms
+iter=0, n_particle=4096, avg compute time per iter=3.152896 ms
+n_particle=4096, copy back memory time = 0.112096 ms
+ 
+Correctness
+Pass Correctness Validation!
+ 
+Sequential n=16384
+Seq iter 0
+Sequential: n_particle = 16384, compute time per iter = 12255ms
+ 
+CUDA n=16384
+n_particle=16384, allocate memory time = 0.593920 ms
+iter=0, n_particle=16384, avg compute time per iter=12.582912 ms
+n_particle=16384, copy back memory time = 0.399328 ms
+ 
+CUDA n=2097152
+n_particle=2097152, allocate memory time = 37.092354 ms
+iter=0, n_particle=2097152, avg compute time per iter=76027.179688 ms
+n_particle=2097152, copy back memory time = 36.439968 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Tue Apr 18 22:00:58 EDT 2023
+Job ID:     545415.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:01:53,vmem=5878376kb,walltime=00:01:58,mem=300432kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Tue Apr 18 22:00:59 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Tue Apr 18 22:13:52 EDT 2023
+Job ID:     545428.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Tue Apr 18 22:13:52 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+ 
+\nSequential n=4096
+Seq iter 0
+Sequential: n_particle = 4096, compute time per iter = 767ms
+ 
+CUDA n=4096
+n_particle=4096, allocate memory time = 0.318464 ms
+iter=0, n_particle=4096, avg compute time per iter=3.149824 ms
+n_particle=4096, copy back memory time = 0.112992 ms
+ 
+Correctness
+Pass Correctness Validation!
+ 
+Sequential n=16384
+Seq iter 0
+Sequential: n_particle = 16384, compute time per iter = 12252ms
+ 
+CUDA n=16384
+n_particle=16384, allocate memory time = 0.599040 ms
+iter=0, n_particle=16384, avg compute time per iter=12.579840 ms
+n_particle=16384, copy back memory time = 0.386432 ms
+ 
+CUDA n=65536
+n_particle=65536, allocate memory time = 1.651712 ms
+iter=0, n_particle=65536, avg compute time per iter=96.269310 ms
+n_particle=65536, copy back memory time = 1.406400 ms
+ 
+CUDA n=2097152
+n_particle=2097152, allocate memory time = 36.811775 ms
+iter=0, n_particle=2097152, avg compute time per iter=75869.429688 ms
+n_particle=2097152, copy back memory time = 36.839775 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Tue Apr 18 22:15:51 EDT 2023
+Job ID:     545428.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:01:54,vmem=5878376kb,walltime=00:01:59,mem=300432kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Tue Apr 18 22:16:13 EDT 2023
+---------------------------------------
+---------------------------------------
+Begin PBS Prologue Tue Apr 18 22:17:08 EDT 2023
+Job ID:     545430.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Queue:      coc-ice-gpu
+End PBS Prologue Tue Apr 18 22:17:08 EDT 2023
+---------------------------------------
+
+Lmod is automatically replacing "intel/19.0.5" with "gcc/8.3.0".
+
+
+Lmod is automatically replacing "mvapich2/2.3.2" with "openmpi/4.1.2".
+
+ 
+\nSequential n=4096
+Seq iter 0
+Sequential: n_particle = 4096, compute time per iter = 767ms
+ 
+CUDA n=4096
+n_particle=4096, allocate memory time = 0.915456 ms
+iter=0, n_particle=4096, avg compute time per iter=3.137536 ms
+n_particle=4096, copy back memory time = 0.115360 ms
+ 
+Correctness
+Pass Correctness Validation!
+ 
+Sequential n=16384
+Seq iter 0
+Sequential: n_particle = 16384, compute time per iter = 12253ms
+ 
+CUDA n=16384
+n_particle=16384, allocate memory time = 1.076224 ms
+iter=0, n_particle=16384, avg compute time per iter=12.500992 ms
+n_particle=16384, copy back memory time = 0.399392 ms
+iter=9, n_particle=16384, avg compute time per iter=12.286998 ms
+n_particle=16384, copy back memory time = 0.376672 ms
+ 
+CUDA n=32768
+n_particle=32768, allocate memory time = 1.033216 ms
+iter=0, n_particle=32768, avg compute time per iter=25.981953 ms
+n_particle=32768, copy back memory time = 0.774784 ms
+iter=9, n_particle=32768, avg compute time per iter=25.666113 ms
+n_particle=32768, copy back memory time = 0.751232 ms
+ 
+CUDA n=65536
+n_particle=65536, allocate memory time = 1.652736 ms
+iter=0, n_particle=65536, avg compute time per iter=89.084930 ms
+n_particle=65536, copy back memory time = 1.385408 ms
+iter=9, n_particle=65536, avg compute time per iter=90.909264 ms
+n_particle=65536, copy back memory time = 1.325856 ms
+ 
+CUDA n=2097152
+n_particle=2097152, allocate memory time = 36.760574 ms
+iter=0, n_particle=2097152, avg compute time per iter=77526.093750 ms
+n_particle=2097152, copy back memory time = 36.244480 ms
+Done
+---------------------------------------
+Begin PBS Epilogue Tue Apr 18 22:19:22 EDT 2023
+Job ID:     545430.sched-coc-ice.pace.gatech.edu
+User ID:    ydu340
+Job name:   ParticalSim-Proj
+Resources:  nodes=1:gpus=1:teslav100,walltime=00:15:00,neednodes=1:gpus=1:teslav100
+Rsrc Used:  cput=00:01:58,vmem=5878376kb,walltime=00:02:14,mem=300432kb,energy_used=0
+Queue:      coc-ice-gpu
+Nodes:     
+atl1-1-01-002-3.pace.gatech.edu
+End PBS Epilogue Tue Apr 18 22:19:22 EDT 2023
+---------------------------------------
