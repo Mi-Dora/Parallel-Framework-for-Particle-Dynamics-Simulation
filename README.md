@@ -1,25 +1,44 @@
 # Parallel-Framework-for-Particle-Dynamics-Simulation
-CSE 6230 Course Project @ Georgia Tech
-# Prepare the environment
-## For the MPI + OpenMP environment
-'''
-module load gcc/6.2.0
-module load cuda
-module load cmake
-'''
-## For the CUDA environment
-'''
-module load gcc/8.3.0 openblas/0.3.13 cmake/3.20.3 openmpi/4.1.2 cuda/11.1
-'''
+## Solution I: MPI + OpenMP
+### Prepare the environment
+```
+module load gcc cmake openmpi valgrind
+module load gcc cmake openmpi valgrind
+module load gcc cmake openmpi valgrind
+module load gcc cmake openmpi valgrind
+```
+### Checkout the source code
+```
+git clone --branch neo https://github.com/Mi-Dora/Parallel-Framework-for-Particle-Dynamics-Simulation.git
+```
+
+### To Compile
+### Download the data files
+### Processing Input for the run
+### To Validate
+### To Run
+### Version of the code (-x contain versions: )
+### Debug option (-y have different debug option)
+### Benchmarking
+
+## Solution II: CUDA
+### Prepare the environment
+```
+module load gcc/8.3.0 
+module load openblas/0.3.13 
+module load cmake/3.20.3
+module load openmpi/4.1.2 
+module load cuda/11.1
+```
 
 
-## Checkout the source code
+### Checkout the source code
 Clone the distfw2d, semiring-gemm and cutlass code as follows
 ```
-git clone --recurse-submodules https://code.ornl.gov/gordon-bell-apsp/distfw2d.git
+git clone --branch cuda https://github.com/Mi-Dora/Parallel-Framework-for-Particle-Dynamics-Simulation.git
 ```
 
-## To Compile
+### To Compile
 ```bash
 #Make the build directory
 mkdir build;
@@ -38,13 +57,13 @@ cmake -DCMAKE_SYSTEM_NAME=CrayLinuxEnvironment ../
 cmake  -DCMAKE_SYSTEM_NAME=CrayLinuxEnvironment -DCMAKE_BUILD_TYPE=Debug ..
 ```
 
-## Download the data files
+### Download the data files
 
 1. Download the dataset from sparse tamu dataset
 2. Download the dataset from semantic medline db
 3. Follow the procedure in https://code.ornl.gov/gordon-bell-apsp/data.git for preparing the matrix out of semantic medline DB.
 
-## Processing Input for the run
+### Processing Input for the run
 1. Under src/utils/, build and run permute-sparse-struct.cpp to randomly permute the input real world matrix. Random permutation helps balance the load by distorting the structure of the matrix.
 2. 2D partition the permuted matrix with src/utils/partition2d
 
@@ -52,7 +71,7 @@ cmake  -DCMAKE_SYSTEM_NAME=CrayLinuxEnvironment -DCMAKE_BUILD_TYPE=Debug ..
 The name of the main test executable is `testBenchDistFW` in the `build` directory.
 We use ctest as the test runner to run all tests in `build/tests/`
 
-## To Run
+### To Run
 The name of the executable will be `benchDistFW` in the `build` directory.
 
 Running the benchmark in `Pr X Pc` 2D process-grid with `blockSize` as paramater for block cyclic data distribution, and `problemSize`
@@ -65,7 +84,7 @@ mpirun -n PrXPc ./benchDistFW -r Pr -c Pc -b blockSize problemSize
 
 For running on Summit, sample LSF files have been shipped under run directory. Please use the scripts and modify for your run. 
 
-## Version of the code (-x contain versions: )
+### Version of the code (-x contain versions: )
 
 1. -x 0 (CPU)
 2. -x 1 (CPU) with with lookahead
@@ -75,7 +94,7 @@ For running on Summit, sample LSF files have been shipped under run directory. P
 6. -x 5 (GPU) with lookahead + RDMA + Stream
 7. -x 6 (GPU) with lookahead + RDMA + Stream + ring bcast
 
-## Debug option (-y have different debug option)
+### Debug option (-y have different debug option)
 
 1. -y 0 (no debug)
 2. -y 1 (strong debug: compare with serial code)
@@ -85,7 +104,7 @@ For running on Summit, sample LSF files have been shipped under run directory. P
 ******* !! ******** Becareful !! ALL debug flag except 0 and 1 will use double the GPU
 memory
 
-## Benchmarking
+### Benchmarking
 
 To actually benchmarking the benifit, please remove cudaDeviceSynchronize()
 in your timer
