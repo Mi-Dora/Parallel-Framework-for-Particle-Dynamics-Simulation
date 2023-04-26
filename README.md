@@ -13,8 +13,27 @@ git clone --branch neo https://github.com/Mi-Dora/Parallel-Framework-for-Particl
 ```
 
 ### To Compile
+The CMakeLists.txt is already provided in the home directory. Under the "Parallel-Framework-for-Particle-Dynamics-Simulation" directory, run:
+```
+make
+```
+
 ### Download the data files
+The particles are generated with randomly distributed positions, velocity, mass and acceleration. Under the "pysrc" directory, we have a "generate.py" script to do this task. Execute this scripte with the following command:
+```
+python generate.py --n_particle 1000 --n_dim 3 --pos_range [-100, 100, -100, 100] --mass_range [0, 0.01] --output_filename [output.txt]
+```
+and replace [output.txt] with your own output file name. Note that the "--output_filename" argument is required to run this script, while all other arguments are optional. If they are not provided, the parameters as listed in the command above will be the default setting. For a quick execution, run
+```
+python generate.py --output_filename output.txt
+```
+Note: If this does not work, you may try replace "python" with "python3" or "py" as per the running environment.
+
 ### Processing Input for the run
+We have provided test scripts to do this part. One can refer to "test_dense_mpi_neo.cpp" (for the dense scheduler) or "test_cutoff_mpi_neo.cpp" (for the cutoff scheduler) or "test_centroid_mpi_neo.cpp" (for the centroid scheduler). Each of them will call the processing functions under src/neo, in the "dense_scheduler.cpp" or "cutoff_scheduler.cpp" or "centroid_scheduler.cpp" scripts respectively. For each type of scheduler, one can refer to the corresponding test scripts on the code required to process inputs.
+
+We always start with calling the loadParticles() function, then the padding() function, then the update() function iteratively, and end with calling the gather() and shrink() functions. They are overloded in different scripts under src/neo. They will scatter particles to a 2D-grid processor topology in a similar manner.
+
 ### To Validate
 ### To Run
 ### Version of the code (-x contain versions: )
